@@ -25,6 +25,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <style>
+    .project-card.highlight-card {
+      border: 1px solid rgba(0, 153, 255, 0.45);
+      box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
+      background: linear-gradient(180deg, rgba(0, 153, 255, 0.08), rgba(255, 255, 255, 0.02));
+    }
+
+    .project-flow {
+      list-style: none;
+      margin: 1rem 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .project-flow li {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid rgba(0, 153, 255, 0.55);
+      padding: 0.7rem 0.85rem;
+      border-radius: 0.35rem;
+      line-height: 1.45;
+    }
+  </style>
 
   
   <script type="application/ld+json">
@@ -126,17 +149,15 @@
 
   <div class="projects-grid">
 
-    <div class="project-card">
-      <h3>Winter School Booking App</h3>
+    <div class="project-card highlight-card">
+      <h3>Church Management System App</h3>
       <div class="stack">Java · MySQL · JPA</div>
-      <p>
-        <strong>Problem:</strong> Manual registration and record-keeping for winter school programmes led to data duplication and errors.
-        <br><br>
-        <strong>Solution:</strong> Built a desktop booking system to manage learners, classes, and registrations with persistent storage.
-        <br><br>
-        <strong>How:</strong> Implemented validation rules, relational database design, and JPA-based data persistence to ensure data integrity.
-      </p>
-      <a href="https://github.com/theo117/WinterSchoolBookingApp" target="_blank" rel="noopener noreferrer" aria-label="View Winter School Booking App on GitHub">View on GitHub</a>
+      <ul class="project-flow">
+        <li><strong>Problem:</strong> Church teams were tracking members, ministries, and attendance manually, which made updates slow and reporting inconsistent.</li>
+        <li><strong>Solution:</strong> Built a centralized management system to organize member records, ministry groups, and attendance in one application.</li>
+        <li><strong>How:</strong> Designed a relational schema, implemented JPA-based persistence, and added validation to keep records accurate and easy to maintain.</li>
+      </ul>
+      <a href="https://wp7.theodorenelson.co.za" target="_blank" rel="noopener noreferrer" aria-label="Visit Church Management System website">Visit Website</a>
     </div>
 
     <div class="project-card">
