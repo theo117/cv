@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -26,6 +26,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
     .project-card.highlight-card {
       border: 1px solid rgba(0, 153, 255, 0.45);
       box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
@@ -391,7 +401,6 @@
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
 <script>
   window.addEventListener('load', function () {
     document.body.classList.remove('is-preload');
