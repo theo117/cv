@@ -2633,8 +2633,8 @@ body.is-article-visible {
 }
 
 .qr-code {
-	width: 80px;
-	height: 80px;
+	width: 200px;
+	height: 200px;
 	background: #fff;
 	transition: transform 0.3s ease;
 }
