@@ -2631,6 +2631,7 @@ body.is-article-visible {
 	gap: 1rem;
 	margin-top: 1rem;
 	gap: 450px !important;
+	
 }
 
 .qr-code {
@@ -2638,6 +2639,7 @@ body.is-article-visible {
 	height: 300px;
 	background: #fff;
 	transition: transform 0.3s ease;
+	
 }
 
 .qr-code:hover {
