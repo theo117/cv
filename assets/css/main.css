@@ -2630,7 +2630,7 @@ body.is-article-visible {
 	align-items: center;
 	gap: 1rem;
 	margin-top: 1rem;
-	gap: 300px;
+	gap: 300px !important;
 }
 
 .qr-code {
