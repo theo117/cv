@@ -2624,23 +2624,21 @@ body.is-article-visible {
   }
 }
 
-.qr-code {
-	width: 300px;
-	height: 300px;
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: transform 0.3s ease;
-}
-.qr-code:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
-}
 .qr-container {
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 	margin-top: 1rem;
-	gap: 30rem;
+}
+
+.qr-code {
+	width: 80px;
+	height: 80px;
+	background: #fff;
+	transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+	transform: scale(1.08);
 }
