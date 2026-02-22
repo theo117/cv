@@ -1754,17 +1754,19 @@ input, select, textarea {
       line-height: 1.7;
     }
 
-    /* Profile image - About section */
-     #intro .image.main img {
+#intro .image.main {
   width: 240px;
   height: 240px;
-  object-fit: contain;
-  background: #000; /* Or transparent */
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   margin: 0 auto 1.5rem auto;
-  display: block;
+}
+
+#intro .image.main img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20%;
 }
 
 
