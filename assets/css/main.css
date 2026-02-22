@@ -2625,7 +2625,7 @@ body.is-article-visible {
 }
 
 .qr-container {
-	display: flex;
+	display: flex !important;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
