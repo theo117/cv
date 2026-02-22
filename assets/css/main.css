@@ -2623,12 +2623,8 @@ body.is-article-visible {
     scroll-behavior: auto;
   }
 }
-.qr-section {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.qr-code {
-    width: 90px;
-    height: 90px;
+.qr-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
