@@ -2626,11 +2626,11 @@ body.is-article-visible {
 
 .qr-container {
 	display: flex !important;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
+	gap: 20rem;
 	margin-top: 1rem;
-	gap: 450px !important;
+	
 	
 }
 
