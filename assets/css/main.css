@@ -2634,7 +2634,8 @@ body.is-article-visible {
 .qr-code{
   width:140px;
   height:140px;
-  padding:15px;
+  padding:10px;
+  box-sizing:border-box;
   background:#fff;
   border-radius:12px;
   transition:transform .25s ease, box-shadow .25s ease;
