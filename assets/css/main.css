@@ -2628,13 +2628,13 @@ body.is-article-visible {
   display:flex;
   justify-content:center;
   margin:12px 0;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .qr-code{
   width:140px;
   height:140px;
-  padding:10px;
+  padding:12px;
   background:#fff;
   border-radius:12px;
   transition:transform .25s ease, box-shadow .25s ease;
