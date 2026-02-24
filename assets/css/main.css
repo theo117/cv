@@ -2639,6 +2639,7 @@ body.is-article-visible {
   background:#fff;
   border-radius:12px;
   transition:transform .25s ease, box-shadow .25s ease;
+  flex-shrink: 0;
 }
 
 .qr-code:hover{
