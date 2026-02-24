@@ -2628,7 +2628,7 @@ body.is-article-visible {
   display:flex;
   justify-content:center;
   margin:12px 0;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .qr-code{
