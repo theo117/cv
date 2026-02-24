@@ -2629,7 +2629,7 @@ body.is-article-visible {
   justify-content:center;
   margin:12px 0;
   gap: 5rem;
-  box-sizing:border-box; 
+  flex-wrap: wrap;
 }
 
 .qr-code{
