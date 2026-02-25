@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,12 +37,7 @@
       }
     }
 
-    .project-card.highlight-card {
-      border: 1px solid rgba(0, 153, 255, 0.45);
-      box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
-      background: linear-gradient(180deg, rgba(0, 153, 255, 0.08), rgba(255, 255, 255, 0.02));
-    }
-
+    
     .project-flow {
       list-style: none;
       margin: 1rem 0;
@@ -51,12 +46,164 @@
       gap: 0.75rem;
     }
 
+    
     .project-flow li {
       background: rgba(255, 255, 255, 0.04);
       border-left: 3px solid rgba(0, 153, 255, 0.55);
       padding: 0.7rem 0.85rem;
       border-radius: 0.35rem;
       line-height: 1.45;
+    }
+.theme-toggle {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 7.25rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+      color: #ffffff;
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(0, 153, 255, 0.25);
+      border-color: rgba(0, 153, 255, 0.65);
+    }
+    body.theme-light {
+      --accent: #006fc7;
+      --accent-soft: rgba(0, 111, 199, 0.14);
+      --surface: rgba(8, 31, 59, 0.04);
+      --surface-border: rgba(8, 31, 59, 0.2);
+      --surface-strong: rgba(255, 255, 255, 0.9);
+      --text-muted: rgba(16, 37, 62, 0.8);
+      --glow-cool: rgba(77, 168, 255, 0.2);
+      --glow-warm: rgba(255, 186, 92, 0.16);
+      background:
+        radial-gradient(circle at 12% 16%, rgba(77, 168, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 88% 78%, rgba(255, 186, 92, 0.2), transparent 30%),
+        linear-gradient(180deg, #eef5ff 0%, #f6f9ff 46%, #edf4ff 100%) !important;
+      color: #10233c;
+    }
+
+    body.theme-light,
+    body.theme-light h1,
+    body.theme-light h2,
+    body.theme-light h3,
+    body.theme-light h4,
+    body.theme-light h5,
+    body.theme-light h6,
+    body.theme-light p,
+    body.theme-light label,
+    body.theme-light li,
+    body.theme-light strong,
+    body.theme-light b {
+      color: #10233c !important;
+    }
+
+    body.theme-light a {
+      border-bottom-color: rgba(16, 35, 60, 0.35);
+    }
+
+    body.theme-light .site-topnav {
+      background: rgba(245, 250, 255, 0.92);
+      border-bottom-color: rgba(9, 35, 64, 0.16);
+    }
+
+    body.theme-light .site-topnav-inner a,
+    body.theme-light .theme-toggle {
+      color: #10233c;
+      border-color: rgba(9, 35, 64, 0.2);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    body.theme-light .site-topnav-inner a:hover,
+    body.theme-light .theme-toggle:hover,
+    body.theme-light .site-topnav-inner a.active {
+      background: rgba(0, 111, 199, 0.14);
+      border-color: rgba(0, 111, 199, 0.46);
+    }
+
+    body.theme-light #header .content {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(243, 248, 255, 0.92));
+      border-color: rgba(9, 35, 64, 0.16);
+      box-shadow: 0 16px 40px rgba(32, 66, 108, 0.18);
+    }
+
+    body.theme-light #header .logo .logo-text {
+      border-color: rgba(0, 111, 199, 0.58);
+      box-shadow: 0 10px 25px rgba(0, 111, 199, 0.2);
+    }
+
+    body.theme-light #main article,
+    body.theme-light #main article:nth-of-type(odd),
+    body.theme-light #main article:nth-of-type(even) {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(244, 248, 255, 0.92)) !important;
+      border-color: rgba(9, 35, 64, 0.16) !important;
+      box-shadow: 0 16px 34px rgba(32, 66, 108, 0.14);
+    }
+
+    body.theme-light #main article h2.major {
+      border-bottom-color: rgba(9, 35, 64, 0.28) !important;
+    }
+
+    body.theme-light #intro .tagline,
+    body.theme-light .section-lead,
+    body.theme-light .stack,
+    body.theme-light .edu-meta {
+      color: rgba(16, 37, 62, 0.72) !important;
+    }
+
+    body.theme-light #intro .skills-pill,
+    body.theme-light .project-card,
+    body.theme-light .project-flow li {
+      background: rgba(10, 44, 81, 0.04);
+      border-color: rgba(9, 35, 64, 0.16);
+    }
+
+    body.theme-light .project-card {
+      box-shadow: 0 14px 30px rgba(32, 66, 108, 0.12);
+    }
+
+    body.theme-light .project-card a {
+      color: #006fc7;
+    }
+
+    body.theme-light .project-card.highlight-card {
+      background: linear-gradient(180deg, rgba(0, 111, 199, 0.14), rgba(10, 44, 81, 0.03));
+      border-color: rgba(0, 111, 199, 0.4);
+      box-shadow: 0 12px 26px rgba(0, 111, 199, 0.14);
+    }
+
+    body.theme-light #contact input,
+    body.theme-light #contact textarea {
+      background: rgba(255, 255, 255, 0.95);
+      color: #10233c;
+      border-color: rgba(9, 35, 64, 0.18);
+    }
+
+    body.theme-light .skip-link {
+      background: #ffffff;
+      color: #10233c;
+      border-color: rgba(9, 35, 64, 0.2);
+    }
+
+    @media screen and (max-width: 736px) {
+      .theme-toggle {
+        margin-left: 0;
+      }
+    }
+  
+    .project-card.highlight-card {
+      border: 1px solid rgba(0, 153, 255, 0.45);
+      box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
+      background: linear-gradient(180deg, rgba(0, 153, 255, 0.08), rgba(255, 255, 255, 0.02));
     }
   </style>
 
@@ -83,9 +230,9 @@
     <a href="#intro">About</a>
     <a href="#work">Experience</a>
     <a href="#projects">Projects</a>
-    
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">Light Mode</button>
   </nav>
 </div>
 
@@ -139,7 +286,7 @@
       </p>
 
       <p>
-        Iâ€™m especially strong at taking a project from idea to production: scoping, designing data models,
+        I’m especially strong at taking a project from idea to production: scoping, designing data models,
         implementing APIs, and shipping user-ready interfaces.
       </p>
 
@@ -163,7 +310,7 @@
 
     <div class="project-card highlight-card">
       <h3>Church Management System</h3>
-      <div class="stack">Java Â· Spring Â· JPA Â· MySQL Â· HTML/CSS Â· Render</div>
+      <div class="stack">Java · Spring · JPA · MySQL · HTML/CSS · Render</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Manual spreadsheets slowed updates and reporting.</li>
@@ -177,7 +324,7 @@
 
     <div class="project-card">
       <h3>Desktop Point of Sale (POS)</h3>
-      <div class="stack">Java Â· Swing Â· JDBC Â· MySQL Â· Windows Installer</div>
+      <div class="stack">Java · Swing · JDBC · MySQL · Windows Installer</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Small retailers needed a reliable offline POS.</li>
@@ -191,7 +338,7 @@
 
     <div class="project-card">
       <h3>Community Management App</h3>
-      <div class="stack">Java Â· JPA Â· MySQL Â· Desktop</div>
+      <div class="stack">Java · JPA · MySQL · Desktop</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Spreadsheet workflows made member and event tracking inconsistent.</li>
@@ -205,7 +352,7 @@
 
     <div class="project-card">
       <h3>Food Ordering Desktop System</h3>
-      <div class="stack">Java Â· Swing Â· OOP</div>
+      <div class="stack">Java · Swing · OOP</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Takeaway ordering needed a clear, repeatable workflow.</li>
@@ -219,7 +366,7 @@
 
     <div class="project-card">
       <h3>User Registration Full-Stack App</h3>
-      <div class="stack">Spring Boot Â· React Â· REST API Â· Vercel</div>
+      <div class="stack">Spring Boot · React · REST API · Vercel</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Needed secure registration with reliable server-side validation.</li>
@@ -233,7 +380,7 @@
 
     <div class="project-card">
       <h3>Local LLM (Ollama) Experiment</h3>
-      <div class="stack">Ollama Â· Quantized Models Â· CLI Â· AI Infrastructure</div>
+      <div class="stack">Ollama · Quantized Models · CLI · AI Infrastructure</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Needed offline AI inference in constrained environments.</li>
@@ -247,7 +394,7 @@
 
     <div class="project-card">
       <h3>Gardening Task Tracker (Android)</h3>
-      <div class="stack">Android Â· Java Â· Mobile UX</div>
+      <div class="stack">Android · Java · Mobile UX</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Field teams needed clear task scheduling.</li>
@@ -261,7 +408,7 @@
 
     <div class="project-card">
       <h3>Inventory SaaS Platform</h3>
-      <div class="stack">Next.js Â· Supabase Â· PostgreSQL Â· Tailwind Â· Vercel</div>
+      <div class="stack">Next.js · Supabase · PostgreSQL · Tailwind · Vercel</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Small businesses needed multi-user inventory control.</li>
@@ -281,7 +428,7 @@
 
       <div class="edu-item">
         <div class="edu-title">
-          Teodor Web Solutions â€” Web Developer / Owner
+          Teodor Web Solutions — Web Developer / Owner
           <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer">Website</a>
         </div>
         <div class="edu-meta">Jan 10, 2025 - Present</div>
@@ -404,6 +551,29 @@
 <script>
   window.addEventListener('load', function () {
     document.body.classList.remove('is-preload');
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function setTheme(mode) {
+      var isLight = mode === 'light';
+      document.body.classList.toggle('theme-light', isLight);
+      if (themeToggle) {
+        themeToggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        themeToggle.setAttribute('aria-pressed', String(isLight));
+      }
+    }
+
+    var savedTheme = localStorage.getItem('theme-mode');
+    if (savedTheme === 'light') {
+      setTheme('light');
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        var nextMode = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+        setTheme(nextMode);
+        localStorage.setItem('theme-mode', nextMode);
+      });
+    }
 
     var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-topnav-inner a[href^="#"]'));
     var sections = navLinks
@@ -451,4 +621,9 @@
 
 </body>
 </html>
+
+
+
+
+
 
