@@ -118,7 +118,7 @@
 
     body.theme-light .site-topnav-inner a,
     body.theme-light .theme-toggle {
-      color: #10233c;
+      color: #10233c !important;
       border-color: rgba(9, 35, 64, 0.2);
       background: rgba(255, 255, 255, 0.78);
     }
@@ -175,12 +175,29 @@
       color: #006fc7;
     }
 
-    body.theme-light .project-card.highlight-card {
-      background: linear-gradient(180deg, rgba(0, 111, 199, 0.14), rgba(10, 44, 81, 0.03));
-      border-color: rgba(0, 111, 199, 0.4);
-      box-shadow: 0 12px 26px rgba(0, 111, 199, 0.14);
+    
+
+    body:not(.theme-light) .hero-actions .button,
+    body:not(.theme-light) .hero-actions .button.primary {
+      color: #ffffff !important;
     }
 
+    body.theme-light .hero-actions .button {
+      color: #10233c !important;
+      box-shadow: inset 0 0 0 1px rgba(9, 35, 64, 0.3);
+      background-color: rgba(255, 255, 255, 0.72);
+    }
+
+    body.theme-light .hero-actions .button:hover {
+      background-color: rgba(0, 111, 199, 0.14);
+    }
+
+    body.theme-light .hero-actions .button.primary {
+      background-color: rgba(255, 255, 255, 0.72);
+      color: #10233c !important;
+      font-weight: 300;
+      box-shadow: inset 0 0 0 1px rgba(9, 35, 64, 0.3);
+    }
     body.theme-light #contact input,
     body.theme-light #contact textarea {
       background: rgba(255, 255, 255, 0.95);
@@ -286,7 +303,7 @@
       </p>
 
       <p>
-        I’m especially strong at taking a project from idea to production: scoping, designing data models,
+        Iï¿½m especially strong at taking a project from idea to production: scoping, designing data models,
         implementing APIs, and shipping user-ready interfaces.
       </p>
 
@@ -310,7 +327,7 @@
 
     <div class="project-card highlight-card">
       <h3>Church Management System</h3>
-      <div class="stack">Java · Spring · JPA · MySQL · HTML/CSS · Render</div>
+      <div class="stack">Java ï¿½ Spring ï¿½ JPA ï¿½ MySQL ï¿½ HTML/CSS ï¿½ Render</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Manual spreadsheets slowed updates and reporting.</li>
@@ -324,7 +341,7 @@
 
     <div class="project-card">
       <h3>Desktop Point of Sale (POS)</h3>
-      <div class="stack">Java · Swing · JDBC · MySQL · Windows Installer</div>
+      <div class="stack">Java ï¿½ Swing ï¿½ JDBC ï¿½ MySQL ï¿½ Windows Installer</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Small retailers needed a reliable offline POS.</li>
@@ -338,7 +355,7 @@
 
     <div class="project-card">
       <h3>Community Management App</h3>
-      <div class="stack">Java · JPA · MySQL · Desktop</div>
+      <div class="stack">Java ï¿½ JPA ï¿½ MySQL ï¿½ Desktop</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Spreadsheet workflows made member and event tracking inconsistent.</li>
@@ -352,7 +369,7 @@
 
     <div class="project-card">
       <h3>Food Ordering Desktop System</h3>
-      <div class="stack">Java · Swing · OOP</div>
+      <div class="stack">Java ï¿½ Swing ï¿½ OOP</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Takeaway ordering needed a clear, repeatable workflow.</li>
@@ -366,7 +383,7 @@
 
     <div class="project-card">
       <h3>User Registration Full-Stack App</h3>
-      <div class="stack">Spring Boot · React · REST API · Vercel</div>
+      <div class="stack">Spring Boot ï¿½ React ï¿½ REST API ï¿½ Vercel</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Needed secure registration with reliable server-side validation.</li>
@@ -380,7 +397,7 @@
 
     <div class="project-card">
       <h3>Local LLM (Ollama) Experiment</h3>
-      <div class="stack">Ollama · Quantized Models · CLI · AI Infrastructure</div>
+      <div class="stack">Ollama ï¿½ Quantized Models ï¿½ CLI ï¿½ AI Infrastructure</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Needed offline AI inference in constrained environments.</li>
@@ -394,7 +411,7 @@
 
     <div class="project-card">
       <h3>Gardening Task Tracker (Android)</h3>
-      <div class="stack">Android · Java · Mobile UX</div>
+      <div class="stack">Android ï¿½ Java ï¿½ Mobile UX</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Field teams needed clear task scheduling.</li>
@@ -408,7 +425,7 @@
 
     <div class="project-card">
       <h3>Inventory SaaS Platform</h3>
-      <div class="stack">Next.js · Supabase · PostgreSQL · Tailwind · Vercel</div>
+      <div class="stack">Next.js ï¿½ Supabase ï¿½ PostgreSQL ï¿½ Tailwind ï¿½ Vercel</div>
 
       <ul class="project-flow">
         <li><strong>Problem:</strong> Small businesses needed multi-user inventory control.</li>
@@ -428,7 +445,7 @@
 
       <div class="edu-item">
         <div class="edu-title">
-          Teodor Web Solutions — Web Developer / Owner
+          Teodor Web Solutions ï¿½ Web Developer / Owner
           <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer">Website</a>
         </div>
         <div class="edu-meta">Jan 10, 2025 - Present</div>
