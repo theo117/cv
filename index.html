@@ -337,9 +337,10 @@
     }
 
     .chat-actions {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 0.45rem;
-      align-items: center;
+      align-items: stretch;
     }
 
     .chat-actions button {
@@ -349,6 +350,7 @@
       cursor: pointer;
       font-size: 0.83rem;
       font-weight: 600;
+      width: 100%;
     }
 
     .chat-send {
@@ -426,6 +428,10 @@
         right: 0.75rem;
         left: 0.75rem;
         width: auto;
+      }
+
+      .chat-actions {
+        grid-template-columns: 1fr;
       }
     }
   </style>
