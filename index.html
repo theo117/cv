@@ -1105,16 +1105,42 @@
 
       Promise.allSettled([web3FormsRequest, formSubmitRequest])
         .then(function (results) {
-          var okCount = results.filter(function (result) {
-            return result.status === 'fulfilled';
-          }).length;
+          var web3Ok = results[0] && results[0].status === 'fulfilled';
+          var formSubmitOk = results[1] && results[1].status === 'fulfilled';
+          var failedTargets = [];
 
-          if (okCount === 2) {
-            chatStatus.textContent = 'Sent to both inbox routes successfully.';
-          } else if (okCount === 1) {
-            chatStatus.textContent = 'Sent via one inbox route. If no reply, use the Contact form too.';
+          if (!web3Ok) failedTargets.push('Web3Forms');
+          if (!formSubmitOk) failedTargets.push('FormSubmit');
+
+          if (web3Ok && formSubmitOk) {
+            chatStatus.textContent = 'Sent successfully via Web3Forms and FormSubmit.';
+          } else if (web3Ok || formSubmitOk) {
+            chatStatus.textContent = 'Sent via ' + (web3Ok ? 'Web3Forms' : 'FormSubmit') + '. ' + failedTargets.join(' + ') + ' failed.';
+            console.warn('Chat email partial failure:', {
+              web3Forms: results[0],
+              formSubmit: results[1]
+            });
           } else {
-            chatStatus.textContent = 'Could not send right now. Please use the Contact form.';
+            var unsentPayload = {
+              at: new Date().toISOString(),
+              fromName: chatName ? (chatName.value.trim() || 'Website chat visitor') : 'Website chat visitor',
+              fromEmail: emailValue,
+              transcript: transcript || 'No transcript captured.'
+            };
+            var queue = [];
+            try {
+              queue = JSON.parse(localStorage.getItem('chat-unsent-queue') || '[]');
+              queue.push(unsentPayload);
+              localStorage.setItem('chat-unsent-queue', JSON.stringify(queue));
+            } catch (_err) {
+              // Ignore storage errors; user still sees failure status.
+            }
+
+            chatStatus.textContent = 'Email failed (Web3Forms + FormSubmit). Transcript saved locally. Please use Contact form.';
+            console.error('Chat email delivery failed:', {
+              web3Forms: results[0],
+              formSubmit: results[1]
+            });
           }
         })
         .catch(function () {
