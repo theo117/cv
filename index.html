@@ -222,6 +222,212 @@
       box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
       background: linear-gradient(180deg, rgba(0, 153, 255, 0.08), rgba(255, 255, 255, 0.02));
     }
+
+    .chat-widget {
+      position: fixed;
+      right: 1.1rem;
+      bottom: 1.1rem;
+      z-index: 10001;
+      width: min(24rem, calc(100vw - 2rem));
+      font-size: 0.92rem;
+    }
+
+    .chat-toggle {
+      margin-left: auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      background: linear-gradient(135deg, #0b7dd6, #0662a8);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+    }
+
+    .chat-panel {
+      margin-top: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: rgba(10, 15, 22, 0.95);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+      display: none;
+    }
+
+    .chat-widget.open .chat-panel {
+      display: block;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .chat-header p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .chat-header button {
+      border: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 0.2rem;
+    }
+
+    .chat-messages {
+      max-height: 18rem;
+      overflow-y: auto;
+      padding: 0.85rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .chat-bubble {
+      max-width: 88%;
+      border-radius: 0.65rem;
+      padding: 0.55rem 0.65rem;
+      line-height: 1.35;
+      color: #ffffff;
+    }
+
+    .chat-bubble.bot {
+      justify-self: start;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .chat-bubble.user {
+      justify-self: end;
+      background: rgba(11, 125, 214, 0.88);
+    }
+
+    .chat-form {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.75rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .chat-form input,
+    .chat-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.55rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      padding: 0.55rem 0.6rem;
+      font-size: 0.86rem;
+      resize: vertical;
+      min-height: 2.25rem;
+    }
+
+    .chat-form input::placeholder,
+    .chat-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .chat-actions {
+      display: flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .chat-actions button {
+      border: 0;
+      border-radius: 0.55rem;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+
+    .chat-send {
+      background: #0b7dd6;
+      color: #fff;
+    }
+
+    .chat-connect {
+      background: #0e9f6e;
+      color: #fff;
+    }
+
+    .chat-disconnect {
+      background: rgba(255, 107, 107, 0.32);
+      color: #fff;
+    }
+
+    .chat-email {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    .chat-status {
+      margin: 0;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.75);
+      min-height: 1.05rem;
+    }
+
+    body.theme-light .chat-panel {
+      background: rgba(247, 251, 255, 0.96);
+      border-color: rgba(9, 35, 64, 0.17);
+      box-shadow: 0 14px 34px rgba(32, 66, 108, 0.24);
+    }
+
+    body.theme-light .chat-header {
+      border-bottom-color: rgba(9, 35, 64, 0.14);
+      background: rgba(9, 35, 64, 0.06);
+    }
+
+    body.theme-light .chat-header p,
+    body.theme-light .chat-header button,
+    body.theme-light .chat-bubble,
+    body.theme-light .chat-actions button,
+    body.theme-light .chat-status,
+    body.theme-light .chat-form input,
+    body.theme-light .chat-form textarea {
+      color: #10233c;
+    }
+
+    body.theme-light .chat-bubble.bot {
+      background: rgba(9, 35, 64, 0.09);
+    }
+
+    body.theme-light .chat-bubble.user {
+      color: #fff;
+    }
+
+    body.theme-light .chat-form input,
+    body.theme-light .chat-form textarea {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(9, 35, 64, 0.2);
+    }
+
+    body.theme-light .chat-email {
+      background: rgba(9, 35, 64, 0.1);
+    }
+
+    body.theme-light .chat-disconnect {
+      background: rgba(176, 20, 20, 0.1);
+    }
+
+    @media screen and (max-width: 736px) {
+      .chat-widget {
+        right: 0.75rem;
+        left: 0.75rem;
+        width: auto;
+      }
+    }
   </style>
 
   
@@ -574,13 +780,32 @@
   </footer>
 
 </div>
+<script>
+  window.CHAT_SERVER_URL = "https://your-chat-server-domain.com";
+</script>
 
-<!-- WhatsApp Floating Button -->
-<div class="whatsapp-btn">
-  <a href="https://wa.me/27606360886" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat with Theodore Nelson">
-    <img src="images/whatsapp-icon.gif?v=20260218" alt="WhatsApp" width="26" height="26" loading="lazy" decoding="async">
-    <span>Chat with me</span>
-  </a>
+
+<div class="chat-widget" id="chat-widget">
+  <button type="button" class="chat-toggle" id="chat-toggle" aria-expanded="false" aria-controls="chat-panel">Open Chat</button>
+  <section class="chat-panel" id="chat-panel" aria-label="Website chat assistant">
+    <div class="chat-header">
+      <p>Live chat (login required)</p>
+      <button type="button" id="chat-close" aria-label="Close chat">X</button>
+    </div>
+    <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+    <form class="chat-form" id="chat-form">
+      <input type="text" id="chat-name" name="chat-name" placeholder="Your name" autocomplete="name" required>
+      <input type="email" id="chat-email" name="chat-email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <textarea id="chat-input" name="chat-input" rows="2" placeholder="Type your message..." required></textarea>
+      <div class="chat-actions">
+        <button type="submit" class="chat-send">Send</button>
+        <button type="button" class="chat-connect" id="chat-connect-btn">Connect Live</button>
+        <button type="button" class="chat-disconnect" id="chat-disconnect-btn">Disconnect</button>
+        <button type="button" class="chat-email" id="chat-email-btn">Send to Email</button>
+      </div>
+      <p class="chat-status" id="chat-status"></p>
+    </form>
+  </section>
 </div>
 
 <!-- Scripts -->
@@ -656,6 +881,301 @@
 
     activateFromHash();
     window.addEventListener('hashchange', activateFromHash);
+
+    var chatWidget = document.getElementById('chat-widget');
+    var chatToggle = document.getElementById('chat-toggle');
+    var chatClose = document.getElementById('chat-close');
+    var chatMessages = document.getElementById('chat-messages');
+    var chatForm = document.getElementById('chat-form');
+    var chatInput = document.getElementById('chat-input');
+    var chatEmail = document.getElementById('chat-email');
+    var chatName = document.getElementById('chat-name');
+    var chatEmailBtn = document.getElementById('chat-email-btn');
+    var chatConnectBtn = document.getElementById('chat-connect-btn');
+    var chatDisconnectBtn = document.getElementById('chat-disconnect-btn');
+    var chatStatus = document.getElementById('chat-status');
+    var chatSocket = null;
+    var chatSession = null;
+    var chatConnected = false;
+    var chatServerUrl = window.CHAT_SERVER_URL || (
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:3001'
+        : ''
+    );
+
+    function appendChatMessage(role, text) {
+      if (!chatMessages) return;
+      var bubble = document.createElement('div');
+      bubble.className = 'chat-bubble ' + role;
+      bubble.textContent = text;
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function setChatOpen(isOpen) {
+      if (!chatWidget || !chatToggle) return;
+      chatWidget.classList.toggle('open', isOpen);
+      chatToggle.setAttribute('aria-expanded', String(isOpen));
+      chatToggle.textContent = isOpen ? 'Hide Chat' : 'Open Chat';
+      if (isOpen && chatInput) {
+        chatInput.focus();
+      }
+    }
+
+    function validateEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function setChatStatus(text) {
+      if (chatStatus) {
+        chatStatus.textContent = text || '';
+      }
+    }
+
+    function setChatConnected(isConnected) {
+      chatConnected = isConnected;
+      if (chatConnectBtn) chatConnectBtn.disabled = isConnected;
+      if (chatDisconnectBtn) chatDisconnectBtn.disabled = !isConnected;
+    }
+
+    function loadSocketClient() {
+      return new Promise(function (resolve, reject) {
+        if (window.io) {
+          resolve();
+          return;
+        }
+
+        var script = document.createElement('script');
+        script.src = chatServerUrl.replace(/\/$/, '') + '/socket.io/socket.io.js';
+        script.onload = function () { resolve(); };
+        script.onerror = function () { reject(new Error('Could not load socket client')); };
+        document.head.appendChild(script);
+      });
+    }
+
+    function getSavedSession() {
+      try {
+        return JSON.parse(localStorage.getItem('portfolio-chat-session') || 'null');
+      } catch (_err) {
+        return null;
+      }
+    }
+
+    function saveSession(session) {
+      localStorage.setItem('portfolio-chat-session', JSON.stringify(session));
+    }
+
+    function connectLiveChat() {
+      if (!chatEmail || !chatName) return;
+      var emailValue = chatEmail.value.trim();
+      var nameValue = chatName.value.trim();
+
+      if (!nameValue || !validateEmail(emailValue)) {
+        setChatStatus('Enter your name and a valid email first.');
+        return;
+      }
+
+      if (!chatServerUrl) {
+        setChatStatus('Live chat URL is not configured. Set window.CHAT_SERVER_URL to your deployed chat server URL.');
+        return;
+      }
+
+      setChatStatus('Connecting...');
+
+      loadSocketClient()
+        .then(function () {
+          if (chatSocket && chatSocket.connected) {
+            setChatStatus('Already connected.');
+            return;
+          }
+
+          chatSocket = window.io(chatServerUrl, { transports: ['websocket', 'polling'] });
+
+          chatSocket.on('connect', function () {
+            chatSocket.emit('auth:login', {
+              role: 'visitor',
+              name: nameValue,
+              email: emailValue,
+              userId: chatSession && chatSession.userId ? chatSession.userId : ''
+            });
+          });
+
+          chatSocket.on('auth:ok', function (payload) {
+            chatSession = payload && payload.user ? payload.user : null;
+            if (chatSession) {
+              saveSession(chatSession);
+            }
+            setChatConnected(true);
+            setChatStatus('Connected live. You can now chat directly.');
+            if (payload && Array.isArray(payload.history) && payload.history.length > 0) {
+              chatMessages.innerHTML = '';
+              payload.history.forEach(function (message) {
+                var role = message.senderRole === 'visitor' ? 'user' : 'bot';
+                appendChatMessage(role, message.senderName + ': ' + message.text);
+              });
+            }
+          });
+
+          chatSocket.on('auth:error', function (payload) {
+            setChatConnected(false);
+            setChatStatus((payload && payload.message) || 'Authentication failed.');
+          });
+
+          chatSocket.on('chat:message', function (message) {
+            if (!message) return;
+            var role = message.senderRole === 'visitor' ? 'user' : 'bot';
+            appendChatMessage(role, message.senderName + ': ' + message.text);
+          });
+
+          chatSocket.on('chat:error', function (payload) {
+            setChatStatus((payload && payload.message) || 'Chat error.');
+          });
+
+          chatSocket.on('disconnect', function () {
+            setChatConnected(false);
+            setChatStatus('Disconnected from live chat.');
+          });
+        })
+        .catch(function () {
+          setChatStatus('Live server unavailable at ' + chatServerUrl + '. Use Send to Email for now.');
+        });
+    }
+
+    function disconnectLiveChat() {
+      if (chatSocket) {
+        chatSocket.disconnect();
+        chatSocket = null;
+      }
+      setChatConnected(false);
+      setChatStatus('Disconnected.');
+    }
+
+    function sendChatToEmail() {
+      if (!chatEmail || !chatStatus || !chatMessages) return;
+      var emailValue = chatEmail.value.trim();
+      if (!validateEmail(emailValue)) {
+        chatStatus.textContent = 'Enter a valid email address before sending.';
+        return;
+      }
+
+      var transcript = Array.prototype.slice.call(chatMessages.querySelectorAll('.chat-bubble'))
+        .map(function (bubble) {
+          var who = bubble.classList.contains('user') ? 'Visitor' : 'Assistant';
+          return who + ': ' + bubble.textContent;
+        })
+        .join('\n');
+
+      chatStatus.textContent = 'Sending...';
+
+      var web3FormsRequest = fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '70124a7c-659a-460e-ab1f-0a1529f80ec8',
+          subject: 'New chatbot message from cv.theodorenelson.co.za',
+          name: chatName ? chatName.value.trim() || 'Website chat visitor' : 'Website chat visitor',
+          email: emailValue,
+          message: transcript || 'No transcript captured.'
+        })
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        if (!data || !data.success) {
+          throw new Error('web3forms send failed');
+        }
+        return data;
+      });
+
+      var formSubmitRequest = fetch('https://formsubmit.co/ajax/theodorelnelson@outlook.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: chatName ? chatName.value.trim() || 'Website chat visitor' : 'Website chat visitor',
+          email: emailValue,
+          subject: 'New chatbot message from cv.theodorenelson.co.za',
+          message: transcript || 'No transcript captured.',
+          _captcha: 'false'
+        })
+      }).then(function (res) {
+        if (!res.ok) {
+          throw new Error('formsubmit send failed');
+        }
+        return res.json();
+      });
+
+      Promise.allSettled([web3FormsRequest, formSubmitRequest])
+        .then(function (results) {
+          var okCount = results.filter(function (result) {
+            return result.status === 'fulfilled';
+          }).length;
+
+          if (okCount === 2) {
+            chatStatus.textContent = 'Sent to both inbox routes successfully.';
+          } else if (okCount === 1) {
+            chatStatus.textContent = 'Sent via one inbox route. If no reply, use the Contact form too.';
+          } else {
+            chatStatus.textContent = 'Could not send right now. Please use the Contact form.';
+          }
+        })
+        .catch(function () {
+          chatStatus.textContent = 'Network error. Please use the Contact form below.';
+        });
+    }
+
+    if (chatToggle) {
+      chatToggle.addEventListener('click', function () {
+        setChatOpen(!chatWidget.classList.contains('open'));
+      });
+    }
+
+    if (chatClose) {
+      chatClose.addEventListener('click', function () {
+        setChatOpen(false);
+      });
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!chatInput || !chatInput.value.trim()) return;
+        var userMessage = chatInput.value.trim();
+        appendChatMessage('user', userMessage);
+        if (chatSocket && chatConnected) {
+          chatSocket.emit('chat:send', { text: userMessage });
+        } else {
+          appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use Send to Email.');
+        }
+        chatInput.value = '';
+      });
+    }
+
+    if (chatEmailBtn) {
+      chatEmailBtn.addEventListener('click', function () {
+        sendChatToEmail();
+      });
+    }
+
+    if (chatConnectBtn) {
+      chatConnectBtn.addEventListener('click', function () {
+        connectLiveChat();
+      });
+    }
+
+    if (chatDisconnectBtn) {
+      chatDisconnectBtn.addEventListener('click', function () {
+        disconnectLiveChat();
+      });
+    }
+
+    setChatConnected(false);
+    var savedSession = getSavedSession();
+    if (savedSession && chatName && chatEmail) {
+      chatName.value = savedSession.name || '';
+      chatEmail.value = savedSession.email || '';
+      chatSession = savedSession;
+    }
+
+    appendChatMessage('bot', 'Hi. Enter your name and email, click Connect Live, then send your message.');
   });
 </script>
 
