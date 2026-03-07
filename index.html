@@ -1171,10 +1171,10 @@
         event.preventDefault();
         if (!chatInput || !chatInput.value.trim()) return;
         var userMessage = chatInput.value.trim();
-        appendChatMessage('user', userMessage);
         if (chatSocket && chatConnected) {
           chatSocket.emit('chat:send', { text: userMessage });
         } else {
+          appendChatMessage('user', userMessage);
           appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use Send to Email.');
         }
         chatInput.value = '';
