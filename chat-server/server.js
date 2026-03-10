@@ -41,7 +41,6 @@ const io = new Server(server, {
 
 const usersBySocket = new Map();
 const historyByUser = new Map();
-const userIdByEmail = new Map();
 
 function sanitizeText(value) {
   return String(value || "").replace(/\s+/g, " ").trim().slice(0, 2000);
@@ -57,21 +56,9 @@ function pushHistory(userId, message) {
 }
 
 function getOnlineVisitors() {
-  const deduped = new Map();
-
-  Array.from(usersBySocket.values())
+  return Array.from(usersBySocket.values())
     .filter((u) => u.role === "visitor")
-    .forEach((u) => {
-      deduped.set(u.userId, { userId: u.userId, name: u.name, email: u.email });
-    });
-
-  return Array.from(deduped.values());
-}
-
-function isVisitorStillOnline(userId) {
-  return Array.from(usersBySocket.values()).some(
-    (user) => user.role === "visitor" && user.userId === userId
-  );
+    .map((u) => ({ userId: u.userId, name: u.name, email: u.email }));
 }
 
 function requireAuth(socket) {
@@ -95,9 +82,7 @@ io.on("connection", (socket) => {
       return;
     }
 
-    const canonicalVisitorId =
-      userIdByEmail.get(email) || incomingUserId || randomUUID();
-    const userId = role === "admin" ? "admin" : canonicalVisitorId;
+    const userId = role === "admin" ? "admin" : incomingUserId || randomUUID();
     const user = { userId, name, email, role };
     usersBySocket.set(socket.id, user);
 
@@ -107,7 +92,6 @@ io.on("connection", (socket) => {
       return;
     }
 
-    userIdByEmail.set(email, userId);
     socket.join(`user:${userId}`);
     socket.emit("auth:ok", { user, history: historyByUser.get(userId) || [] });
     io.to("admins").emit("admin:user-online", { userId, name, email });
@@ -178,7 +162,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     const user = usersBySocket.get(socket.id);
     usersBySocket.delete(socket.id);
-    if (user && user.role === "visitor" && !isVisitorStillOnline(user.userId)) {
+    if (user && user.role === "visitor") {
       io.to("admins").emit("admin:user-offline", { userId: user.userId });
     }
   });
