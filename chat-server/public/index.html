@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Admin Console</title>
+  <title>Direct Chat Test</title>
   <style>
     body {
       margin: 0;
@@ -11,31 +11,29 @@
       background: #0f1720;
       color: #ecf0f5;
     }
-    .layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
+    .shell {
+      max-width: 760px;
+      margin: 0 auto;
       min-height: 100vh;
-    }
-    .panel {
-      border-right: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 1rem;
-      background: #101b29;
-    }
-    .main {
       display: grid;
       grid-template-rows: auto 1fr auto;
-      min-height: 100vh;
     }
-    .row {
+    .panel {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       display: grid;
       gap: 0.6rem;
-      margin-bottom: 0.6rem;
+    }
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
     }
     input, button {
       font: inherit;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.55rem 0.7rem;
+      padding: 0.65rem 0.75rem;
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
     }
@@ -46,22 +44,9 @@
       font-weight: 700;
     }
     .status {
-      font-size: 0.88rem;
-      color: #a8c5e8;
       min-height: 1rem;
-    }
-    .users {
-      display: grid;
-      gap: 0.45rem;
-    }
-    .user-btn {
-      text-align: left;
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.16);
-    }
-    .user-btn.active {
-      border-color: #1e7bd6;
-      background: rgba(30, 123, 214, 0.3);
+      color: #a8c5e8;
+      margin: 0;
     }
     .messages {
       padding: 1rem;
@@ -71,65 +56,56 @@
       align-content: start;
     }
     .bubble {
-      max-width: 70%;
+      max-width: 75%;
       border-radius: 10px;
-      padding: 0.55rem 0.7rem;
-      line-height: 1.35;
+      padding: 0.55rem 0.75rem;
+      line-height: 1.4;
       background: rgba(255, 255, 255, 0.08);
     }
-    .bubble.visitor {
-      justify-self: start;
-    }
-    .bubble.admin {
+    .bubble.self {
       justify-self: end;
       background: rgba(30, 123, 214, 0.8);
     }
+    .bubble.peer {
+      justify-self: start;
+    }
     .compose {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 0.85rem;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      padding: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
-    @media (max-width: 850px) {
-      .layout {
+    @media (max-width: 720px) {
+      .panel-grid,
+      .compose {
         grid-template-columns: 1fr;
       }
-      .panel {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      }
       .bubble {
-        max-width: 88%;
+        max-width: 90%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <aside class="panel">
-      <h2>Admin Login</h2>
-      <div class="row">
-        <input id="admin-name" placeholder="Name" value="Theodore">
-        <input id="admin-email" placeholder="Email">
-        <input id="admin-key" placeholder="Admin key">
+  <div class="shell">
+    <section class="panel">
+      <h1 style="margin: 0; font-size: 1.25rem;">Direct Chat Test</h1>
+      <div class="panel-grid">
+        <input id="name" placeholder="Your name">
+        <input id="email" placeholder="Your email">
+        <input id="peer-email" placeholder="Recipient email">
         <button id="connect-btn" type="button">Connect</button>
       </div>
       <p class="status" id="status"></p>
-      <h3>Visitors</h3>
-      <div class="users" id="users"></div>
-    </aside>
-
-    <section class="main">
-      <div style="padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.12);">
-        <strong id="active-user-title">No visitor selected</strong>
-      </div>
-      <div class="messages" id="messages"></div>
-      <form class="compose" id="compose-form">
-        <input id="compose-input" placeholder="Type reply..." autocomplete="off">
-        <button type="submit">Send</button>
-      </form>
     </section>
+
+    <section class="messages" id="messages"></section>
+
+    <form class="compose" id="compose-form">
+      <input id="compose-input" placeholder="Type message" autocomplete="off">
+      <button type="submit">Send</button>
+    </form>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
@@ -137,119 +113,101 @@
     (function () {
       var socket = null;
       var status = document.getElementById("status");
+      var nameInput = document.getElementById("name");
+      var emailInput = document.getElementById("email");
+      var peerEmailInput = document.getElementById("peer-email");
       var connectBtn = document.getElementById("connect-btn");
-      var usersEl = document.getElementById("users");
       var messagesEl = document.getElementById("messages");
       var composeForm = document.getElementById("compose-form");
       var composeInput = document.getElementById("compose-input");
-      var activeUserTitle = document.getElementById("active-user-title");
-      var activeUserId = "";
-      var onlineUsers = new Map();
-      var histories = new Map();
+      var activeConversationKey = "";
 
-      function renderUsers() {
-        usersEl.innerHTML = "";
-        Array.from(onlineUsers.values()).forEach(function (user) {
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "user-btn" + (user.userId === activeUserId ? " active" : "");
-          btn.textContent = user.name + " (" + user.email + ")";
-          btn.addEventListener("click", function () {
-            activeUserId = user.userId;
-            activeUserTitle.textContent = "Chat with " + user.name;
-            if (socket) {
-              socket.emit("chat:history", { userId: user.userId });
-            }
-            renderUsers();
-          });
-          usersEl.appendChild(btn);
-        });
+      function normalizeEmail(value) {
+        return String(value || "").trim().toLowerCase();
       }
 
-      function renderMessages() {
-        messagesEl.innerHTML = "";
-        var history = histories.get(activeUserId) || [];
-        history.forEach(function (item) {
-          var bubble = document.createElement("div");
-          bubble.className = "bubble " + item.senderRole;
-          bubble.textContent = item.senderName + ": " + item.text;
-          messagesEl.appendChild(bubble);
-        });
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizeEmail(value));
+      }
+
+      function conversationKey(emailA, emailB) {
+        return [normalizeEmail(emailA), normalizeEmail(emailB)].sort().join("::");
+      }
+
+      function appendMessage(kind, text) {
+        var bubble = document.createElement("div");
+        bubble.className = "bubble " + kind;
+        bubble.textContent = text;
+        messagesEl.appendChild(bubble);
         messagesEl.scrollTop = messagesEl.scrollHeight;
       }
 
-      function upsertHistory(message) {
-        var arr = histories.get(message.userId) || [];
-        arr.push(message);
-        if (arr.length > 200) arr.shift();
-        histories.set(message.userId, arr);
+      function renderHistory(history) {
+        messagesEl.innerHTML = "";
+        history.forEach(function (message) {
+          appendMessage(
+            normalizeEmail(message.fromEmail) === normalizeEmail(emailInput.value) ? "self" : "peer",
+            message.senderName + ": " + message.text
+          );
+        });
       }
 
       connectBtn.addEventListener("click", function () {
-        var name = document.getElementById("admin-name").value.trim();
-        var email = document.getElementById("admin-email").value.trim();
-        var adminKey = document.getElementById("admin-key").value.trim();
+        var name = nameInput.value.trim();
+        var email = normalizeEmail(emailInput.value);
+        var peerEmail = normalizeEmail(peerEmailInput.value);
 
-        if (!name || !email || !adminKey) {
-          status.textContent = "Name, email and admin key are required.";
+        if (!name || !isValidEmail(email) || !isValidEmail(peerEmail)) {
+          status.textContent = "Name, your email, and recipient email are required.";
           return;
         }
 
+        activeConversationKey = conversationKey(email, peerEmail);
         socket = io();
+
         socket.on("connect", function () {
           status.textContent = "Connected. Authenticating...";
-          socket.emit("auth:login", { role: "admin", name: name, email: email, adminKey: adminKey });
+          socket.emit("auth:login", { name: name, email: email });
         });
 
-        socket.on("auth:error", function (payload) {
-          status.textContent = payload.message || "Login failed.";
+        socket.on("auth:ok", function () {
+          status.textContent = "Connected live to " + peerEmail + ".";
+          socket.emit("chat:history", { peerEmail: peerEmail });
         });
 
-        socket.on("auth:ok", function (payload) {
-          status.textContent = "Admin connected.";
-          (payload.onlineVisitors || []).forEach(function (u) {
-            onlineUsers.set(u.userId, u);
-          });
-          renderUsers();
-        });
-
-        socket.on("admin:user-online", function (user) {
-          onlineUsers.set(user.userId, user);
-          renderUsers();
-        });
-
-        socket.on("admin:user-offline", function (payload) {
-          onlineUsers.delete(payload.userId);
-          renderUsers();
+        socket.on("chat:history", function (payload) {
+          if (payload.conversationKey === activeConversationKey) {
+            renderHistory(payload.history || []);
+          }
         });
 
         socket.on("chat:message", function (message) {
-          upsertHistory(message);
-          if (!activeUserId) {
-            activeUserId = message.userId;
-            var user = onlineUsers.get(activeUserId);
-            activeUserTitle.textContent = user ? "Chat with " + user.name : "Chat active";
+          if (message.conversationKey !== activeConversationKey) {
+            return;
           }
-          if (message.userId === activeUserId) {
-            renderMessages();
-          }
+          appendMessage(
+            normalizeEmail(message.fromEmail) === email ? "self" : "peer",
+            message.senderName + ": " + message.text
+          );
         });
 
-        socket.on("admin:history", function (payload) {
-          histories.set(payload.userId, payload.history || []);
-          if (payload.userId === activeUserId) {
-            renderMessages();
-          }
+        socket.on("chat:error", function (payload) {
+          status.textContent = payload.message || "Chat error.";
+        });
+
+        socket.on("auth:error", function (payload) {
+          status.textContent = payload.message || "Authentication failed.";
         });
       });
 
       composeForm.addEventListener("submit", function (event) {
         event.preventDefault();
         var text = composeInput.value.trim();
-        if (!socket || !activeUserId || !text) {
+        var peerEmail = normalizeEmail(peerEmailInput.value);
+        if (!socket || !text || !isValidEmail(peerEmail)) {
           return;
         }
-        socket.emit("chat:send", { targetUserId: activeUserId, text: text });
+        socket.emit("chat:send", { targetEmail: peerEmail, text: text });
         composeInput.value = "";
       });
     })();

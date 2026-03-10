@@ -4,12 +4,9 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const { Server } = require("socket.io");
-const { randomUUID } = require("crypto");
-
 dotenv.config();
 
 const PORT = Number(process.env.PORT || 3001);
-const ADMIN_KEY = process.env.ADMIN_KEY || "change-me";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "*";
 
 const app = express();
@@ -40,25 +37,27 @@ const io = new Server(server, {
 });
 
 const usersBySocket = new Map();
-const historyByUser = new Map();
+const historyByConversation = new Map();
 
 function sanitizeText(value) {
   return String(value || "").replace(/\s+/g, " ").trim().slice(0, 2000);
 }
 
-function pushHistory(userId, message) {
-  const history = historyByUser.get(userId) || [];
+function getConversationKey(emailA, emailB) {
+  return [emailA, emailB].map((value) => sanitizeText(value).toLowerCase()).sort().join("::");
+}
+
+function getUserRoom(email) {
+  return `user:${sanitizeText(email).toLowerCase()}`;
+}
+
+function pushHistory(conversationKey, message) {
+  const history = historyByConversation.get(conversationKey) || [];
   history.push(message);
   if (history.length > 200) {
     history.shift();
   }
-  historyByUser.set(userId, history);
-}
-
-function getOnlineVisitors() {
-  return Array.from(usersBySocket.values())
-    .filter((u) => u.role === "visitor")
-    .map((u) => ({ userId: u.userId, name: u.name, email: u.email }));
+  historyByConversation.set(conversationKey, history);
 }
 
 function requireAuth(socket) {
@@ -67,34 +66,18 @@ function requireAuth(socket) {
 
 io.on("connection", (socket) => {
   socket.on("auth:login", (payload = {}) => {
-    const role = payload.role === "admin" ? "admin" : "visitor";
     const name = sanitizeText(payload.name);
     const email = sanitizeText(payload.email).toLowerCase();
-    const incomingUserId = sanitizeText(payload.userId);
 
     if (!name || !email || !email.includes("@")) {
       socket.emit("auth:error", { message: "Name and valid email are required." });
       return;
     }
 
-    if (role === "admin" && payload.adminKey !== ADMIN_KEY) {
-      socket.emit("auth:error", { message: "Admin key is invalid." });
-      return;
-    }
-
-    const userId = role === "admin" ? "admin" : incomingUserId || randomUUID();
-    const user = { userId, name, email, role };
+    const user = { name, email };
     usersBySocket.set(socket.id, user);
-
-    if (role === "admin") {
-      socket.join("admins");
-      socket.emit("auth:ok", { user, onlineVisitors: getOnlineVisitors() });
-      return;
-    }
-
-    socket.join(`user:${userId}`);
-    socket.emit("auth:ok", { user, history: historyByUser.get(userId) || [] });
-    io.to("admins").emit("admin:user-online", { userId, name, email });
+    socket.join(getUserRoom(email));
+    socket.emit("auth:ok", { user });
   });
 
   socket.on("chat:send", (payload = {}) => {
@@ -110,61 +93,55 @@ io.on("connection", (socket) => {
       return;
     }
 
+    const targetEmail = sanitizeText(payload.targetEmail).toLowerCase();
+    if (!targetEmail || !targetEmail.includes("@")) {
+      socket.emit("chat:error", { message: "A valid recipient email is required." });
+      return;
+    }
+
+    if (targetEmail === sender.email) {
+      socket.emit("chat:error", { message: "Recipient email must be different from your email." });
+      return;
+    }
+
     const timestamp = new Date().toISOString();
-
-    if (sender.role === "visitor") {
-      const message = {
-        userId: sender.userId,
-        senderRole: "visitor",
-        senderName: sender.name,
-        text,
-        timestamp,
-      };
-
-      pushHistory(sender.userId, message);
-      io.to(`user:${sender.userId}`).emit("chat:message", message);
-      io.to("admins").emit("chat:message", message);
-      return;
-    }
-
-    const targetUserId = sanitizeText(payload.targetUserId);
-    if (!targetUserId) {
-      socket.emit("chat:error", { message: "targetUserId is required for admin replies." });
-      return;
-    }
-
-    const adminMessage = {
-      userId: targetUserId,
-      senderRole: "admin",
+    const conversationKey = getConversationKey(sender.email, targetEmail);
+    const directMessage = {
+      conversationKey,
+      fromEmail: sender.email,
+      toEmail: targetEmail,
       senderName: sender.name,
       text,
       timestamp,
     };
 
-    pushHistory(targetUserId, adminMessage);
-    io.to(`user:${targetUserId}`).emit("chat:message", adminMessage);
-    io.to("admins").emit("chat:message", adminMessage);
+    pushHistory(conversationKey, directMessage);
+    io.to(getUserRoom(sender.email)).emit("chat:message", directMessage);
+    io.to(getUserRoom(targetEmail)).emit("chat:message", directMessage);
   });
 
   socket.on("chat:history", (payload = {}) => {
     const user = requireAuth(socket);
-    if (!user || user.role !== "admin") {
+    if (!user) {
       return;
     }
 
-    const userId = sanitizeText(payload.userId);
-    socket.emit("admin:history", {
-      userId,
-      history: historyByUser.get(userId) || [],
+    const peerEmail = sanitizeText(payload.peerEmail).toLowerCase();
+    if (!peerEmail || !peerEmail.includes("@")) {
+      socket.emit("chat:error", { message: "A valid peer email is required to load history." });
+      return;
+    }
+
+    const conversationKey = getConversationKey(user.email, peerEmail);
+    socket.emit("chat:history", {
+      conversationKey,
+      peerEmail,
+      history: historyByConversation.get(conversationKey) || [],
     });
   });
 
   socket.on("disconnect", () => {
-    const user = usersBySocket.get(socket.id);
     usersBySocket.delete(socket.id);
-    if (user && user.role === "visitor") {
-      io.to("admins").emit("admin:user-offline", { userId: user.userId });
-    }
   });
 });
 

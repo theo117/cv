@@ -802,6 +802,7 @@
     <form class="chat-form" id="chat-form">
       <input type="text" id="chat-name" name="chat-name" placeholder="Your name" autocomplete="name" required>
       <input type="email" id="chat-email" name="chat-email" placeholder="Your email" autocomplete="email" inputmode="email" required>
+      <input type="email" id="chat-peer-email" name="chat-peer-email" placeholder="Recipient email" autocomplete="off" inputmode="email" required>
       <textarea id="chat-input" name="chat-input" rows="2" placeholder="Type your message..." required></textarea>
       <div class="chat-actions">
         <button type="submit" class="chat-send">Send</button>
@@ -895,6 +896,7 @@
     var chatForm = document.getElementById('chat-form');
     var chatInput = document.getElementById('chat-input');
     var chatEmail = document.getElementById('chat-email');
+    var chatPeerEmail = document.getElementById('chat-peer-email');
     var chatName = document.getElementById('chat-name');
     var chatEmailBtn = document.getElementById('chat-email-btn');
     var chatConnectBtn = document.getElementById('chat-connect-btn');
@@ -903,6 +905,7 @@
     var chatSocket = null;
     var chatSession = null;
     var chatConnected = false;
+    var activeConversationKey = '';
     var chatServerUrl = window.CHAT_SERVER_URL || (
       window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:3001'
@@ -971,13 +974,46 @@
       localStorage.setItem('portfolio-chat-session', JSON.stringify(session));
     }
 
+    function getPeerEmail() {
+      return chatPeerEmail ? chatPeerEmail.value.trim().toLowerCase() : '';
+    }
+
+    function buildConversationKey(emailA, emailB) {
+      return [String(emailA || '').toLowerCase(), String(emailB || '').toLowerCase()].sort().join('::');
+    }
+
+    function renderConversationHistory(history) {
+      if (!chatMessages) return;
+      chatMessages.innerHTML = '';
+      (history || []).forEach(function (message) {
+        var role = message.fromEmail === (chatEmail ? chatEmail.value.trim().toLowerCase() : '') ? 'user' : 'bot';
+        appendChatMessage(role, message.senderName + ': ' + message.text);
+      });
+    }
+
+    function requestConversationHistory() {
+      var peerEmailValue = getPeerEmail();
+      if (!chatSocket || !chatConnected || !validateEmail(peerEmailValue)) {
+        return;
+      }
+
+      activeConversationKey = buildConversationKey(chatEmail.value.trim(), peerEmailValue);
+      chatSocket.emit('chat:history', { peerEmail: peerEmailValue });
+    }
+
     function connectLiveChat() {
-      if (!chatEmail || !chatName) return;
+      if (!chatEmail || !chatName || !chatPeerEmail) return;
       var emailValue = chatEmail.value.trim();
       var nameValue = chatName.value.trim();
+      var peerEmailValue = getPeerEmail();
 
-      if (!nameValue || !validateEmail(emailValue)) {
-        setChatStatus('Enter your name and a valid email first.');
+      if (!nameValue || !validateEmail(emailValue) || !validateEmail(peerEmailValue)) {
+        setChatStatus('Enter your name, your email, and a valid recipient email first.');
+        return;
+      }
+
+      if (emailValue.toLowerCase() === peerEmailValue) {
+        setChatStatus('Recipient email must be different from your email.');
         return;
       }
 
@@ -999,10 +1035,8 @@
 
           chatSocket.on('connect', function () {
             chatSocket.emit('auth:login', {
-              role: 'visitor',
               name: nameValue,
-              email: emailValue,
-              userId: chatSession && chatSession.userId ? chatSession.userId : ''
+              email: emailValue
             });
           });
 
@@ -1012,14 +1046,8 @@
               saveSession(chatSession);
             }
             setChatConnected(true);
-            setChatStatus('Connected live. You can now chat directly.');
-            if (payload && Array.isArray(payload.history) && payload.history.length > 0) {
-              chatMessages.innerHTML = '';
-              payload.history.forEach(function (message) {
-                var role = message.senderRole === 'visitor' ? 'user' : 'bot';
-                appendChatMessage(role, message.senderName + ': ' + message.text);
-              });
-            }
+            setChatStatus('Connected live. Messages will route to ' + peerEmailValue + '.');
+            requestConversationHistory();
           });
 
           chatSocket.on('auth:error', function (payload) {
@@ -1029,8 +1057,18 @@
 
           chatSocket.on('chat:message', function (message) {
             if (!message) return;
-            var role = message.senderRole === 'visitor' ? 'user' : 'bot';
+            if (message.conversationKey !== activeConversationKey) {
+              return;
+            }
+            var role = message.fromEmail === emailValue.toLowerCase() ? 'user' : 'bot';
             appendChatMessage(role, message.senderName + ': ' + message.text);
+          });
+
+          chatSocket.on('chat:history', function (payload) {
+            if (!payload || payload.conversationKey !== activeConversationKey) {
+              return;
+            }
+            renderConversationHistory(payload.history || []);
           });
 
           chatSocket.on('chat:error', function (payload) {
@@ -1052,6 +1090,7 @@
         chatSocket.disconnect();
         chatSocket = null;
       }
+      activeConversationKey = '';
       setChatConnected(false);
       setChatStatus('Disconnected.');
     }
@@ -1172,7 +1211,12 @@
         if (!chatInput || !chatInput.value.trim()) return;
         var userMessage = chatInput.value.trim();
         if (chatSocket && chatConnected) {
-          chatSocket.emit('chat:send', { text: userMessage });
+          var peerEmailValue = getPeerEmail();
+          if (!validateEmail(peerEmailValue)) {
+            setChatStatus('Enter a valid recipient email.');
+            return;
+          }
+          chatSocket.emit('chat:send', { text: userMessage, targetEmail: peerEmailValue });
         } else {
           appendChatMessage('user', userMessage);
           appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use Send to Email.');
@@ -1199,6 +1243,15 @@
       });
     }
 
+    if (chatPeerEmail) {
+      chatPeerEmail.addEventListener('change', function () {
+        if (chatConnected) {
+          requestConversationHistory();
+          setChatStatus('Conversation switched to ' + getPeerEmail() + '.');
+        }
+      });
+    }
+
     setChatConnected(false);
     var savedSession = getSavedSession();
     if (savedSession && chatName && chatEmail) {
@@ -1207,7 +1260,7 @@
       chatSession = savedSession;
     }
 
-    appendChatMessage('bot', 'Hi. Enter your name and email, click Connect Live, then send your message.');
+    appendChatMessage('bot', 'Hi. Enter your name, your email, and the recipient email. Then connect and chat live.');
   });
 </script>
 
