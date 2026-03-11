@@ -368,11 +368,6 @@
       color: #fff;
     }
 
-    .chat-email {
-      background: rgba(255, 255, 255, 0.16);
-      color: #fff;
-    }
-
     .chat-status {
       margin: 0;
       font-size: 0.75rem;
@@ -413,10 +408,6 @@
     body.theme-light .chat-form textarea {
       background: rgba(255, 255, 255, 0.92);
       border-color: rgba(9, 35, 64, 0.2);
-    }
-
-    body.theme-light .chat-email {
-      background: rgba(9, 35, 64, 0.1);
     }
 
     body.theme-light .chat-disconnect {
@@ -808,7 +799,6 @@
         <button type="submit" class="chat-send">Send</button>
         <button type="button" class="chat-connect" id="chat-connect-btn">Connect Live</button>
         <button type="button" class="chat-disconnect" id="chat-disconnect-btn">Disconnect</button>
-        <button type="button" class="chat-email" id="chat-email-btn">Send to Email</button>
       </div>
       <p class="chat-status" id="chat-status"></p>
     </form>
@@ -898,7 +888,6 @@
     var chatEmail = document.getElementById('chat-email');
     var chatPeerEmail = document.getElementById('chat-peer-email');
     var chatName = document.getElementById('chat-name');
-    var chatEmailBtn = document.getElementById('chat-email-btn');
     var chatConnectBtn = document.getElementById('chat-connect-btn');
     var chatDisconnectBtn = document.getElementById('chat-disconnect-btn');
     var chatStatus = document.getElementById('chat-status');
@@ -1081,7 +1070,7 @@
           });
         })
         .catch(function () {
-          setChatStatus('Live server unavailable at ' + chatServerUrl + '. Use Send to Email for now.');
+          setChatStatus('Live server unavailable at ' + chatServerUrl + '. Please use the contact form.');
         });
     }
 
@@ -1093,104 +1082,6 @@
       activeConversationKey = '';
       setChatConnected(false);
       setChatStatus('Disconnected.');
-    }
-
-    function sendChatToEmail() {
-      if (!chatEmail || !chatStatus || !chatMessages) return;
-      var emailValue = chatEmail.value.trim();
-      if (!validateEmail(emailValue)) {
-        chatStatus.textContent = 'Enter a valid email address before sending.';
-        return;
-      }
-
-      var transcript = Array.prototype.slice.call(chatMessages.querySelectorAll('.chat-bubble'))
-        .map(function (bubble) {
-          var who = bubble.classList.contains('user') ? 'Visitor' : 'Assistant';
-          return who + ': ' + bubble.textContent;
-        })
-        .join('\n');
-
-      chatStatus.textContent = 'Sending...';
-
-      var web3FormsRequest = fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: '70124a7c-659a-460e-ab1f-0a1529f80ec8',
-          subject: 'New chatbot message from cv.theodorenelson.co.za',
-          name: chatName ? chatName.value.trim() || 'Website chat visitor' : 'Website chat visitor',
-          email: emailValue,
-          message: transcript || 'No transcript captured.'
-        })
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        if (!data || !data.success) {
-          throw new Error('web3forms send failed');
-        }
-        return data;
-      });
-
-      var formSubmitRequest = fetch('https://formsubmit.co/ajax/theodorelnelson@outlook.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: chatName ? chatName.value.trim() || 'Website chat visitor' : 'Website chat visitor',
-          email: emailValue,
-          subject: 'New chatbot message from cv.theodorenelson.co.za',
-          message: transcript || 'No transcript captured.',
-          _captcha: 'false'
-        })
-      }).then(function (res) {
-        if (!res.ok) {
-          throw new Error('formsubmit send failed');
-        }
-        return res.json();
-      });
-
-      Promise.allSettled([web3FormsRequest, formSubmitRequest])
-        .then(function (results) {
-          var web3Ok = results[0] && results[0].status === 'fulfilled';
-          var formSubmitOk = results[1] && results[1].status === 'fulfilled';
-          var failedTargets = [];
-
-          if (!web3Ok) failedTargets.push('Web3Forms');
-          if (!formSubmitOk) failedTargets.push('FormSubmit');
-
-          if (web3Ok && formSubmitOk) {
-            chatStatus.textContent = 'Sent successfully via Web3Forms and FormSubmit.';
-          } else if (web3Ok || formSubmitOk) {
-            chatStatus.textContent = 'Sent via ' + (web3Ok ? 'Web3Forms' : 'FormSubmit') + '. ' + failedTargets.join(' + ') + ' failed.';
-            console.warn('Chat email partial failure:', {
-              web3Forms: results[0],
-              formSubmit: results[1]
-            });
-          } else {
-            var unsentPayload = {
-              at: new Date().toISOString(),
-              fromName: chatName ? (chatName.value.trim() || 'Website chat visitor') : 'Website chat visitor',
-              fromEmail: emailValue,
-              transcript: transcript || 'No transcript captured.'
-            };
-            var queue = [];
-            try {
-              queue = JSON.parse(localStorage.getItem('chat-unsent-queue') || '[]');
-              queue.push(unsentPayload);
-              localStorage.setItem('chat-unsent-queue', JSON.stringify(queue));
-            } catch (_err) {
-              // Ignore storage errors; user still sees failure status.
-            }
-
-            chatStatus.textContent = 'Email failed (Web3Forms + FormSubmit). Transcript saved locally. Please use Contact form.';
-            console.error('Chat email delivery failed:', {
-              web3Forms: results[0],
-              formSubmit: results[1]
-            });
-          }
-        })
-        .catch(function () {
-          chatStatus.textContent = 'Network error. Please use the Contact form below.';
-        });
     }
 
     if (chatToggle) {
@@ -1219,15 +1110,9 @@
           chatSocket.emit('chat:send', { text: userMessage, targetEmail: peerEmailValue });
         } else {
           appendChatMessage('user', userMessage);
-          appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use Send to Email.');
+          appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use the contact form below.');
         }
         chatInput.value = '';
-      });
-    }
-
-    if (chatEmailBtn) {
-      chatEmailBtn.addEventListener('click', function () {
-        sendChatToEmail();
       });
     }
 
