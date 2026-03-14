@@ -470,7 +470,11 @@
             renderLeads(summary.leads || []);
             renderProjects(summary.projects || []);
             renderRecentEvents(summary.recentEvents || []);
-            setStatus("Dashboard updated at " + new Date().toLocaleTimeString(), "ok");
+            setStatus(
+              "Dashboard updated at " + new Date().toLocaleTimeString() +
+              " using " + String(summary.storage || "unknown") + " storage.",
+              "ok"
+            );
           })
           .catch(function (error) {
             setStatus(error.message || "Could not load dashboard.", "error");

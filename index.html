@@ -779,11 +779,13 @@
 </div>
 <script>
   (function () {
-    var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    var host = window.location.hostname;
+    var isLocalHost = host === 'localhost' || host === '127.0.0.1';
     var isLocalFile = window.location.protocol === 'file:';
+    var isProductionHost = host === 'cv.theodorenelson.co.za';
     var localServerUrl = 'http://localhost:3001';
     var deployedServerUrl = 'https://cv-6kiv.onrender.com';
-    var resolvedServerUrl = (isLocalHost || isLocalFile) ? localServerUrl : deployedServerUrl;
+    var resolvedServerUrl = (isLocalHost || isLocalFile || !isProductionHost) ? localServerUrl : deployedServerUrl;
 
     window.CHAT_SERVER_URL = resolvedServerUrl;
     window.AUTOMATION_SERVER_URL = resolvedServerUrl;
@@ -961,7 +963,7 @@
 
     function sendAutomationEvent(payload, useBeacon) {
       if (!automationEndpoint || !payload || !payload.type) {
-        return;
+        return Promise.resolve(false);
       }
 
       var eventPayload = {
@@ -993,24 +995,29 @@
       if (useBeacon && navigator.sendBeacon) {
         try {
           navigator.sendBeacon(automationEndpoint, new Blob([body], { type: 'application/json' }));
-          return;
+          return Promise.resolve(true);
         } catch (_err) {
           // Fall through to fetch.
         }
       }
 
       if (window.fetch) {
-        fetch(automationEndpoint, {
+        return fetch(automationEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: body,
           keepalive: true
+        }).then(function () {
+          return true;
         }).catch(function () {
           // Ignore automation transport failures on the public site.
+          return false;
         });
       }
+
+      return Promise.resolve(false);
     }
 
     function getProjectPayload(projectCard) {
@@ -1065,22 +1072,55 @@
     function wireAutomationLinks() {
       var trackedLinks = Array.prototype.slice.call(document.querySelectorAll('[data-automation-event]'));
       trackedLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
+        link.addEventListener('click', function (event) {
+          var href = link.href || '';
+          if (!href) {
+            return;
+          }
+
+          event.preventDefault();
+
           var eventType = link.getAttribute('data-automation-event');
           var projectCard = link.closest('.project-card');
           var projectPayload = getProjectPayload(projectCard);
           var assetLabel = link.getAttribute('data-automation-label') || link.textContent.trim();
           var assetKind = link.getAttribute('data-automation-kind') || 'link';
+          var target = link.getAttribute('target');
+          var isDownload = link.hasAttribute('download');
+
+          function continueNavigation() {
+            if (isDownload) {
+              var tempLink = document.createElement('a');
+              tempLink.href = href;
+              tempLink.download = link.getAttribute('download') || '';
+              tempLink.target = target || '';
+              tempLink.rel = link.rel || '';
+              tempLink.style.display = 'none';
+              document.body.appendChild(tempLink);
+              tempLink.click();
+              document.body.removeChild(tempLink);
+              return;
+            }
+
+            if (target === '_blank') {
+              window.open(href, '_blank', 'noopener');
+              return;
+            }
+
+            window.location.href = href;
+          }
 
           sendAutomationEvent({
             type: eventType,
             project: projectPayload,
             asset: {
               label: assetLabel,
-              href: link.href || '',
+              href: href,
               kind: assetKind
             }
-          }, true);
+          }, true).finally(function () {
+            window.setTimeout(continueNavigation, 120);
+          });
         });
       });
     }

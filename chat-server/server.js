@@ -2,19 +2,29 @@ const fs = require("fs");
 const path = require("path");
 const http = require("http");
 const crypto = require("crypto");
-const { EventEmitter } = require("events");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const { Server } = require("socket.io");
+let Pool = null;
+try {
+  ({ Pool } = require("pg"));
+} catch (_error) {
+  Pool = null;
+}
 dotenv.config();
 
 const PORT = Number(process.env.PORT || 3001);
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "*";
+const DATABASE_URL = process.env.DATABASE_URL || "";
+const DATABASE_SSL =
+  typeof process.env.DATABASE_SSL === "string"
+    ? process.env.DATABASE_SSL.toLowerCase() !== "false"
+    : true;
 const DATA_DIR = path.join(__dirname, "data");
 const AUTOMATION_EVENTS_FILE = path.join(DATA_DIR, "automation-events.ndjson");
 const AUTOMATION_RECENT_LIMIT = 250;
-const automationBus = new EventEmitter();
+let automationStore = null;
 
 function isAllowedOrigin(origin) {
   if (!origin) {
@@ -43,6 +53,7 @@ function isAllowedOrigin(origin) {
 
 const app = express();
 app.use(express.json({ limit: "100kb" }));
+app.use(express.text({ type: "text/plain", limit: "100kb" }));
 app.use(
   cors({
     origin(origin, callback) {
@@ -57,7 +68,11 @@ app.use(
 );
 
 app.get("/health", (_req, res) => {
-  res.json({ ok: true, timestamp: new Date().toISOString() });
+  res.json({
+    ok: true,
+    timestamp: new Date().toISOString(),
+    automationStore: automationStore ? automationStore.kind : (DATABASE_URL ? "postgres" : "file"),
+  });
 });
 
 app.get("/", (_req, res) => {
@@ -152,9 +167,129 @@ function ensureAutomationStore() {
   }
 }
 
-function appendAutomationEvent(event) {
-  ensureAutomationStore();
-  fs.appendFileSync(AUTOMATION_EVENTS_FILE, `${JSON.stringify(event)}\n`, "utf8");
+function createFileAutomationStore() {
+  return {
+    kind: "file",
+    async init() {
+      ensureAutomationStore();
+    },
+    async appendEvent(event) {
+      ensureAutomationStore();
+      fs.appendFileSync(AUTOMATION_EVENTS_FILE, `${JSON.stringify(event)}\n`, "utf8");
+    },
+    async loadEvents() {
+      ensureAutomationStore();
+      const raw = fs.readFileSync(AUTOMATION_EVENTS_FILE, "utf8");
+      if (!raw.trim()) {
+        return [];
+      }
+
+      return raw
+        .split(/\r?\n/)
+        .filter(Boolean)
+        .map((line) => {
+          try {
+            return JSON.parse(line);
+          } catch (_error) {
+            return null;
+          }
+        })
+        .filter(Boolean);
+    },
+  };
+}
+
+function createDatabaseAutomationStore() {
+  if (!Pool) {
+    throw new Error("DATABASE_URL is configured, but the `pg` package is not installed.");
+  }
+
+  const pool = new Pool({
+    connectionString: DATABASE_URL,
+    ssl: DATABASE_SSL ? { rejectUnauthorized: false } : false,
+  });
+
+  return {
+    kind: "postgres",
+    async init() {
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS automation_events (
+          id UUID PRIMARY KEY,
+          type TEXT NOT NULL,
+          created_at TIMESTAMPTZ NOT NULL,
+          source TEXT NOT NULL,
+          page TEXT,
+          referrer TEXT,
+          session_id TEXT,
+          client_id TEXT,
+          user_agent TEXT,
+          ip TEXT,
+          project JSONB,
+          contact JSONB,
+          asset JSONB,
+          metadata JSONB,
+          payload JSONB NOT NULL
+        )
+      `);
+      await pool.query(`
+        CREATE INDEX IF NOT EXISTS automation_events_created_at_idx
+        ON automation_events (created_at DESC)
+      `);
+      await pool.query(`
+        CREATE INDEX IF NOT EXISTS automation_events_type_idx
+        ON automation_events (type)
+      `);
+    },
+    async appendEvent(event) {
+      await pool.query(
+        `
+          INSERT INTO automation_events (
+            id, type, created_at, source, page, referrer, session_id, client_id,
+            user_agent, ip, project, contact, asset, metadata, payload
+          )
+          VALUES (
+            $1, $2, $3, $4, $5, $6, $7, $8,
+            $9, $10, $11::jsonb, $12::jsonb, $13::jsonb, $14::jsonb, $15::jsonb
+          )
+          ON CONFLICT (id) DO NOTHING
+        `,
+        [
+          event.id,
+          event.type,
+          event.timestamp,
+          event.source,
+          event.page,
+          event.referrer,
+          event.sessionId,
+          event.clientId,
+          event.userAgent,
+          event.ip,
+          JSON.stringify(event.project || null),
+          JSON.stringify(event.contact || null),
+          JSON.stringify(event.asset || null),
+          JSON.stringify(event.metadata || null),
+          JSON.stringify(event),
+        ]
+      );
+    },
+    async loadEvents() {
+      const { rows } = await pool.query(`
+        SELECT payload
+        FROM automation_events
+        ORDER BY created_at ASC
+      `);
+      return rows.map((row) => row.payload).filter(Boolean);
+    },
+  };
+}
+
+function getAutomationStore() {
+  if (!automationStore) {
+    automationStore = DATABASE_URL
+      ? createDatabaseAutomationStore()
+      : createFileAutomationStore();
+  }
+  return automationStore;
 }
 
 function trackRecentEvent(event) {
@@ -285,35 +420,25 @@ function applyAutomationEvent(event, options = {}) {
       break;
   }
 
+}
+
+async function ingestAutomationEvent(event, options = {}) {
+  applyAutomationEvent(event, options);
+
   if (!options.replay) {
-    appendAutomationEvent(event);
+    await getAutomationStore().appendEvent(event);
   }
 }
 
-automationBus.on("automation:event", (event, options = {}) => {
-  applyAutomationEvent(event, options);
-});
-
-function loadAutomationEvents() {
-  ensureAutomationStore();
-  const raw = fs.readFileSync(AUTOMATION_EVENTS_FILE, "utf8");
-  if (!raw.trim()) {
-    return;
-  }
-
-  raw
-    .split(/\r?\n/)
-    .filter(Boolean)
-    .forEach((line) => {
-      try {
-        const event = JSON.parse(line);
-        if (event && event.type && event.timestamp) {
-          automationBus.emit("automation:event", event, { replay: true });
-        }
-      } catch (_error) {
-        // Ignore malformed historical lines instead of crashing startup.
-      }
-    });
+async function bootstrapAutomationStore() {
+  const store = getAutomationStore();
+  await store.init();
+  const events = await store.loadEvents();
+  events.forEach((event) => {
+    if (event && event.type && event.timestamp) {
+      applyAutomationEvent(event, { replay: true });
+    }
+  });
 }
 
 function getClientIp(req) {
@@ -321,6 +446,18 @@ function getClientIp(req) {
     req.headers["x-forwarded-for"] || req.socket.remoteAddress || "",
     120
   );
+}
+
+function getAutomationRequestPayload(req) {
+  if (typeof req.body === "string") {
+    try {
+      return JSON.parse(req.body);
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  return req.body;
 }
 
 function normalizeAutomationEvent(payload = {}, req) {
@@ -396,18 +533,19 @@ function requireAdmin(req, res, next) {
   res.status(401).json({ error: "Admin key required." });
 }
 
-app.post("/api/automation/events", (req, res) => {
-  const payloads = Array.isArray(req.body) ? req.body : [req.body];
+app.post("/api/automation/events", async (req, res) => {
+  const requestPayload = getAutomationRequestPayload(req);
+  const payloads = Array.isArray(requestPayload) ? requestPayload : [requestPayload];
   const acceptedEvents = [];
 
-  payloads.forEach((payload) => {
+  for (const payload of payloads) {
     const event = normalizeAutomationEvent(payload, req);
     if (!event) {
-      return;
+      continue;
     }
-    automationBus.emit("automation:event", event);
+    await ingestAutomationEvent(event);
     acceptedEvents.push(event);
-  });
+  }
 
   if (acceptedEvents.length === 0) {
     res.status(400).json({ error: "At least one valid event payload is required." });
@@ -431,6 +569,7 @@ app.get("/api/automation/summary", requireAdmin, (_req, res) => {
   const projects = Array.from(automationState.projects.values()).sort((a, b) => b.views - a.views);
 
   res.json({
+    storage: getAutomationStore().kind,
     totals: automationState.totals,
     leads,
     projects,
@@ -523,8 +662,15 @@ io.on("connection", (socket) => {
   });
 });
 
-loadAutomationEvents();
-
-server.listen(PORT, () => {
-  console.log(`Chat server listening on http://localhost:${PORT}`);
-});
+bootstrapAutomationStore()
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log(
+        `Chat server listening on http://localhost:${PORT} using ${getAutomationStore().kind} automation storage`
+      );
+    });
+  })
+  .catch((error) => {
+    console.error("Failed to bootstrap automation storage:", error);
+    process.exit(1);
+  });
