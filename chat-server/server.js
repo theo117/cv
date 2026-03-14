@@ -16,11 +16,42 @@ const AUTOMATION_EVENTS_FILE = path.join(DATA_DIR, "automation-events.ndjson");
 const AUTOMATION_RECENT_LIMIT = 250;
 const automationBus = new EventEmitter();
 
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return true;
+  }
+
+  if (ALLOWED_ORIGIN === "*") {
+    return true;
+  }
+
+  const allowedOrigins = new Set([
+    ALLOWED_ORIGIN,
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:4173",
+    "http://localhost:5500",
+    "http://127.0.0.1",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:4173",
+    "http://127.0.0.1:5500",
+    "null",
+  ]);
+
+  return allowedOrigins.has(origin);
+}
+
 const app = express();
 app.use(express.json({ limit: "100kb" }));
 app.use(
   cors({
-    origin: ALLOWED_ORIGIN === "*" ? true : ALLOWED_ORIGIN,
+    origin(origin, callback) {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error(`Origin not allowed by CORS: ${origin}`));
+    },
     credentials: true,
   })
 );
@@ -38,7 +69,13 @@ app.use("/admin", express.static(path.join(__dirname, "public")));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ALLOWED_ORIGIN === "*" ? true : ALLOWED_ORIGIN,
+    origin(origin, callback) {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error(`Origin not allowed by CORS: ${origin}`));
+    },
     methods: ["GET", "POST"],
   },
 });

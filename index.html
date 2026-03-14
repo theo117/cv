@@ -778,7 +778,16 @@
 
 </div>
 <script>
-  window.CHAT_SERVER_URL = "https://cv-6kiv.onrender.com";
+  (function () {
+    var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    var isLocalFile = window.location.protocol === 'file:';
+    var localServerUrl = 'http://localhost:3001';
+    var deployedServerUrl = 'https://cv-6kiv.onrender.com';
+    var resolvedServerUrl = (isLocalHost || isLocalFile) ? localServerUrl : deployedServerUrl;
+
+    window.CHAT_SERVER_URL = resolvedServerUrl;
+    window.AUTOMATION_SERVER_URL = resolvedServerUrl;
+  })();
 </script>
 
 
