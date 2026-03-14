@@ -60,7 +60,7 @@ Admin reads on summary and recent-events endpoints require `x-admin-key: <ADMIN_
 - Local development falls back to file storage in `chat-server/data`.
 - Your frontend widget connects to `http://localhost:3001` by default.
 
-## Deploy On Render
+## Deploy On Render With Supabase
 
 1. Push this repo to GitHub.
 2. In Render, click `New` -> `Blueprint`.
@@ -69,10 +69,18 @@ Admin reads on summary and recent-events endpoints require `x-admin-key: <ADMIN_
    - `ADMIN_KEY` = your strong key
 5. Confirm public env var:
    - `ALLOWED_ORIGIN` = `https://cv.theodorenelson.co.za`
-6. Confirm database env vars:
-   - `DATABASE_URL` is supplied by Render from the attached PostgreSQL database
+6. In Supabase, open your project and copy a Postgres connection string.
+   Use the Transaction pooler / pooled connection string for a long-running hosted app.
+7. In Render, set:
+   - `DATABASE_URL` = your Supabase Postgres connection string
    - `DATABASE_SSL` = `true`
-7. Deploy.
+8. Deploy.
+
+## Supabase Notes
+
+- Supabase gives you an external Postgres database, so Render does not need to provision its own database.
+- Keep `sslmode=require` in the connection string if Supabase includes it.
+- After deploy, open `/health` or `/admin` and confirm the app reports `postgres` storage instead of `file`.
 
 After deploy, Render gives you a URL like:
 
