@@ -1,4 +1,4 @@
-# Realtime Chat Server
+# Realtime Chat Server And Automation API
 
 ## 1) Install
 
@@ -30,9 +30,30 @@ Open:
 
 Log in with the same admin key from `.env`.
 
+## Automation Events
+
+The same Node service now accepts portfolio automation events at:
+
+- `POST /api/automation/events`
+- `GET /api/automation/summary`
+- `GET /api/automation/events/recent`
+
+The portfolio page emits:
+
+- `contact.submitted`
+- `cv.downloaded`
+- `diploma.downloaded`
+- `certificate.downloaded`
+- `project.viewed`
+- `project.opened`
+
+Automation events are persisted to `chat-server/data/automation-events.ndjson`.
+Admin reads on summary and recent-events endpoints require `x-admin-key: <ADMIN_KEY>` when `ADMIN_KEY` is configured.
+
 ## Notes
 
-- Visitor chat history is in-memory only (resets when server restarts).
+- Visitor chat history is in-memory only and resets when the server restarts.
+- Automation analytics persist to disk in `chat-server/data`.
 - Your frontend widget connects to `http://localhost:3001` by default.
 
 ## Deploy On Render
@@ -50,11 +71,12 @@ After deploy, Render gives you a URL like:
 
 `https://theodore-chat-server.onrender.com`
 
-Then update your CV page so live chat points to Render:
+Then update your CV page so live chat and automation point to Render:
 
 ```html
 <script>
   window.CHAT_SERVER_URL = "https://theodore-chat-server.onrender.com";
+  window.AUTOMATION_SERVER_URL = window.CHAT_SERVER_URL;
 </script>
 ```
 
