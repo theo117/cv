@@ -8,7 +8,5 @@ services:
     autoDeploy: true
     healthCheckPath: /health
     envVars:
-      - key: ADMIN_KEY
-        sync: false
       - key: ALLOWED_ORIGIN
         value: https://cv.theodorenelson.co.za

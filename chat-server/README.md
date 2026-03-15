@@ -1,98 +1,32 @@
-# Realtime Chat Server And Automation API
+# Realtime Chat Server
 
-## 1) Install
+## Install
 
 ```bash
 cd chat-server
 npm install
 ```
 
-## 2) Configure
+## Configure
 
-Copy `.env.example` to `.env` and set:
+Set these environment variables as needed:
 
-- `ADMIN_KEY` to a secure value.
-- `ALLOWED_ORIGIN` to your CV site origin in production.
-- `DATABASE_URL` to a PostgreSQL connection string for durable automation storage in production.
-- `DATABASE_SSL=false` only if your local Postgres does not use SSL.
+- `PORT` to override the default `3001`
+- `ALLOWED_ORIGIN` to your deployed CV site origin
 
-## 3) Run
+## Run
 
 ```bash
 npm start
 ```
 
-Server runs on `http://localhost:3001` by default.
+The server exposes:
 
-## 4) Admin Console
-
-Open:
-
-`http://localhost:3001/admin`
-
-Log in with the same admin key from `.env`.
-
-## Automation Events
-
-The same Node service now accepts portfolio automation events at:
-
-- `POST /api/automation/events`
-- `GET /api/automation/summary`
-- `GET /api/automation/events/recent`
-
-The portfolio page emits:
-
-- `contact.submitted`
-- `cv.downloaded`
-- `diploma.downloaded`
-- `certificate.downloaded`
-- `project.viewed`
-- `project.opened`
-
-Automation events are persisted to PostgreSQL when `DATABASE_URL` is set.
-If `DATABASE_URL` is not set, the server falls back to `chat-server/data/automation-events.ndjson` for local development.
-Admin reads on summary and recent-events endpoints require `x-admin-key: <ADMIN_KEY>` when `ADMIN_KEY` is configured.
+- `GET /health`
+- Socket.IO chat events for login, messaging, and history
 
 ## Notes
 
-- Visitor chat history is in-memory only and resets when the server restarts.
-- Automation analytics persist to PostgreSQL in production when `DATABASE_URL` is configured.
-- Local development falls back to file storage in `chat-server/data`.
-- Your frontend widget connects to `http://localhost:3001` by default.
-
-## Deploy On Render With Supabase
-
-1. Push this repo to GitHub.
-2. In Render, click `New` -> `Blueprint`.
-3. Select this repo. Render will detect [`render.yaml`](../render.yaml).
-4. Set secret env var in Render:
-   - `ADMIN_KEY` = your strong key
-5. Confirm public env var:
-   - `ALLOWED_ORIGIN` = `https://cv.theodorenelson.co.za`
-6. In Supabase, open your project and copy a Postgres connection string.
-   Use the Transaction pooler / pooled connection string for a long-running hosted app.
-7. In Render, set:
-   - `DATABASE_URL` = your Supabase Postgres connection string
-   - `DATABASE_SSL` = `true`
-8. Deploy.
-
-## Supabase Notes
-
-- Supabase gives you an external Postgres database, so Render does not need to provision its own database.
-- Keep `sslmode=require` in the connection string if Supabase includes it.
-- After deploy, open `/health` or `/admin` and confirm the app reports `postgres` storage instead of `file`.
-
-After deploy, Render gives you a URL like:
-
-`https://theodore-chat-server.onrender.com`
-
-Then update your CV page so live chat and automation point to Render:
-
-```html
-<script>
-  window.CHAT_SERVER_URL = "https://theodore-chat-server.onrender.com";
-  window.AUTOMATION_SERVER_URL = window.CHAT_SERVER_URL;
-</script>
-```
-
-Place that line before your main chat script in `cv/index.html`.
+- Chat history is stored in memory and resets when the server restarts.
+- The frontend widget connects to `http://localhost:3001` by default in local development.
+- Render uses [`render.yaml`](../render.yaml) to deploy this service.
