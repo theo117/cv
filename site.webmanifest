@@ -3,6 +3,12 @@
   "short_name": "TN CV",
   "icons": [
     {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "/favicon.svg",
       "sizes": "64x64",
       "type": "image/svg+xml",
