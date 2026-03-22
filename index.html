@@ -448,6 +448,10 @@
           "url": "https://cv.theodorenelson.co.za/",
           "name": "Theodore Nelson CV",
           "description": "Portfolio and CV website for Theodore Nelson, a junior full-stack developer in South Africa.",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://cv.theodorenelson.co.za/"
+          },
           "publisher": {
             "@id": "https://cv.theodorenelson.co.za/#person"
           },
@@ -461,6 +465,9 @@
           "description": "Junior full-stack developer in South Africa building practical Java, Spring Boot, React, and Next.js solutions for real business needs.",
           "isPartOf": {
             "@id": "https://cv.theodorenelson.co.za/#website"
+          },
+          "breadcrumb": {
+            "@id": "https://cv.theodorenelson.co.za/#breadcrumb"
           },
           "about": {
             "@id": "https://cv.theodorenelson.co.za/#person"
@@ -499,6 +506,18 @@
           "mainEntityOfPage": {
             "@id": "https://cv.theodorenelson.co.za/#webpage"
           }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://cv.theodorenelson.co.za/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://cv.theodorenelson.co.za/"
+            }
+          ]
         }
       ]
     }
