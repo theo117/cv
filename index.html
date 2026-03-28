@@ -1,1339 +1,297 @@
-﻿<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Theodore Nelson | Java Developer, Web Developer, and Freelance Software Builder</title>
-  <meta name="description" content="Theodore Nelson is a South African Java developer and freelance web developer building Spring Boot, React, Next.js, REST API, and MySQL solutions for employers, startups, and business clients." />
-  <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="author" content="Theodore Nelson" />
-  <meta name="theme-color" content="#0099ff" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
-  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="canonical" href="https://cv.theodorenelson.co.za/" />
-  <link rel="alternate" hreflang="en-za" href="https://cv.theodorenelson.co.za/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Theodore Nelson CV" />
-  <meta property="og:locale" content="en_ZA" />
-  <meta property="og:title" content="Theodore Nelson | Java Developer, Web Developer, and Freelance Software Builder" />
-  <meta property="og:description" content="South African Java developer and freelance web developer with hands-on Spring Boot, React, Next.js, REST API, and MySQL experience." />
-  <meta property="og:url" content="https://cv.theodorenelson.co.za/" />
-  <meta property="og:image" content="https://cv.theodorenelson.co.za/images/og-preview.png?v=20260322c" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Theodore Nelson portfolio, CV, and business profile preview card" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Theodore Nelson | Java Developer, Web Developer, and Freelance Software Builder" />
-  <meta name="twitter:description" content="South African Java developer focused on Spring Boot, React, Next.js, REST APIs, business web applications, and freelance software delivery." />
-  <meta name="twitter:image" content="https://cv.theodorenelson.co.za/images/og-preview.png?v=20260322c" />
-  <meta name="twitter:image:alt" content="Theodore Nelson portfolio, CV, and business profile preview card" />
-  <meta name="build-date" content="2026-03-28" />
-
-  <!-- Main template CSS -->
-  <link rel="stylesheet" href="assets/css/main.css?v=20260218" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?v=20260218" /></noscript>
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-    
-    .project-flow {
-      list-style: none;
-      margin: 1rem 0;
-      padding: 0;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    
-    .project-flow li {
-      background: rgba(255, 255, 255, 0.04);
-      border-left: 3px solid rgba(0, 153, 255, 0.55);
-      padding: 0.7rem 0.85rem;
-      border-radius: 0.35rem;
-      line-height: 1.45;
-    }
-.theme-toggle {
-      margin-left: auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 7.25rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.04);
-      color: #ffffff;
-      font-size: 0.72rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(0, 153, 255, 0.25);
-      border-color: rgba(0, 153, 255, 0.65);
-    }
-    body.theme-light {
-      --accent: #006fc7;
-      --accent-soft: rgba(0, 111, 199, 0.14);
-      --surface: rgba(8, 31, 59, 0.04);
-      --surface-border: rgba(8, 31, 59, 0.2);
-      --surface-strong: rgba(255, 255, 255, 0.9);
-      --text-muted: rgba(16, 37, 62, 0.8);
-      --glow-cool: rgba(77, 168, 255, 0.2);
-      --glow-warm: rgba(255, 186, 92, 0.16);
-      background:
-        radial-gradient(circle at 12% 16%, rgba(77, 168, 255, 0.22), transparent 34%),
-        radial-gradient(circle at 88% 78%, rgba(255, 186, 92, 0.2), transparent 30%),
-        linear-gradient(180deg, #eef5ff 0%, #f6f9ff 46%, #edf4ff 100%) !important;
-      color: #10233c;
-    }
-
-    body.theme-light,
-    body.theme-light h1,
-    body.theme-light h2,
-    body.theme-light h3,
-    body.theme-light h4,
-    body.theme-light h5,
-    body.theme-light h6,
-    body.theme-light p,
-    body.theme-light label,
-    body.theme-light li,
-    body.theme-light strong,
-    body.theme-light b {
-      color: #10233c !important;
-    }
-
-    body.theme-light a {
-      border-bottom-color: rgba(16, 35, 60, 0.35);
-    }
-
-    body.theme-light .site-topnav {
-      background: rgba(245, 250, 255, 0.92);
-      border-bottom-color: rgba(9, 35, 64, 0.16);
-    }
-
-    body.theme-light .site-topnav-inner a,
-    body.theme-light .theme-toggle {
-      color: #10233c !important;
-      border-color: rgba(9, 35, 64, 0.2);
-      background: rgba(255, 255, 255, 0.78);
-    }
-
-    body.theme-light .site-topnav-inner a:hover,
-    body.theme-light .theme-toggle:hover,
-    body.theme-light .site-topnav-inner a.active {
-      background: rgba(0, 111, 199, 0.14);
-      border-color: rgba(0, 111, 199, 0.46);
-    }
-
-    body.theme-light #header .content {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(243, 248, 255, 0.92));
-      border-color: rgba(9, 35, 64, 0.16);
-      box-shadow: 0 16px 40px rgba(32, 66, 108, 0.18);
-    }
-
-    body.theme-light #header .logo .logo-text {
-      border-color: rgba(0, 111, 199, 0.58);
-      box-shadow: 0 10px 25px rgba(0, 111, 199, 0.2);
-    }
-
-    body.theme-light #main article,
-    body.theme-light #main article:nth-of-type(odd),
-    body.theme-light #main article:nth-of-type(even) {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(244, 248, 255, 0.92)) !important;
-      border-color: rgba(9, 35, 64, 0.16) !important;
-      box-shadow: 0 16px 34px rgba(32, 66, 108, 0.14);
-    }
-
-    body.theme-light #main article h2.major {
-      border-bottom-color: rgba(9, 35, 64, 0.28) !important;
-    }
-
-    body.theme-light #intro .tagline,
-    body.theme-light .section-lead,
-    body.theme-light .stack,
-    body.theme-light .edu-meta {
-      color: rgba(16, 37, 62, 0.72) !important;
-    }
-
-    body.theme-light #intro .skills-pill,
-    body.theme-light .project-card,
-    body.theme-light .project-flow li {
-      background: rgba(10, 44, 81, 0.04);
-      border-color: rgba(9, 35, 64, 0.16);
-    }
-
-    body.theme-light .project-card {
-      box-shadow: 0 14px 30px rgba(32, 66, 108, 0.12);
-    }
-
-    body.theme-light .project-card a {
-      color: #006fc7;
-    }
-
-    
-
-    body:not(.theme-light) .hero-actions .button,
-    body:not(.theme-light) .hero-actions .button.primary {
-      color: #ffffff !important;
-    }
-
-    body.theme-light .hero-actions .button {
-      color: #10233c !important;
-      box-shadow: inset 0 0 0 1px rgba(9, 35, 64, 0.3);
-      background-color: rgba(255, 255, 255, 0.72);
-    }
-
-    body.theme-light .hero-actions .button:hover {
-      background-color: rgba(0, 111, 199, 0.14);
-    }
-
-    body.theme-light .hero-actions .button.primary {
-      background-color: rgba(255, 255, 255, 0.72);
-      color: #10233c !important;
-      font-weight: 300;
-      box-shadow: inset 0 0 0 1px rgba(9, 35, 64, 0.3);
-    }
-    body.theme-light #contact input,
-    body.theme-light #contact textarea {
-      background: rgba(255, 255, 255, 0.95);
-      color: #10233c;
-      border-color: rgba(9, 35, 64, 0.18);
-    }
-
-    body.theme-light .skip-link {
-      background: #ffffff;
-      color: #10233c;
-      border-color: rgba(9, 35, 64, 0.2);
-    }
-
-    @media screen and (max-width: 736px) {
-      .theme-toggle {
-        margin-left: 0;
-      }
-    }
-  
-    .project-card.highlight-card {
-      border: 1px solid rgba(0, 153, 255, 0.45);
-      box-shadow: 0 12px 28px rgba(0, 153, 255, 0.15);
-      background: linear-gradient(180deg, rgba(0, 153, 255, 0.08), rgba(255, 255, 255, 0.02));
-    }
-
-    .chat-widget {
-      position: fixed;
-      right: 1.1rem;
-      bottom: 1.1rem;
-      z-index: 10001;
-      width: min(24rem, calc(100vw - 2rem));
-      font-size: 0.92rem;
-    }
-
-    .chat-toggle {
-      margin-left: auto;
-      border: 0;
-      border-radius: 999px;
-      padding: 0.7rem 1rem;
-      background: linear-gradient(135deg, #0b7dd6, #0662a8);
-      color: #fff;
-      cursor: pointer;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
-    }
-
-    .chat-panel {
-      margin-top: 0.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 0.75rem;
-      overflow: hidden;
-      background: rgba(10, 15, 22, 0.95);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
-      display: none;
-    }
-
-    .chat-widget.open .chat-panel {
-      display: block;
-    }
-
-    .chat-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.6rem;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 0.7rem 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .chat-header p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .chat-header button {
-      border: 0;
-      background: transparent;
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.9rem;
-      line-height: 1;
-      padding: 0.2rem;
-    }
-
-    .chat-messages {
-      max-height: 18rem;
-      overflow-y: auto;
-      padding: 0.85rem;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .chat-bubble {
-      max-width: 88%;
-      border-radius: 0.65rem;
-      padding: 0.55rem 0.65rem;
-      line-height: 1.35;
-      color: #ffffff;
-    }
-
-    .chat-bubble.bot {
-      justify-self: start;
-      background: rgba(255, 255, 255, 0.09);
-    }
-
-    .chat-bubble.user {
-      justify-self: end;
-      background: rgba(11, 125, 214, 0.88);
-    }
-
-    .chat-form {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 0.75rem;
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .chat-form input,
-    .chat-form textarea {
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 0.55rem;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      padding: 0.55rem 0.6rem;
-      font-size: 0.86rem;
-      resize: vertical;
-      min-height: 2.25rem;
-    }
-
-    .chat-form input::placeholder,
-    .chat-form textarea::placeholder {
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .chat-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.45rem;
-      align-items: stretch;
-    }
-
-    .chat-actions button {
-      border: 0;
-      border-radius: 0.55rem;
-      padding: 0.5rem 0.75rem;
-      cursor: pointer;
-      font-size: 0.83rem;
-      font-weight: 600;
-      width: 100%;
-    }
-
-    .chat-send {
-      background: #0b7dd6;
-      color: #fff;
-    }
-
-    .chat-connect {
-      background: #0e9f6e;
-      color: #fff;
-    }
-
-    .chat-disconnect {
-      background: rgba(255, 107, 107, 0.32);
-      color: #fff;
-    }
-
-    .chat-status {
-      margin: 0;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.75);
-      min-height: 1.05rem;
-    }
-
-    body.theme-light .chat-panel {
-      background: rgba(247, 251, 255, 0.96);
-      border-color: rgba(9, 35, 64, 0.17);
-      box-shadow: 0 14px 34px rgba(32, 66, 108, 0.24);
-    }
-
-    body.theme-light .chat-header {
-      border-bottom-color: rgba(9, 35, 64, 0.14);
-      background: rgba(9, 35, 64, 0.06);
-    }
-
-    body.theme-light .chat-header p,
-    body.theme-light .chat-header button,
-    body.theme-light .chat-bubble,
-    body.theme-light .chat-actions button,
-    body.theme-light .chat-status,
-    body.theme-light .chat-form input,
-    body.theme-light .chat-form textarea {
-      color: #10233c;
-    }
-
-    body.theme-light .chat-bubble.bot {
-      background: rgba(9, 35, 64, 0.09);
-    }
-
-    body.theme-light .chat-bubble.user {
-      color: #fff;
-    }
-
-    body.theme-light .chat-form input,
-    body.theme-light .chat-form textarea {
-      background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(9, 35, 64, 0.2);
-    }
-
-    body.theme-light .chat-disconnect {
-      background: rgba(176, 20, 20, 0.1);
-    }
-
-    @media screen and (max-width: 736px) {
-      .chat-widget {
-        right: 0.75rem;
-        left: 0.75rem;
-        width: auto;
-      }
-
-      .chat-actions {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-
-  
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://cv.theodorenelson.co.za/#website",
-          "url": "https://cv.theodorenelson.co.za/",
-          "name": "Theodore Nelson CV",
-          "description": "Portfolio, CV, and business profile website for Theodore Nelson, a South African Java developer and freelance web developer.",
-          "potentialAction": {
-            "@type": "ReadAction",
-            "target": "https://cv.theodorenelson.co.za/"
-          },
-          "publisher": {
-            "@id": "https://cv.theodorenelson.co.za/#person"
-          },
-          "inLanguage": "en-ZA"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://cv.theodorenelson.co.za/#webpage",
-          "url": "https://cv.theodorenelson.co.za/",
-          "name": "Theodore Nelson | Java Developer, Web Developer, and Freelance Software Builder",
-          "description": "South African Java developer building practical Spring Boot, React, Next.js, REST API, and MySQL solutions for employers, startups, and business clients.",
-          "isPartOf": {
-            "@id": "https://cv.theodorenelson.co.za/#website"
-          },
-          "breadcrumb": {
-            "@id": "https://cv.theodorenelson.co.za/#breadcrumb"
-          },
-          "about": {
-            "@id": "https://cv.theodorenelson.co.za/#person"
-          },
-          "primaryImageOfPage": {
-            "@type": "ImageObject",
-            "url": "https://cv.theodorenelson.co.za/images/og-preview.png?v=20260322c",
-            "width": 1200,
-            "height": 630
-          },
-          "inLanguage": "en-ZA"
-        },
-        {
-          "@type": "Person",
-          "@id": "https://cv.theodorenelson.co.za/#person",
-          "name": "Theodore Nelson",
-          "url": "https://cv.theodorenelson.co.za/",
-          "image": "https://cv.theodorenelson.co.za/images/pic05.jpg?v=20260218",
-          "jobTitle": "Java Developer and Freelance Web Developer",
-          "description": "South African Java developer and freelance web developer specializing in Spring Boot, React, Next.js, REST APIs, MySQL, and business web applications.",
-          "worksFor": {
-            "@id": "https://cv.theodorenelson.co.za/#organization"
-          },
-          "nationality": "South African",
-          "knowsAbout": [
-            "Java",
-            "Spring Boot",
-            "React",
-            "Next.js",
-            "REST APIs",
-            "MySQL",
-            "Full-stack web development"
-          ],
-          "sameAs": [
-            "https://www.linkedin.com/in/theodore-nelson-90b05144/",
-            "https://github.com/theo117",
-            "https://www.theodorenelson.co.za"
-          ],
-          "mainEntityOfPage": {
-            "@id": "https://cv.theodorenelson.co.za/#webpage"
-          }
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://cv.theodorenelson.co.za/#organization",
-          "name": "Teodor Web Solutions",
-          "url": "https://www.theodorenelson.co.za",
-          "founder": {
-            "@id": "https://cv.theodorenelson.co.za/#person"
-          },
-          "foundingDate": "2025-01-10",
-          "description": "Teodor Web Solutions is the web development business of Theodore Nelson, focused on business websites, internal tools, and custom software solutions.",
-          "sameAs": [
-            "https://www.theodorenelson.co.za"
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://cv.theodorenelson.co.za/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://cv.theodorenelson.co.za/"
-            }
-          ]
-        }
-      ]
-    }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theodore Nelson | Secure Java Developer Portfolio</title>
+  <meta name="description" content="OWASP-aligned portfolio for Theodore Nelson, a South African Java developer building secure Spring Boot, React, Next.js, REST API, and SQL solutions.">
+  <meta name="author" content="Theodore Nelson">
+  <meta name="robots" content="index,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; media-src 'self'; manifest-src 'self'; upgrade-insecure-requests">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0d1b2a">
+  <link rel="canonical" href="https://cv.theodorenelson.co.za/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Theodore Nelson | Secure Java Developer Portfolio">
+  <meta property="og:description" content="Java, Spring Boot, React, Next.js, REST APIs, SQL, and OWASP-aligned delivery.">
+  <meta property="og:url" content="https://cv.theodorenelson.co.za/">
+  <meta property="og:image" content="https://cv.theodorenelson.co.za/images/og-preview.png">
+  <meta property="og:image:alt" content="Theodore Nelson secure developer portfolio preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Theodore Nelson | Secure Java Developer Portfolio">
+  <meta name="twitter:description" content="OWASP-aligned portfolio for Theodore Nelson, a South African Java developer.">
+  <meta name="twitter:image" content="https://cv.theodorenelson.co.za/images/og-preview.png">
+  <link rel="stylesheet" href="assets/css/portfolio-secure.css">
 </head>
-<body class="is-preload">
-<a href="#main" class="skip-link">Skip to content</a>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<div class="site-topnav">
-  <nav class="site-topnav-inner" aria-label="Primary">
-    <a href="#intro">About</a>
-    <a href="#business">Business</a>
-    <a href="#work">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" aria-pressed="false">Light Mode</button>
-  </nav>
-</div>
-
-<!-- Wrapper -->
-<div id="wrapper">
-
-  <!-- Header / Hero -->
-  <header id="header">
-    <div class="logo">
-      <div class="logo-text">TN</div>
+  <header class="site-header" id="top">
+    <div class="shell nav-shell">
+      <a class="brand" href="#top" aria-label="Theodore Nelson home">
+        <span class="brand-mark">TN</span>
+        <span class="brand-copy">
+          <strong>Theodore Nelson</strong>
+          <span>Secure Software Portfolio</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#security">OWASP Build</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Light theme</button>
+      </nav>
     </div>
-    <div class="content">
-      <div class="inner">
-        <h1>Theodore Nelson</h1>
-        <p>South African Java developer and freelance web developer building production-ready web applications, internal tools, and business software.<br/>
-          Java &middot; Spring Boot &middot; React &middot; Next.js &middot; REST APIs &middot; MySQL</p>
-        <ul class="hero-highlights">
-          <li>8+ shipped portfolio projects</li>
-          <li>End-to-end ownership from schema to deployment</li>
-          <li>Open to career opportunities, freelance work, and business collaborations</li>
-        </ul>
-        <div class="hero-services" aria-label="Core services">
-          <span class="service-label">Core Services</span>
-          <ul>
-            <li>Business web app development</li>
-            <li>REST API design and integration</li>
-            <li>Database design and optimization</li>
-            <li>Deployment and production support</li>
-          </ul>
-        </div>
-        <ul class="actions hero-actions">
-          <li><a href="#projects" class="button primary">Explore Projects</a></li>
-          <li><a href="Theodore-Nelson-CV-FullStack.pdf?v=20260218" class="button" download>Download CV</a></li>
-          <li><a href="#contact" class="button">Discuss a Role or Project</a></li>
-        </ul>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#intro">About</a></li>
-        <li><a href="#business">Business</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#work">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Main -->
-  <main id="main">
-
-    <!-- About -->
-    <article id="intro">
-      <h2 class="major">About Theodore Nelson</h2>
-      <span class="image main">
-        <!-- Replace with your real profile image -->
-        <img src="images/pic05.jpg?v=20260218" alt="Profile photo of Theodore Nelson" width="240" height="240" loading="lazy" decoding="async" />
-      </span>
-
-      <p class="tagline">Theodore Nelson is a South African Java developer focused on delivering clean, reliable web applications for employers, startups, and small businesses.</p>
-
-      <p>
-        I build practical software that solves real business problems, with hands-on experience across Java, Spring Boot,
-        React, Next.js, REST APIs, and MySQL. This website serves as my career profile, developer portfolio, and business-facing web presence.
-      </p>
-
-      <p>
-        I&rsquo;m especially strong at taking a project from idea to production: clarifying requirements, designing data models,
-        implementing APIs, building responsive interfaces, and shipping usable software.
-      </p>
-
-      <p>
-        This page clearly shows my software development background, my project work,
-        and the kinds of business solutions I can build. It highlights my experience with full-stack Java development, backend API engineering,
-        responsive frontend implementation, database design, and production deployment.
-      </p>
-
-      <p>
-        If you are hiring a junior Java developer, junior Spring Boot developer, junior full-stack developer, or freelance web developer in South Africa,
-        this page summarizes my projects, technical stack, delivery approach, and current availability for roles, contract work, and business projects.
-      </p>
-
-      <div class="audience-split" aria-label="Who I work with">
-        <div class="audience-card">
-          <h3>For Employers</h3>
-          <p>Ready to contribute in a junior developer role with disciplined delivery, clean code, and strong ownership of assigned features and business requirements.</p>
-        </div>
-        <div class="audience-card">
-          <h3>For Clients</h3>
-          <p>Available for freelance builds where you need a dependable developer to scope, build, deploy, and support a business website, internal tool, or custom web solution.</p>
+  <main id="main-content">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Java Developer | Spring Boot | React | Secure Delivery</p>
+        <h1 id="hero-title">A CV portfolio rebuilt around OWASP principles and lower attack surface.</h1>
+        <p class="hero-text">
+          I am Theodore Nelson, a South African Java developer focused on building practical web applications,
+          internal tools, and business systems with disciplined engineering and security-conscious implementation.
+        </p>
+        <ul class="hero-points" aria-label="Highlights">
+          <li>Full-stack delivery across Java, Spring Boot, React, Next.js, REST APIs, and SQL.</li>
+          <li>Production-minded approach with validation, predictable releases, and maintainable structure.</li>
+          <li>Open to junior software roles, freelance builds, and business application work.</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button button-primary" href="Theodore-Nelson-CV-FullStack.pdf" download>Download CV</a>
+          <a class="button" href="#projects">View projects</a>
+          <a class="button" href="#contact">Contact details</a>
         </div>
       </div>
-
-      <div class="skills-pill-group">
-        <span class="skills-pill">Java &middot; Spring Boot</span>
-        <span class="skills-pill">React &middot; Next.js &middot; JavaScript</span>
-        <span class="skills-pill">REST APIs &middot; JPA &middot; JDBC</span>
-        <span class="skills-pill">MySQL &middot; SQL</span>
-        <span class="skills-pill">Git &middot; GitHub &middot; CI/CD</span>
-        <span class="skills-pill">HTML/CSS &middot; Responsive UI</span>
-        
-      </div>
-    </article>
-
-    <!-- Business -->
-    <article id="business">
-      <h2 class="major">Business And Founder Profile</h2>
-      <p class="section-lead">Theodore Nelson is the founder of Teodor Web Solutions, a South African web development business focused on practical software for companies, startups, and growing teams.</p>
-
-      <div class="edu-item">
-        <div class="edu-title">
-          Teodor Web Solutions
-          <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer" aria-label="Visit Teodor Web Solutions website">Visit business website</a>
+      <aside class="hero-panel" aria-label="Profile summary">
+        <img src="images/pic05.jpg" alt="Profile photo of Theodore Nelson" width="240" height="240" loading="eager" decoding="async">
+        <div class="stat-grid">
+          <article>
+            <span class="stat-value">8+</span>
+            <span class="stat-label">Shipped portfolio projects</span>
+          </article>
+          <article>
+            <span class="stat-value">2025</span>
+            <span class="stat-label">Teodor Web Solutions launched</span>
+          </article>
+          <article>
+            <span class="stat-value">NQF 6</span>
+            <span class="stat-label">System Development qualification</span>
+          </article>
         </div>
-        <div class="edu-meta">Founder and Web Developer &middot; Jan 10, 2025 - Present</div>
-        <p>I use Teodor Web Solutions as the business side of my work: a public company identity for freelance delivery, client communication, and showcasing the kinds of systems I can build.</p>
-        <ul>
-          <li>Business websites for companies that need a clearer digital presence and lead generation.</li>
-          <li>Internal tools and admin systems that replace manual spreadsheets and repetitive workflows.</li>
-          <li>Custom web applications with Java, Spring Boot, React, Next.js, REST APIs, and SQL databases.</li>
-          <li>Deployment support including hosting, domains, SSL setup, and production handover.</li>
+      </aside>
+    </section>
+
+    <section class="section shell" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Developer profile</h2>
+      </div>
+      <div class="two-column">
+        <div class="card prose">
+          <p>
+            I build software that solves real business problems, from API design and relational data models
+            to responsive user interfaces and deployment support.
+          </p>
+          <p>
+            My strongest fit is in junior Java developer, junior Spring Boot developer, junior full-stack developer,
+            and freelance web development roles where clean delivery and dependable ownership matter.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Core stack</h3>
+          <ul class="pill-list">
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>React</li>
+            <li>Next.js</li>
+            <li>REST APIs</li>
+            <li>MySQL</li>
+            <li>JPA and JDBC</li>
+            <li>HTML and CSS</li>
+            <li>Git and GitHub</li>
+            <li>Deployment support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="security" aria-labelledby="security-title">
+      <div class="section-heading">
+        <p class="eyebrow">OWASP Build</p>
+        <h2 id="security-title">How this portfolio was rebuilt with OWASP-aligned principles</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <h3>Attack surface reduced</h3>
+          <p>The exposed live chat flow, public third-party form key, and dynamic remote script loading were removed.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>Strict browser policy</h3>
+          <p>A restrictive Content Security Policy blocks external scripts, frames, object embeds, and form submission.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>Safer client code</h3>
+          <p>All interaction logic lives in a local script file and uses text-safe DOM patterns instead of HTML injection.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>Third-party risk reduced</h3>
+          <p>External font dependencies were removed so the page can render from local assets only.</p>
+        </article>
+      </div>
+      <div class="card checklist-card">
+        <h3>Applied principles</h3>
+        <ul class="checklist">
+          <li>Secure by default page behavior with no open form handlers or live messaging endpoints.</li>
+          <li>Minimized dependencies and client-side complexity.</li>
+          <li>Defense in depth through CSP, referrer policy, safe link attributes, and no inline script execution.</li>
+          <li>Fail-safe contact model using direct email and profile links instead of processing visitor input in-browser.</li>
         </ul>
       </div>
+    </section>
 
-      <div class="edu-item">
-        <div class="edu-title">Who I Help</div>
-        <p>I am best positioned for small businesses, founders, churches, community organizations, and teams that need dependable software without unnecessary complexity.</p>
-        <ul>
-          <li>Businesses that need a modern website tied to real business goals.</li>
-          <li>Teams that need custom workflows, dashboards, member systems, or inventory tooling.</li>
-          <li>Employers evaluating me for software roles who want proof that I can handle client-facing delivery and real production constraints.</li>
-        </ul>
+    <section class="section shell" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <p class="eyebrow">Projects</p>
+        <h2 id="projects-title">Selected software development work</h2>
       </div>
-
-      <div class="edu-item">
-        <div class="edu-title">Business Identity</div>
-        <p>This section connects three things clearly: my developer career, my project work, and my business presence. It makes that business identity explicit so visitors can understand how my CV and Teodor Web Solutions fit together.</p>
-        <ul>
-          <li>Theodore Nelson is a software developer with hands-on full-stack delivery experience.</li>
-          <li>Theodore Nelson is the founder of Teodor Web Solutions.</li>
-          <li>Theodore Nelson builds software and websites for business use, not only portfolio demos.</li>
-        </ul>
+      <div class="project-grid">
+        <article class="card project-card">
+          <h3>Church Management System</h3>
+          <p class="stack">Java | Spring | JPA | MySQL | Render</p>
+          <p>Centralized a church workflow for members, ministries, and attendance after spreadsheets slowed reporting and updates.</p>
+          <a href="https://church-management-system-2-jywe.onrender.com" target="_blank" rel="noopener noreferrer">View live project</a>
+        </article>
+        <article class="card project-card">
+          <h3>Desktop Point of Sale</h3>
+          <p class="stack">Java | Swing | JDBC | MySQL</p>
+          <p>Built an offline POS workflow with product management, cart handling, transaction history, and Windows installer packaging.</p>
+          <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi" target="_blank" rel="noopener noreferrer">Download installer</a>
+        </article>
+        <article class="card project-card">
+          <h3>TradeFlow SA</h3>
+          <p class="stack">Web App | Quotes | Invoices | Vercel</p>
+          <p>Created a dashboard workspace for customers, services, quotes, and invoices aimed at South African service businesses.</p>
+          <a href="https://trade-flow-sa.vercel.app/" target="_blank" rel="noopener noreferrer">View app</a>
+        </article>
+        <article class="card project-card">
+          <h3>Website Agent</h3>
+          <p class="stack">Web App | Site Auditing | AI Workflow | Render</p>
+          <p>Built a diagnostics-focused tool that inspects sites, flags issues, and suggests practical remediation steps.</p>
+          <a href="https://webagent-ka73.onrender.com" target="_blank" rel="noopener noreferrer">View app</a>
+        </article>
+        <article class="card project-card">
+          <h3>Banking App Demo</h3>
+          <p class="stack">Spring Boot | React | REST API | Render</p>
+          <p>Delivered a full-stack demo covering account access, transactions, and frontend-backend integration in production.</p>
+          <a href="https://northstar-demo-bank-free.onrender.com" target="_blank" rel="noopener noreferrer">View demo</a>
+        </article>
+        <article class="card project-card">
+          <h3>Inventory SaaS Platform</h3>
+          <p class="stack">Next.js | Supabase | PostgreSQL | Vercel</p>
+          <p>Built a multi-user inventory platform with authentication, client portals, and live data synchronization.</p>
+          <a href="https://inventory-saas-app-main-us8j.vercel.app" target="_blank" rel="noopener noreferrer">View platform</a>
+        </article>
       </div>
-    </article>
+    </section>
 
-    <!-- Projects -->
-<article id="projects">
-  <h2 class="major">Software Development Projects</h2>
-  <p class="section-lead">Selected Java, Spring Boot, React, Next.js, and mobile projects that demonstrate software architecture, business problem solving, and production readiness.</p>
+    <section class="section shell" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <p class="eyebrow">Experience</p>
+        <h2 id="experience-title">Business and delivery background</h2>
+      </div>
+      <div class="timeline">
+        <article class="card timeline-item">
+          <h3>Teodor Web Solutions | Web Developer / Owner</h3>
+          <p class="meta">January 10, 2025 to present</p>
+          <p>Lead end-to-end delivery for client projects, from discovery and data modeling through deployment and production support.</p>
+          <ul class="checklist">
+            <li>Architect and deliver web applications using Java, Spring Boot, React or Next.js, REST APIs, and SQL databases.</li>
+            <li>Define validation rules, API contracts, and maintainable delivery handover.</li>
+            <li>Support hosting, SSL, domain configuration, and live release setup.</li>
+          </ul>
+          <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer">Visit business website</a>
+        </article>
+        <article class="card timeline-item">
+          <h3>What I contribute to a team</h3>
+          <p class="meta">Junior software engineering focus</p>
+          <ul class="checklist">
+            <li>Backend delivery with Java, Spring Boot, validation, REST APIs, and relational data design.</li>
+            <li>Frontend implementation with React, Next.js, responsive layout, and user-focused flows.</li>
+            <li>Reliable feature ownership with deployment support and clear technical handover.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-  <div class="projects-grid">
+    <section class="section shell" id="education" aria-labelledby="education-title">
+      <div class="section-heading">
+        <p class="eyebrow">Education</p>
+        <h2 id="education-title">Qualifications and certifications</h2>
+      </div>
+      <div class="timeline">
+        <article class="card timeline-item">
+          <h3>System Development (NQF 6)</h3>
+          <p class="meta">Boston City Campus | January 2022 to December 2024</p>
+          <p>Focused on Java, databases, web services, software engineering, and SDLC foundations.</p>
+          <a href="system-development-nqf6.pdf" download>Download diploma</a>
+        </article>
+        <article class="card timeline-item">
+          <h3>System Support (NQF 5)</h3>
+          <p class="meta">Department of Higher Education and Training | January 2017 to December 2017</p>
+          <p>Covered desktop support, foundational networking, and infrastructure fundamentals.</p>
+          <a href="system-support-nqf5.pdf" download>Download diploma</a>
+        </article>
+        <article class="card timeline-item">
+          <h3>Microsoft Certified Technology Specialist</h3>
+          <p class="meta">Torque IT | January 2012 to December 2012</p>
+          <p>Training in Microsoft technologies, operating systems, and enterprise support environments.</p>
+          <a href="mcts-certificate.pdf" download>Download certificate</a>
+        </article>
+      </div>
+    </section>
 
-    <div class="project-card highlight-card">
-      <h3>Church Management System</h3>
-      <div class="stack">Java &middot; Spring &middot; JPA &middot; MySQL &middot; HTML/CSS &middot; Render</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Manual spreadsheets slowed updates and reporting.</li>
-        <li><strong>Solution:</strong> Delivered a centralized web platform for members, ministries, and attendance.</li>
-        <li><strong>Engineering:</strong> Designed the data model, implemented JPA persistence and validation, and deployed a live production release.</li>
-      </ul>
-
-      <a href="https://church-management-system-2-jywe.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="View live church management system project">View live church management system</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Desktop Point of Sale (POS)</h3>
-      <div class="stack">Java &middot; Swing &middot; JDBC &middot; MySQL &middot; Windows Installer</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Small retailers needed a reliable offline POS.</li>
-        <li><strong>Solution:</strong> Built a full offline POS workflow covering product management, cart handling, and transaction history.</li>
-        <li><strong>Engineering:</strong> Packaged and shipped a Windows installer with durable local persistence.</li>
-      </ul>
-
-      <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi" target="_blank" rel="noopener noreferrer" aria-label="Download desktop point of sale Windows installer">Download desktop POS installer</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>TradeFlow SA</h3>
-      <div class="stack">Web App &middot; Quotes &amp; Invoices &middot; Customer Management &middot; Vercel</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Small South African service businesses needed a simpler way to manage quotes, customers, and ongoing work.</li>
-        <li><strong>Solution:</strong> Built TradeFlow SA as a unified workspace for managing customers, services, quotes, and invoices in one web app.</li>
-        <li><strong>Engineering:</strong> Delivered the platform as a live Vercel deployment with account access and dashboard-driven workflows.</li>
-      </ul>
-
-      <a href="https://trade-flow-sa.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View live TradeFlow SA app">View live TradeFlow SA app</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Website Agent</h3>
-      <div class="stack">Web App &middot; Site Auditing &middot; AI Workflow &middot; Render</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Website owners needed a quicker way to detect site errors, health issues, and improvement opportunities.</li>
-        <li><strong>Solution:</strong> Built a website agent that inspects pages, flags issues, suggests fixes, and supports remediation workflows.</li>
-        <li><strong>Engineering:</strong> Delivered a live web app focused on practical diagnostics, site quality checks, and actionable recommendations.</li>
-      </ul>
-
-      <a href="https://webagent-ka73.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="View live website agent project">View live website agent</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Banking App Demo</h3>
-      <div class="stack">Spring Boot &middot; React &middot; REST API &middot; Render</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Needed a simple banking workflow demo for account access and day-to-day transaction flows.</li>
-        <li><strong>Solution:</strong> Built a full-stack banking application with a Spring Boot backend and React frontend.</li>
-        <li><strong>Engineering:</strong> Deployed the live demo to Render with frontend and backend working together in production.</li>
-      </ul>
-
-      <a href="https://northstar-demo-bank-free.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="View live banking app demo">View live banking app demo</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Document Checklist App</h3>
-      <div class="stack">Web App &middot; Document Workflow &middot; Checklist Management &middot; Production Deployment</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> South Africans often need a simple way to know which documents to have ready when applying for government services.</li>
-        <li><strong>Solution:</strong> Built a document checklist app that helps South Africans know what documents to have when applying for government services like ID, UIF, and SARS-related processes.</li>
-        <li><strong>Engineering:</strong> Delivered the application as a live web deployment with a practical workflow focused on visibility, consistency, and day-to-day usability.</li>
-      </ul>
-
-      <a href="https://wp8.theodorenelson.co.za" target="_blank" rel="noopener noreferrer" aria-label="View live document checklist app">View live document checklist app</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Gardening Task Tracker (Android)</h3>
-      <div class="stack">Android &middot; Java &middot; Mobile UX</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Field teams needed clear task scheduling.</li>
-        <li><strong>Solution:</strong> Designed a low-friction mobile UX for daily task scheduling and completion.</li>
-        <li><strong>Engineering:</strong> Released an installable APK with practical task tracking for field use.</li>
-      </ul>
-
-      <a href="https://github.com/theo117/piketberg-gardeners-app/releases/download/v1.0.0/app-piketberg-gardeners.apk" target="_blank" rel="noopener noreferrer" aria-label="Download gardening task tracker Android APK">Download gardening tracker APK</a>
-    </div>
-
-
-    <div class="project-card">
-      <h3>Inventory SaaS Platform</h3>
-      <div class="stack">Next.js &middot; Supabase &middot; PostgreSQL &middot; Tailwind &middot; Vercel</div>
-
-      <ul class="project-flow">
-        <li><strong>Problem:</strong> Small businesses needed multi-user inventory control.</li>
-        <li><strong>Solution:</strong> Built a multi-user inventory workflow with authentication, client portals, and live data sync.</li>
-        <li><strong>Engineering:</strong> Deployed a serverless SaaS stack on Vercel and Supabase.</li>
-      </ul>
-
-      <a href="https://inventory-saas-app-main-us8j.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="View live inventory SaaS platform">View live inventory SaaS platform</a>
-    </div>
-
-</article>
-
-    <!-- Experience -->
-    <article id="work">
-      <h2 class="major">Web Development Experience</h2>
-      <p class="section-lead">Hands-on full-stack development experience across product engineering, freelance client delivery, deployment, and support.</p>
-
-      <div class="edu-item">
-        <div class="edu-title">
-          Teodor Web Solutions &middot; Web Developer / Owner
-          <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer" aria-label="Visit Teodor Web Solutions website">Visit business website</a>
+    <section class="section shell" id="contact" aria-labelledby="contact-title">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Direct contact only</h2>
+      </div>
+      <div class="two-column">
+        <div class="card prose">
+          <p>
+            This portfolio intentionally avoids embedded contact forms and live chat so visitor data is not collected or processed by client-side widgets.
+          </p>
+          <p>
+            For job opportunities, freelance work, or technical discussions, contact me directly through the channels below.
+          </p>
         </div>
-        <div class="edu-meta">Jan 10, 2025 - Present</div>
-        <p>Lead end-to-end delivery for client web projects, from technical discovery through production support.</p>
-        <ul>
-          <li>Architect and deliver full-stack web applications using Java, Spring Boot, React/Next.js, REST APIs, and MySQL.</li>
-          <li>Design relational data models, implement validation layers, and define stable API contracts.</li>
-          <li>Deploy and operate production environments, including hosting, domain setup, and SSL configuration.</li>
-          <li>Ship iterative releases with predictable handovers and maintainable technical documentation.</li>
-        </ul>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-title">What I Can Contribute To A Team</div>
-        <p>I am best suited to junior software developer, junior Java developer, junior Spring Boot developer, and junior full-stack developer roles where disciplined implementation, API development, SQL work, and dependable feature delivery matter.</p>
-        <ul>
-          <li>Backend development with Java, Spring Boot, REST APIs, validation, and relational database design.</li>
-          <li>Frontend implementation with React, Next.js, HTML, CSS, and responsive UI delivery.</li>
-          <li>Production support including deployment, domain setup, environment configuration, and release handover.</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Education -->
-    <article id="education">
-      <h2 class="major">Education And Certifications</h2>
-      <p class="section-lead">Formal training in system development, software engineering, IT support, and Microsoft technologies.</p>
-
-      <div class="edu-item">
-        <div class="edu-title">
-          System Development (NQF 6)
-          <a href="system-development-nqf6.pdf" download aria-label="Download System Development NQF 6 diploma PDF">Download diploma</a>
+        <div class="card contact-card">
+          <a href="mailto:theodorelnelson@outlook.com">theodorelnelson@outlook.com</a>
+          <a href="https://github.com/theo117" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+          <a href="https://www.linkedin.com/in/theodore-nelson-90b05144/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+          <a href="https://www.theodorenelson.co.za" target="_blank" rel="noopener noreferrer">Teodor Web Solutions</a>
         </div>
-        <div class="edu-meta">Boston City Campus &middot; Jan 2022 - Dec 2024</div>
-        <p>Key focus: Java, databases, web services, software engineering, and SDLC.</p>
       </div>
-
-      <div class="edu-item">
-        <div class="edu-title">
-          System Support (NQF 5)
-          <a href="system-support-nqf5.pdf" download aria-label="Download System Support NQF 5 diploma PDF">Download diploma</a>
-        </div>
-        <div class="edu-meta">Dept. of Higher Education and Training &middot; Jan 2017 - Dec 2017</div>
-        <p>Core topics: desktop support, basic networking, and infrastructure.</p>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-title">
-          Microsoft Certified Technology Specialist (MCTS)
-          <a href="mcts-certificate.pdf" download aria-label="Download Microsoft Certified Technology Specialist certificate PDF">Download certificate</a>
-        </div>
-        <div class="edu-meta">Torque IT &middot; Jan 2012 - Dec 2012</div>
-        <p>Microsoft technologies, operating systems, and enterprise environments.</p>
-      </div>
-    </article>
-
-    <!-- Contact -->
-    <article id="contact">
-      <h2 class="major">Contact Theodore Nelson</h2>
-      <p>Hiring for a junior software developer role or need a freelance web development build? Let&rsquo;s discuss scope, timelines, and next steps.</p>
-      <p>If you are searching for a junior full-stack developer in South Africa, a junior Java developer, or a freelance web developer for a business website or internal system, contact me here.</p>
-      <div class="contact-quick-links">
-        <a href="mailto:theodorelnelson@outlook.com">theodorelnelson@outlook.com</a>
-        <a href="https://github.com/theo117" target="_blank" rel="noopener noreferrer">GitHub profile</a>
-        <a href="https://www.linkedin.com/in/theodore-nelson-90b05144/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
-      </div>
-
-      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Web3Forms Access Key -->
-        <input type="hidden" name="access_key" value="70124a7c-659a-460e-ab1f-0a1529f80ec8">
-        <input type="hidden" name="subject" value="New portfolio message from cv.theodorenelson.co.za">
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none;">
-
-        <div class="fields">
-          <div class="field half">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Your name" autocomplete="name" required>
-          </div>
-
-          <div class="field half">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Your email" autocomplete="email" inputmode="email" required>
-          </div>
-
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea name="message" id="message" rows="4" placeholder="Write your message here..." required></textarea>
-          </div>
-        </div>
-
-        <ul class="actions">
-          <li><input type="submit" value="Send Message" class="primary"></li>
-          <li><input type="reset" value="Reset"></li>
-        </ul>
-      </form>
-
-      <div class="qr-container" aria-label="Quick scan links">
-        <a href="https://github.com/theo117" target="_blank" rel="noopener noreferrer" class="qr-link">
-          <img src="images/QRgithub.png" class="qr-code" alt="QR code to Theodore Nelson's GitHub profile">
-          <span>GitHub QR</span>
-        </a>
-        <a href="https://www.linkedin.com/in/theodore-nelson-90b05144/" target="_blank" rel="noopener noreferrer" class="qr-link">
-          <img src="images/QRlinkedin.png" class="qr-code" alt="QR code to Theodore Nelson's LinkedIn profile">
-          <span>LinkedIn QR</span>
-        </a>
-      </div>
-    </article>
-
+    </section>
   </main>
 
-  <footer id="footer">
-    <p>Available for junior software roles, freelance web development, and business software projects</p>
+  <footer class="site-footer">
+    <div class="shell footer-shell">
+      <p>Available for junior software roles, freelance web development, and secure business application work.</p>
+      <a href="#top">Back to top</a>
+    </div>
   </footer>
 
-</div>
-<script>
-  (function () {
-    var host = window.location.hostname;
-    var isLocalHost = host === 'localhost' || host === '127.0.0.1';
-    var isLocalFile = window.location.protocol === 'file:';
-    var isProductionHost = host === 'cv.theodorenelson.co.za';
-    var localServerUrl = 'http://localhost:3001';
-    var deployedServerUrl = 'https://cv-6kiv.onrender.com';
-    var resolvedServerUrl = (isLocalHost || isLocalFile || !isProductionHost) ? localServerUrl : deployedServerUrl;
-
-    window.CHAT_SERVER_URL = resolvedServerUrl;
-  })();
-</script>
-
-
-<div class="chat-widget" id="chat-widget">
-  <button type="button" class="chat-toggle" id="chat-toggle" aria-expanded="false" aria-controls="chat-panel">Open Chat</button>
-  <section class="chat-panel" id="chat-panel" aria-label="Website chat assistant">
-    <div class="chat-header">
-      <p>Live chat (login required)</p>
-      <button type="button" id="chat-close" aria-label="Close chat">X</button>
-    </div>
-    <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
-    <form class="chat-form" id="chat-form">
-      <input type="text" id="chat-name" name="chat-name" placeholder="Your name" autocomplete="name" required>
-      <input type="email" id="chat-email" name="chat-email" placeholder="Your email" autocomplete="email" inputmode="email" required>
-      <input type="email" id="chat-peer-email" name="chat-peer-email" placeholder="Recipient email" autocomplete="off" inputmode="email" required>
-      <textarea id="chat-input" name="chat-input" rows="2" placeholder="Type your message..." required></textarea>
-      <div class="chat-actions">
-        <button type="submit" class="chat-send">Send</button>
-        <button type="button" class="chat-connect" id="chat-connect-btn">Connect Live</button>
-        <button type="button" class="chat-disconnect" id="chat-disconnect-btn">Disconnect</button>
-      </div>
-      <p class="chat-status" id="chat-status"></p>
-    </form>
-  </section>
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js?v=20260218"></script>
-<script src="assets/js/browser.min.js?v=20260218"></script>
-<script src="assets/js/breakpoints.min.js?v=20260218"></script>
-<script src="assets/js/util.js?v=20260218"></script>
-<script>
-  window.addEventListener('load', function () {
-    document.body.classList.remove('is-preload');
-    var themeToggle = document.getElementById('theme-toggle');
-
-    function setTheme(mode) {
-      var isLight = mode === 'light';
-      document.body.classList.toggle('theme-light', isLight);
-      if (themeToggle) {
-        themeToggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-        themeToggle.setAttribute('aria-pressed', String(isLight));
-      }
-    }
-
-    var savedTheme = localStorage.getItem('theme-mode');
-    if (savedTheme === 'light') {
-      setTheme('light');
-    }
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', function () {
-        var nextMode = document.body.classList.contains('theme-light') ? 'dark' : 'light';
-        setTheme(nextMode);
-        localStorage.setItem('theme-mode', nextMode);
-      });
-    }
-
-    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-topnav-inner a[href^="#"]'));
-    var sections = navLinks
-      .map(function (link) {
-        var id = link.getAttribute('href');
-        return document.querySelector(id);
-      })
-      .filter(Boolean);
-
-    function setActiveById(id) {
-      navLinks.forEach(function (link) {
-        link.classList.toggle('active', link.getAttribute('href') === ('#' + id));
-      });
-    }
-
-    if ('IntersectionObserver' in window && sections.length > 0) {
-      var observer = new IntersectionObserver(function (entries) {
-        var visible = entries
-          .filter(function (entry) { return entry.isIntersecting; })
-          .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
-
-        if (visible.length > 0) {
-          setActiveById(visible[0].target.id);
-        }
-      }, {
-        root: null,
-        rootMargin: '-25% 0px -55% 0px',
-        threshold: [0.15, 0.3, 0.5, 0.75]
-      });
-
-      sections.forEach(function (section) { observer.observe(section); });
-    }
-
-    function activateFromHash() {
-      var hash = window.location.hash ? window.location.hash.slice(1) : '';
-      if (hash) {
-        setActiveById(hash);
-      }
-    }
-
-    activateFromHash();
-    window.addEventListener('hashchange', activateFromHash);
-
-    var contactForm = document.getElementById('contact-form');
-    var chatWidget = document.getElementById('chat-widget');
-    var chatToggle = document.getElementById('chat-toggle');
-    var chatClose = document.getElementById('chat-close');
-    var chatMessages = document.getElementById('chat-messages');
-    var chatForm = document.getElementById('chat-form');
-    var chatInput = document.getElementById('chat-input');
-    var chatEmail = document.getElementById('chat-email');
-    var chatPeerEmail = document.getElementById('chat-peer-email');
-    var chatName = document.getElementById('chat-name');
-    var chatConnectBtn = document.getElementById('chat-connect-btn');
-    var chatDisconnectBtn = document.getElementById('chat-disconnect-btn');
-    var chatStatus = document.getElementById('chat-status');
-    var chatSocket = null;
-    var chatSession = null;
-    var chatConnected = false;
-    var activeConversationKey = '';
-    var chatServerUrl = window.CHAT_SERVER_URL || (
-      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:3001'
-        : ''
-    );
-
-    function appendChatMessage(role, text) {
-      if (!chatMessages) return;
-      var bubble = document.createElement('div');
-      bubble.className = 'chat-bubble ' + role;
-      bubble.textContent = text;
-      chatMessages.appendChild(bubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function setChatOpen(isOpen) {
-      if (!chatWidget || !chatToggle) return;
-      chatWidget.classList.toggle('open', isOpen);
-      chatToggle.setAttribute('aria-expanded', String(isOpen));
-      chatToggle.textContent = isOpen ? 'Hide Chat' : 'Open Chat';
-      if (isOpen && chatInput) {
-        chatInput.focus();
-      }
-    }
-
-    function validateEmail(value) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    }
-
-    function setChatStatus(text) {
-      if (chatStatus) {
-        chatStatus.textContent = text || '';
-      }
-    }
-
-    function setChatConnected(isConnected) {
-      chatConnected = isConnected;
-      if (chatConnectBtn) chatConnectBtn.disabled = isConnected;
-      if (chatDisconnectBtn) chatDisconnectBtn.disabled = !isConnected;
-    }
-
-    function loadSocketClient() {
-      return new Promise(function (resolve, reject) {
-        if (window.io) {
-          resolve();
-          return;
-        }
-
-        var script = document.createElement('script');
-        script.src = chatServerUrl.replace(/\/$/, '') + '/socket.io/socket.io.js';
-        script.onload = function () { resolve(); };
-        script.onerror = function () { reject(new Error('Could not load socket client')); };
-        document.head.appendChild(script);
-      });
-    }
-
-    function getSavedSession() {
-      try {
-        return JSON.parse(localStorage.getItem('portfolio-chat-session') || 'null');
-      } catch (_err) {
-        return null;
-      }
-    }
-
-    function saveSession(session) {
-      localStorage.setItem('portfolio-chat-session', JSON.stringify(session));
-    }
-
-    function getPeerEmail() {
-      return chatPeerEmail ? chatPeerEmail.value.trim().toLowerCase() : '';
-    }
-
-    function buildConversationKey(emailA, emailB) {
-      return [String(emailA || '').toLowerCase(), String(emailB || '').toLowerCase()].sort().join('::');
-    }
-
-    function renderConversationHistory(history) {
-      if (!chatMessages) return;
-      chatMessages.innerHTML = '';
-      (history || []).forEach(function (message) {
-        var role = message.fromEmail === (chatEmail ? chatEmail.value.trim().toLowerCase() : '') ? 'user' : 'bot';
-        appendChatMessage(role, message.senderName + ': ' + message.text);
-      });
-    }
-
-    function requestConversationHistory() {
-      var peerEmailValue = getPeerEmail();
-      if (!chatSocket || !chatConnected || !validateEmail(peerEmailValue)) {
-        return;
-      }
-
-      activeConversationKey = buildConversationKey(chatEmail.value.trim(), peerEmailValue);
-      chatSocket.emit('chat:history', { peerEmail: peerEmailValue });
-    }
-
-    function connectLiveChat() {
-      if (!chatEmail || !chatName || !chatPeerEmail) return;
-      var emailValue = chatEmail.value.trim();
-      var nameValue = chatName.value.trim();
-      var peerEmailValue = getPeerEmail();
-
-      if (!nameValue || !validateEmail(emailValue) || !validateEmail(peerEmailValue)) {
-        setChatStatus('Enter your name, your email, and a valid recipient email first.');
-        return;
-      }
-
-      if (emailValue.toLowerCase() === peerEmailValue) {
-        setChatStatus('Recipient email must be different from your email.');
-        return;
-      }
-
-      if (!chatServerUrl) {
-        setChatStatus('Live chat URL is not configured. Set window.CHAT_SERVER_URL to your deployed chat server URL.');
-        return;
-      }
-
-      setChatStatus('Connecting...');
-
-      loadSocketClient()
-        .then(function () {
-          if (chatSocket && chatSocket.connected) {
-            setChatStatus('Already connected.');
-            return;
-          }
-
-          chatSocket = window.io(chatServerUrl, { transports: ['websocket', 'polling'] });
-
-          chatSocket.on('connect', function () {
-            chatSocket.emit('auth:login', {
-              name: nameValue,
-              email: emailValue
-            });
-          });
-
-          chatSocket.on('auth:ok', function (payload) {
-            chatSession = payload && payload.user ? payload.user : null;
-            if (chatSession) {
-              saveSession(chatSession);
-            }
-            setChatConnected(true);
-            setChatStatus('Connected live. Messages will route to ' + peerEmailValue + '.');
-            requestConversationHistory();
-          });
-
-          chatSocket.on('auth:error', function (payload) {
-            setChatConnected(false);
-            setChatStatus((payload && payload.message) || 'Authentication failed.');
-          });
-
-          chatSocket.on('chat:message', function (message) {
-            if (!message) return;
-            if (message.conversationKey !== activeConversationKey) {
-              return;
-            }
-            var role = message.fromEmail === emailValue.toLowerCase() ? 'user' : 'bot';
-            appendChatMessage(role, message.senderName + ': ' + message.text);
-          });
-
-          chatSocket.on('chat:history', function (payload) {
-            if (!payload || payload.conversationKey !== activeConversationKey) {
-              return;
-            }
-            renderConversationHistory(payload.history || []);
-          });
-
-          chatSocket.on('chat:error', function (payload) {
-            setChatStatus((payload && payload.message) || 'Chat error.');
-          });
-
-          chatSocket.on('disconnect', function () {
-            setChatConnected(false);
-            setChatStatus('Disconnected from live chat.');
-          });
-        })
-        .catch(function () {
-          setChatStatus('Live server unavailable at ' + chatServerUrl + '. Please use the contact form.');
-        });
-    }
-
-    function disconnectLiveChat() {
-      if (chatSocket) {
-        chatSocket.disconnect();
-        chatSocket = null;
-      }
-      activeConversationKey = '';
-      setChatConnected(false);
-      setChatStatus('Disconnected.');
-    }
-
-    if (chatToggle) {
-      chatToggle.addEventListener('click', function () {
-        setChatOpen(!chatWidget.classList.contains('open'));
-      });
-    }
-
-    if (chatClose) {
-      chatClose.addEventListener('click', function () {
-        setChatOpen(false);
-      });
-    }
-
-    if (chatForm) {
-      chatForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (!chatInput || !chatInput.value.trim()) return;
-        var userMessage = chatInput.value.trim();
-        if (chatSocket && chatConnected) {
-          var peerEmailValue = getPeerEmail();
-          if (!validateEmail(peerEmailValue)) {
-            setChatStatus('Enter a valid recipient email.');
-            return;
-          }
-          chatSocket.emit('chat:send', { text: userMessage, targetEmail: peerEmailValue });
-        } else {
-          appendChatMessage('user', userMessage);
-          appendChatMessage('bot', 'Live chat is not connected. Click Connect Live, or use the contact form below.');
-        }
-        chatInput.value = '';
-      });
-    }
-
-    if (chatConnectBtn) {
-      chatConnectBtn.addEventListener('click', function () {
-        connectLiveChat();
-      });
-    }
-
-    if (chatDisconnectBtn) {
-      chatDisconnectBtn.addEventListener('click', function () {
-        disconnectLiveChat();
-      });
-    }
-
-    if (chatPeerEmail) {
-      chatPeerEmail.addEventListener('change', function () {
-        if (chatConnected) {
-          requestConversationHistory();
-          setChatStatus('Conversation switched to ' + getPeerEmail() + '.');
-        }
-      });
-    }
-
-    setChatConnected(false);
-    var savedSession = getSavedSession();
-    if (savedSession && chatName && chatEmail) {
-      chatName.value = savedSession.name || '';
-      chatEmail.value = savedSession.email || '';
-      chatSession = savedSession;
-    }
-
-    appendChatMessage('bot', 'Hi. Enter your name, your email, and the recipient email. Then connect and chat live.');
-  });
-</script>
-
+  <script src="assets/js/portfolio-secure.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
