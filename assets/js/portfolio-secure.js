@@ -2,6 +2,7 @@
   var navToggle = document.querySelector(".nav-toggle");
   var siteNav = document.getElementById("site-nav");
   var themeToggle = document.getElementById("theme-toggle");
+  var backToTopLink = document.getElementById("back-to-top-link");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".site-nav a[href^='#']"));
 
   function setTheme(mode) {
@@ -90,4 +91,20 @@
       setActiveLink(window.location.hash.slice(1));
     }
   });
+
+  if (backToTopLink) {
+    backToTopLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", "#top");
+      } else {
+        window.location.hash = "top";
+      }
+    });
+  }
 })();
