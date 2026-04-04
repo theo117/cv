@@ -20,12 +20,26 @@
     });
   }
 
+  function setNavOpen(isOpen) {
+    if (!navToggle || !siteNav) {
+      return;
+    }
+
+    siteNav.classList.toggle("open", isOpen);
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  }
+
   if (navToggle && siteNav) {
     navToggle.addEventListener("click", function () {
-      var isOpen = siteNav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
+      setNavOpen(!siteNav.classList.contains("open"));
     });
   }
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      setNavOpen(false);
+    });
+  });
 
   if (themeToggle) {
     var savedTheme = "";
