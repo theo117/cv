@@ -212,6 +212,20 @@ body.theme-light .site-header {
   align-content: start;
 }
 
+.summary-band {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.summary-band p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .hero-panel img {
   width: min(100%, 280px);
   border-radius: 20px;
@@ -256,7 +270,8 @@ h3 {
 
 .hero-points,
 .pill-list,
-.checklist {
+.checklist,
+.project-list {
   margin: 1rem 0 0;
   padding-left: 1.1rem;
 }
@@ -328,6 +343,10 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.skills-grid {
+  align-items: stretch;
+}
+
 .timeline {
   display: grid;
   gap: 1rem;
@@ -341,6 +360,32 @@ h3 {
 .project-card h3,
 .timeline-item h3 {
   margin-bottom: 0.45rem;
+}
+
+.info-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.info-list div {
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.info-list div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.info-list dt {
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.info-list dd {
+  margin: 0;
+  color: var(--muted);
 }
 
 .pill-list {

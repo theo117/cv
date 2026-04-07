@@ -1,0 +1,232 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [ 5 0 R 7 0 R ] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2864 >>
+stream
+BT
+/F2 20 Tf
+54 790 Td
+(Theodore Nelson) Tj
+ET
+BT
+/F1 10 Tf
+54 772 Td
+(South African Java Developer | Spring Boot | SQL | React) Tj
+0 -14 Td
+(Email: theodorelnelson@outlook.com | GitHub: github.com/theo117 | LinkedIn: linkedin.com/in/theodore-nelson-90b05144) Tj
+0 -14 Td
+(Portfolio: www.theodorenelson.co.za | Open to junior Java, backend, and full-stack opportunities) Tj
+ET
+BT
+/F2 13 Tf
+54 726 Td
+(Professional Profile) Tj
+ET
+BT
+/F1 10 Tf
+54 708 Td
+(Junior-ready software developer with hands-on experience building business applications across Java, Spring Boot,) Tj
+0 -14 Td
+(REST APIs, SQL, React, and deployment support. Strong fit for teams that need practical delivery, fast learning,) Tj
+0 -14 Td
+(and someone who understands how software supports real business workflows such as invoicing, inventory, reporting,) Tj
+0 -14 Td
+(account management, and internal operations.) Tj
+ET
+BT
+/F2 13 Tf
+54 646 Td
+(Core Skills) Tj
+ET
+BT
+/F1 10 Tf
+54 628 Td
+(Backend: Java, Spring Boot, REST API development, JPA, JDBC, validation, business logic) Tj
+0 -14 Td
+(Frontend: React, Next.js, HTML, CSS, responsive interfaces, dashboard workflows) Tj
+0 -14 Td
+(Databases and tools: MySQL, PostgreSQL, SQL schema design, Git, GitHub, documentation) Tj
+0 -14 Td
+(Delivery: client requirement gathering, deployment support, hosting setup, domain and SSL configuration) Tj
+ET
+BT
+/F2 13 Tf
+54 566 Td
+(Professional Experience) Tj
+ET
+BT
+/F2 11 Tf
+54 548 Td
+(Teodor Web Solutions | Web Developer / Owner | January 2022 to Present) Tj
+ET
+BT
+/F1 10 Tf
+54 530 Td
+(Lead project delivery from requirements gathering through build, launch, and post-release support for websites) Tj
+0 -14 Td
+(and business applications.) Tj
+0 -16 Td
+(- Develop applications using Java, Spring Boot, React, Next.js, REST APIs, and SQL databases.) Tj
+0 -14 Td
+(- Translate client needs into features, workflows, data structures, and usable interfaces.) Tj
+0 -14 Td
+(- Handle deployment support including hosting setup, SSL, domain configuration, and release readiness.) Tj
+0 -14 Td
+(- Built experience in communication, ownership, prioritisation, and business-facing delivery.) Tj
+ET
+BT
+/F2 13 Tf
+54 438 Td
+(Selected Projects) Tj
+ET
+BT
+/F2 11 Tf
+54 420 Td
+(Church Management System | Java, Spring, JPA, MySQL) Tj
+ET
+BT
+/F1 10 Tf
+54 404 Td
+(Built a live system for members, ministries, and attendance, replacing slower spreadsheet-based administration.) Tj
+0 -16 Td
+/F2 11 Tf
+(Desktop Point of Sale | Java, Swing, JDBC, MySQL) Tj
+0 -16 Td
+/F1 10 Tf
+(Created an offline POS application covering product management, cart handling, transaction history, and installer packaging.) Tj
+0 -16 Td
+/F2 11 Tf
+(TradeFlow SA | Quotations, invoicing, and workflow dashboard) Tj
+0 -16 Td
+/F1 10 Tf
+(Built a business-focused platform for South African service businesses needing client, quote, and invoice workflows.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2146 >>
+stream
+BT
+/F2 20 Tf
+54 790 Td
+(Theodore Nelson) Tj
+ET
+BT
+/F2 13 Tf
+54 756 Td
+(Additional Projects) Tj
+ET
+BT
+/F2 11 Tf
+54 738 Td
+(Website Agent | Diagnostics-focused web application) Tj
+ET
+BT
+/F1 10 Tf
+54 722 Td
+(Built a tool that inspects websites, identifies issues, and suggests practical remediation steps.) Tj
+0 -16 Td
+/F2 11 Tf
+(Banking App Demo | Spring Boot, React, REST API) Tj
+0 -16 Td
+/F1 10 Tf
+(Delivered a full-stack demo for account access, transactions, and live frontend-backend integration.) Tj
+0 -16 Td
+/F2 11 Tf
+(Inventory SaaS Platform | Next.js, Supabase, PostgreSQL) Tj
+0 -16 Td
+/F1 10 Tf
+(Built a multi-user inventory platform with authentication, client portals, and synchronised data handling.) Tj
+ET
+BT
+/F2 13 Tf
+54 628 Td
+(Education and Certifications) Tj
+ET
+BT
+/F2 11 Tf
+54 610 Td
+(System Development \(NQF 6\) | Boston City Campus | 2022 to 2024) Tj
+0 -16 Td
+/F1 10 Tf
+(Focused on Java, databases, web services, SDLC concepts, and application design.) Tj
+0 -16 Td
+/F2 11 Tf
+(System Support \(NQF 5\) | Department of Higher Education and Training | 2017) Tj
+0 -16 Td
+/F1 10 Tf
+(Built foundational knowledge in support, troubleshooting, infrastructure, and technical environments.) Tj
+0 -16 Td
+/F2 11 Tf
+(Microsoft Certified Technology Specialist | Torque IT | 2012) Tj
+0 -16 Td
+/F1 10 Tf
+(Strengthened systems knowledge and early professional IT capability.) Tj
+ET
+BT
+/F2 13 Tf
+54 494 Td
+(Why Recruiters Should Shortlist Me) Tj
+ET
+BT
+/F1 10 Tf
+54 476 Td
+(- I bring practical project delivery, not just academic exposure.) Tj
+0 -14 Td
+(- I can contribute across backend, frontend, database, and deployment tasks.) Tj
+0 -14 Td
+(- I understand business workflows and build software around real operational needs.) Tj
+0 -14 Td
+(- I am targeting junior roles where ownership, reliability, and growth potential matter.) Tj
+ET
+BT
+/F2 13 Tf
+54 402 Td
+(Key Links) Tj
+ET
+BT
+/F1 10 Tf
+54 384 Td
+(GitHub: https://github.com/theo117) Tj
+0 -14 Td
+(LinkedIn: https://www.linkedin.com/in/theodore-nelson-90b05144/) Tj
+0 -14 Td
+(Portfolio: https://cv.theodorenelson.co.za/) Tj
+0 -14 Td
+(Business site: https://www.theodorenelson.co.za/) Tj
+ET
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000123 00000 n 
+0000000193 00000 n 
+0000000268 00000 n 
+0000000404 00000 n 
+0000003319 00000 n 
+0000003455 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+5652
+%%EOF

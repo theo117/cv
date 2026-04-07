@@ -97,7 +97,7 @@
   if (window.location.hash) {
     setActiveLink(window.location.hash.slice(1));
   } else if (navLinks.length > 0) {
-    setActiveLink("about");
+    setActiveLink("profile");
   }
 
   window.addEventListener("hashchange", function () {
