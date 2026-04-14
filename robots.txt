@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cv.theodorenelson.co.za/sitemap.xml
+Sitemap: https://cv.teodordev.co.za/sitemap.xml
