@@ -641,6 +641,11 @@ h3 {
 }
 
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 640ms ease, transform 640ms ease;
@@ -650,7 +655,7 @@ h3 {
   transition-delay: 100ms;
 }
 
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }

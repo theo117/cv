@@ -1,4 +1,6 @@
 (function () {
+  document.documentElement.classList.add("js");
+
   var navToggle = document.querySelector(".nav-toggle");
   var siteNav = document.getElementById("site-nav");
   var themeToggle = document.getElementById("theme-toggle");
