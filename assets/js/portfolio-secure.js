@@ -1,12 +1,9 @@
 (function () {
-  document.documentElement.classList.add("js");
-
   var navToggle = document.querySelector(".nav-toggle");
   var siteNav = document.getElementById("site-nav");
   var themeToggle = document.getElementById("theme-toggle");
   var backToTopLink = document.getElementById("back-to-top-link");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".site-nav a[href^='#']"));
-  var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
 
   function setTheme(mode) {
@@ -137,25 +134,6 @@
       });
     }
 
-    if (reveals.length > 0) {
-      var revealObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        });
-      }, {
-        threshold: 0.15
-      });
-
-      reveals.forEach(function (node) {
-        revealObserver.observe(node);
-      });
-    }
-
     if (counters.length > 0) {
       var counterObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
@@ -175,10 +153,6 @@
       });
     }
   } else {
-    reveals.forEach(function (node) {
-      node.classList.add("visible");
-    });
-
     counters.forEach(function (node) {
       animateCounter(node);
     });

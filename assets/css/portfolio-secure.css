@@ -640,26 +640,6 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.js .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 640ms ease, transform 640ms ease;
-}
-
-.reveal-delay {
-  transition-delay: 100ms;
-}
-
-.js .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (max-width: 1040px) {
   .hero,
   .story-layout,
@@ -735,12 +715,6 @@ h3 {
   h1 {
     font-size: clamp(2.6rem, 11vw, 4rem);
   }
-
-  /* Keep long mobile sections visible even if IntersectionObserver reveal timing is unreliable. */
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -755,8 +729,4 @@ h3 {
     transition: none !important;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
