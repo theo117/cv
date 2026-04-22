@@ -730,6 +730,12 @@ h3 {
   h1 {
     font-size: clamp(2.6rem, 11vw, 4rem);
   }
+
+  /* Keep long mobile sections visible even if IntersectionObserver reveal timing is unreliable. */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
