@@ -66,22 +66,10 @@
     }
 
     .topbar {
-      display: grid;
-      grid-template-columns: 112px 1fr;
-      gap: 16px;
-      align-items: start;
+      display: block;
       margin-bottom: 14px;
       padding-bottom: 14px;
       border-bottom: 2px solid var(--ink);
-    }
-
-    .portrait {
-      width: 112px;
-      height: 132px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(21, 37, 54, 0.12);
-      box-shadow: 0 10px 28px rgba(19, 36, 52, 0.1);
     }
 
     .identity {
@@ -108,7 +96,7 @@
     .summary {
       margin: 10px 0 0;
       color: var(--muted);
-      max-width: 62ch;
+      max-width: 76ch;
     }
 
     .callout {
@@ -284,7 +272,6 @@
   <div class="sheet">
     <main class="main">
       <header class="topbar">
-        <img class="portrait" src="images/pic05.jpg" alt="Profile photo of Theodore Nelson">
         <div class="identity">
           <h1>Theodore Nelson</h1>
           <p class="role">South African Java Backend Developer | Business Systems | Workflow Software</p>
