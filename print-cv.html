@@ -6,21 +6,18 @@
   <title>Theodore Nelson CV Print | Teodor Dev Tech</title>
   <style>
     :root {
-      --ink: #152536;
-      --muted: #58697b;
-      --soft: #eef3f6;
-      --rule: #d5dde4;
-      --accent: #0b6d60;
-      --accent-soft: #e5f3ef;
+      --ink: #202020;
+      --muted: #60676d;
+      --accent: #6f98a6;
+      --accent-dark: #5d8795;
+      --contact: #edf5f8;
       --paper: #ffffff;
-      --sidebar: #f7fafb;
-      --heading: "Georgia", "Times New Roman", serif;
       --body: "Segoe UI", Arial, sans-serif;
     }
 
     @page {
       size: A4;
-      margin: 11mm;
+      margin: 0;
     }
 
     * {
@@ -29,11 +26,11 @@
 
     body {
       margin: 0;
-      background: var(--paper);
+      background: #f2f2f2;
       color: var(--ink);
       font-family: var(--body);
-      font-size: 10.2pt;
-      line-height: 1.36;
+      font-size: 9.7pt;
+      line-height: 1.34;
     }
 
     a,
@@ -45,416 +42,273 @@
     }
 
     .sheet {
-      display: grid;
-      grid-template-columns: 2fr 0.98fr;
-      min-height: calc(297mm - 22mm);
-      border: 1px solid var(--rule);
-      overflow: hidden;
+      width: 209mm;
+      min-height: 296mm;
+      margin: 0 auto;
       background: var(--paper);
+      overflow: hidden;
     }
 
-    .main {
-      padding: 18px 20px 16px 22px;
-    }
-
-    .sidebar {
-      padding: 18px 16px 16px;
-      background:
-        linear-gradient(180deg, rgba(11, 109, 96, 0.08), transparent 20%),
-        var(--sidebar);
-      border-left: 1px solid var(--rule);
-    }
-
-    .topbar {
-      display: block;
-      margin-bottom: 14px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid var(--ink);
-    }
-
-    .identity {
-      min-width: 0;
+    .intro {
+      padding: 12mm 11mm 4.5mm;
     }
 
     h1 {
-      margin: 0 0 4px;
-      font-family: var(--heading);
-      font-size: 27pt;
-      line-height: 1;
-      letter-spacing: 0.01em;
-    }
-
-    .role {
-      margin: 0;
-      color: var(--accent);
-      font-size: 11pt;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      margin: 0 0 3.5mm;
+      font-size: 21pt;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0;
     }
 
     .summary {
-      margin: 10px 0 0;
-      color: var(--muted);
-      max-width: 76ch;
+      max-width: 180mm;
+      margin: 0;
+      font-size: 9.8pt;
+      line-height: 1.36;
     }
 
-    .callout {
-      margin-top: 10px;
-      display: inline-block;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 9.4pt;
+    .contact-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 18mm;
+      row-gap: 2.4mm;
+      padding: 3mm 11mm 3.3mm;
+      background: var(--contact);
+      font-size: 9.8pt;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      min-width: 0;
+    }
+
+    .contact-item.wide {
+      grid-column: span 1;
+    }
+
+    .icon {
+      width: 4.2mm;
+      min-width: 4.2mm;
+      color: var(--accent-dark);
+      font-size: 10pt;
       font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .main {
+      padding: 5mm 11mm 8mm;
     }
 
     .section {
-      margin-top: 14px;
+      margin-top: 5.2mm;
       break-inside: avoid;
     }
 
+    .section:first-child {
+      margin-top: 0;
+    }
+
     .section-title {
-      margin: 0 0 8px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid var(--rule);
-      font-size: 10.5pt;
-      letter-spacing: 0.11em;
+      margin: 0 0 3.4mm;
+      color: var(--accent-dark);
+      font-size: 14pt;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.1;
       text-transform: uppercase;
-      color: var(--ink);
     }
 
     .entry {
-      margin-bottom: 11px;
+      margin-bottom: 4.8mm;
+      break-inside: avoid;
     }
 
     .entry:last-child {
       margin-bottom: 0;
     }
 
-    .entry-head {
+    .entry-title {
+      margin: 0 0 0.6mm;
+      font-size: 10pt;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .entry-org {
+      margin: 0;
+      font-size: 9.8pt;
+      line-height: 1.25;
+    }
+
+    .entry-line {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .entry-title {
-      margin: 0;
-      font-size: 10.5pt;
-      font-weight: 700;
-    }
-
-    .entry-date {
+      gap: 10mm;
+      margin: 1mm 0 0;
       color: var(--muted);
-      font-size: 9pt;
+      font-style: italic;
+    }
+
+    .entry-place {
       white-space: nowrap;
     }
 
-    .entry-meta {
-      margin: 0 0 6px;
-      color: var(--muted);
-      font-size: 9.2pt;
-    }
-
-    p {
-      margin: 0 0 7px;
+    .entry-date {
+      margin-left: auto;
+      white-space: nowrap;
     }
 
     ul {
-      margin: 5px 0 0 15px;
+      margin: 2mm 0 0 5mm;
       padding: 0;
     }
 
     li {
-      margin-bottom: 4px;
+      margin-bottom: 1mm;
+      padding-left: 0.8mm;
     }
 
-    .project-grid {
+    li::marker {
+      color: var(--accent-dark);
+      font-size: 0.8em;
+    }
+
+    .skills-grid {
       display: grid;
-      gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 22mm;
+      row-gap: 2mm;
+      margin-top: 2mm;
+      font-size: 9.8pt;
     }
 
-    .project-card {
-      padding: 9px 10px;
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      background: var(--paper);
+    .skill {
+      white-space: nowrap;
     }
 
-    .project-card .entry-meta {
-      margin-bottom: 4px;
-    }
+    @media print {
+      body {
+        background: var(--paper);
+      }
 
-    .contact-card,
-    .side-card {
-      margin-bottom: 11px;
-      padding: 11px 12px;
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.78);
-      break-inside: avoid;
-    }
-
-    .side-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .contact-card a,
-    .contact-card span,
-    .link-list a {
-      display: block;
-      color: var(--ink);
-      text-decoration: none;
-      margin-bottom: 6px;
-      word-break: break-word;
-    }
-
-    .contact-card a:last-child,
-    .link-list a:last-child {
-      margin-bottom: 0;
-    }
-
-    .side-heading {
-      margin: 0 0 8px;
-      font-size: 9.7pt;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-    }
-
-    .skill-stack {
-      display: grid;
-      gap: 7px;
-    }
-
-    .skill-chip {
-      padding: 8px 9px;
-      border-radius: 10px;
-      background: var(--soft);
-      border: 1px solid #dde6eb;
-    }
-
-    .skill-chip strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 9.4pt;
-      color: var(--ink);
-    }
-
-    .skill-chip span {
-      color: var(--muted);
-      font-size: 9pt;
-    }
-
-    .highlight-list {
-      margin-left: 14px;
-    }
-
-    .compact-list {
-      margin-left: 14px;
-    }
-
-    .compact-list li,
-    .highlight-list li {
-      margin-bottom: 5px;
-    }
-
-    .mini {
-      color: var(--muted);
-      font-size: 9pt;
+      .sheet {
+        width: auto;
+        min-height: 296mm;
+        margin: 0;
+        zoom: 0.9;
+      }
     }
   </style>
 </head>
 <body>
   <div class="sheet">
-    <main class="main">
-      <header class="topbar">
-        <div class="identity">
-          <h1>Theodore Nelson</h1>
-          <p class="role">South African Java Backend Developer | Business Systems | Workflow Software</p>
-          <p class="summary">
-            I build Java and Spring Boot applications for business systems, internal tools, and workflow-heavy software.
-            Strong fit for teams that need someone who can contribute to backend logic, SQL-backed processes, auth, and
-            practical delivery around real operational workflows instead of tutorial-style examples.
-          </p>
-          <p class="callout">Target roles: Junior Java Developer, Junior Backend Developer, Workflow-Focused Full-Stack Developer</p>
-        </div>
-      </header>
+    <header class="intro">
+      <h1>Theodore Nelson</h1>
+      <p class="summary">
+        Detail-oriented Software Developer with over 2 years of experience leading project delivery from requirements to
+        launch. Proficient in Java, Spring Boot, React, Next.js, and SQL, with expertise in translating client needs into
+        functional features, data structures, and user interfaces. Proven ability to build and deploy systems supporting
+        business operations, demonstrating strong ownership, troubleshooting, and business-facing communication skills.
+        Eager to leverage comprehensive development lifecycle experience to contribute to your team's success.
+      </p>
+    </header>
 
+    <section class="contact-strip" aria-label="Contact details">
+      <a class="contact-item" href="mailto:theodorelnelson@outlook.com"><span class="icon">@</span><span>theodorelnelson@outlook.com</span></a>
+      <span class="contact-item"><span class="icon">P</span><span>Pretoria</span></span>
+      <a class="contact-item" href="tel:+27606360886"><span class="icon">T</span><span>0606360886</span></a>
+      <span class="contact-item" aria-hidden="true"></span>
+      <a class="contact-item" href="https://www.linkedin.com/in/theodore-nelson-90b05144/"><span class="icon">in</span><span>https://www.linkedin.com/in/theodore-nelson-90b05144/</span></a>
+      <span class="contact-item" aria-hidden="true"></span>
+      <a class="contact-item" href="https://github.com/theo117"><span class="icon">GH</span><span>https://github.com/theo117</span></a>
+      <a class="contact-item" href="https://cv.teodordev.co.za/"><span class="icon">W</span><span>https://cv.teodordev.co.za/</span></a>
+    </section>
+
+    <main class="main">
       <section class="section">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title">Work Experience</h2>
         <article class="entry">
-          <div class="entry-head">
-            <h3 class="entry-title">Teodor Dev Tech | Software Developer</h3>
-            <span class="entry-date">Jan 2022 - Present</span>
-          </div>
-          <p class="entry-meta">Project delivery across business systems, internal tools, and workflow-focused software</p>
+          <h3 class="entry-title">Software Developer</h3>
+          <p class="entry-org">Teodor Dev Tech</p>
+          <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">01/2022 - Present</span></p>
           <ul>
-            <li>Lead delivery from requirements gathering through launch and support across Java, Spring Boot, React, Next.js, SQL, and hosting workflows.</li>
-            <li>Translate client needs into features, data structures, auth flows, reporting requirements, and usable interfaces.</li>
-            <li>Build and deploy systems that support admin work, record keeping, quoting, task tracking, and business operations.</li>
-            <li>Built strong ownership, prioritisation, troubleshooting, and business-facing communication that transfers well into a junior engineering team.</li>
+            <li>Managed project delivery encompassing business systems, internal tools, and workflow-specific software.</li>
+            <li>Orchestrated end-to-end delivery from requirements gathering through launch and ongoing support, utilizing Java, Spring Boot, React, Next.js, SQL, and various hosting workflows.</li>
+            <li>Translated client requirements into functional features, robust data structures, secure authentication flows, insightful reporting capabilities, and intuitive user interfaces.</li>
+            <li>Engineered and deployed systems that facilitate administrative tasks, meticulous record-keeping, accurate quoting processes, efficient task tracking, and overall business operations.</li>
+            <li>Cultivated strong ownership, prioritization skills, troubleshooting acumen, and effective business-facing communication, which are transferable to mentoring a junior engineering team.</li>
           </ul>
         </article>
       </section>
 
       <section class="section">
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">Church Management System</h3>
-              <span class="entry-date">Live app</span>
-            </div>
-            <p class="entry-meta">Java | Spring | JPA | MySQL</p>
-            <ul class="compact-list">
-              <li>Built a live system for members, ministries, and attendance, replacing slow spreadsheet-based administration.</li>
-              <li>Designed backend workflows and relational data structures for recurring operational tasks and reporting.</li>
-            </ul>
-          </article>
+        <h2 class="section-title">Education</h2>
+        <article class="entry">
+          <h3 class="entry-title">System Development</h3>
+          <p class="entry-org">Boston City Campus</p>
+          <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">2022 - 2024</span></p>
+          <ul>
+            <li>(NQF 6) Focused on Java, databases, web services, Software Development Life Cycle (SDLC) concepts, and application design principles.</li>
+          </ul>
+        </article>
 
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">TradeFlow SA</h3>
-              <span class="entry-date">Business workflow</span>
-            </div>
-            <p class="entry-meta">Next.js</p>
-            <ul class="compact-list">
-              <li>Built a platform for South African service businesses needing quoting, invoicing, and client management in one workflow.</li>
-              <li>Shows ability to design software around real back-office pain points instead of generic portfolio features.</li>
-            </ul>
-          </article>
+        <article class="entry">
+          <h3 class="entry-title">System Support</h3>
+          <p class="entry-org">Department of Higher Education and Training</p>
+          <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">01/2017 - 12/2017</span></p>
+          <ul>
+            <li>(NQF 5)</li>
+          </ul>
+        </article>
 
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">Inventory SaaS Platform</h3>
-              <span class="entry-date">Multi-user app</span>
-            </div>
-            <p class="entry-meta">Next.js | Supabase | PostgreSQL</p>
-            <ul class="compact-list">
-              <li>Built a multi-user inventory platform with authentication, role-based access, client portals, and synchronized business data.</li>
-              <li>Demonstrates user roles, shared operational data, and realistic workflow software beyond simple CRUD demos.</li>
-            </ul>
-          </article>
+        <article class="entry">
+          <h3 class="entry-title">MCTS</h3>
+          <p class="entry-org">Torque IT</p>
+          <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">01/2012 - 12/2012</span></p>
+        </article>
+      </section>
 
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">Banking App Demo</h3>
-              <span class="entry-date">Full stack</span>
-            </div>
-            <p class="entry-meta">Spring Boot | React</p>
-            <ul class="compact-list">
-              <li>Built and deployed a hosted banking demo showing account management and transaction flows across a Spring Boot and React stack.</li>
-              <li>Demonstrates coordination between backend business logic and a browser-based workflow interface.</li>
-            </ul>
-          </article>
-
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">Desktop Point of Sale</h3>
-              <span class="entry-date">Desktop app</span>
-            </div>
-            <p class="entry-meta">Java | Swing | JDBC | MySQL</p>
-            <ul class="compact-list">
-              <li>Created an offline POS application covering product management, cart handling, transaction history, and installer packaging.</li>
-              <li>Delivered desktop UI, persistence, and transaction processing in one end-to-end operational tool.</li>
-            </ul>
-          </article>
-
-          <article class="project-card">
-            <div class="entry-head">
-              <h3 class="entry-title">User Registration Web App</h3>
-              <span class="entry-date">Web app</span>
-            </div>
-            <p class="entry-meta">CRUD | Forms | User management</p>
-            <ul class="compact-list">
-              <li>Built a registration-focused web app demonstrating reliable form handling, account capture, and record management.</li>
-              <li>Shows clean browser-based workflow design for user administration and ongoing CRUD operations.</li>
-            </ul>
-          </article>
+      <section class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <span class="skill">Java</span>
+          <span class="skill">Spring Boot</span>
+          <span class="skill">REST APIs</span>
+          <span class="skill">JPA</span>
+          <span class="skill">JDBC</span>
+          <span class="skill">validation</span>
+          <span class="skill">business logic</span>
+          <span class="skill">auth flows</span>
+          <span class="skill">React</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">responsive interfaces</span>
+          <span class="skill">forms</span>
+          <span class="skill">dashboards</span>
+          <span class="skill">admin workflows</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">SQL</span>
+          <span class="skill">schema design</span>
+          <span class="skill">relational modelling</span>
+          <span class="skill">user roles</span>
+          <span class="skill">CRUD flows</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">deployment support</span>
+          <span class="skill">hosting</span>
+          <span class="skill">SSL</span>
+          <span class="skill">requirement gathering</span>
+          <span class="skill">release readiness</span>
         </div>
       </section>
     </main>
-
-    <aside class="sidebar">
-      <section class="contact-card">
-        <h2 class="side-heading">Contact</h2>
-        <a href="https://calendly.com/theodorelnelson/30min">Schedule a Call</a>
-        <a href="mailto:theodorelnelson@outlook.com">theodorelnelson@outlook.com</a>
-        <a href="https://cv.teodordev.co.za/">Teodor Dev Tech | cv.teodordev.co.za</a>
-        <a href="https://github.com/theo117">github.com/theo117</a>
-        <a href="https://www.linkedin.com/in/theodore-nelson-90b05144/">linkedin.com/in/theodore-nelson-90b05144</a>
-        <span class="mini">Open to junior Java, backend, and workflow-focused full-stack roles</span>
-      </section>
-
-      <section class="side-card">
-        <h2 class="side-heading">Core Skills</h2>
-        <div class="skill-stack">
-          <div class="skill-chip">
-            <strong>Backend</strong>
-            <span>Java, Spring Boot, REST APIs, JPA, JDBC, validation, business logic, auth flows</span>
-          </div>
-          <div class="skill-chip">
-            <strong>Workflow interfaces</strong>
-            <span>React, Next.js, HTML, CSS, responsive interfaces, forms, dashboards, admin workflows</span>
-          </div>
-          <div class="skill-chip">
-            <strong>Data</strong>
-            <span>MySQL, PostgreSQL, SQL schema design, relational modelling, user roles, CRUD flows</span>
-          </div>
-          <div class="skill-chip">
-            <strong>Delivery</strong>
-            <span>Git, GitHub, deployment support, hosting, SSL, requirement gathering, release readiness</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="side-card">
-        <h2 class="side-heading">Education</h2>
-        <article class="entry">
-          <div class="entry-head">
-            <h3 class="entry-title">System Development (NQF 6)</h3>
-            <span class="entry-date">2022 - 2024</span>
-          </div>
-          <p class="entry-meta">Boston City Campus</p>
-          <p class="mini">Studied Java, databases, web services, SDLC concepts, and application design.</p>
-        </article>
-        <article class="entry">
-          <div class="entry-head">
-            <h3 class="entry-title">System Support (NQF 5)</h3>
-            <span class="entry-date">2017</span>
-          </div>
-          <p class="entry-meta">Department of Higher Education and Training</p>
-        </article>
-        <article class="entry">
-          <div class="entry-head">
-            <h3 class="entry-title">MCTS</h3>
-            <span class="entry-date">2012</span>
-          </div>
-          <p class="entry-meta">Torque IT</p>
-        </article>
-      </section>
-
-      <section class="side-card">
-        <h2 class="side-heading">Why Shortlist Me</h2>
-        <ul class="highlight-list">
-          <li>Proven project delivery experience, not only coursework.</li>
-          <li>Comfortable across backend, frontend, database, authentication, and deployment tasks.</li>
-          <li>Understands business workflows and builds around operational needs.</li>
-          <li>Already focused on business systems and internal tools teams actually use.</li>
-          <li>Brings ownership, reliability, and strong growth potential.</li>
-        </ul>
-      </section>
-
-      <section class="side-card link-list">
-        <h2 class="side-heading">Links</h2>
-        <a href="https://cv.teodordev.co.za/">Teodor Dev Tech Portfolio: cv.teodordev.co.za</a>
-        <a href="https://calendly.com/theodorelnelson/30min">Call booking: calendly.com/theodorelnelson/30min</a>
-      </section>
-    </aside>
   </div>
 </body>
 </html>
