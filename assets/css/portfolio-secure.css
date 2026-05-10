@@ -412,6 +412,8 @@ h3 {
 
 .section {
   padding: 1.4rem 0 0.7rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 38rem;
 }
 
 .section-intro {
