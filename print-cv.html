@@ -191,6 +191,64 @@
       white-space: nowrap;
     }
 
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3mm 5mm;
+      margin-top: 2mm;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 18mm 1fr;
+      gap: 3mm;
+      min-height: 20mm;
+      break-inside: avoid;
+    }
+
+    .project-image {
+      width: 18mm;
+      height: 18mm;
+      border: 0.35mm solid var(--accent);
+      background: var(--contact);
+      overflow: hidden;
+    }
+
+    .project-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-name {
+      margin: 0 0 0.6mm;
+      font-size: 9.8pt;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .project-meta {
+      margin: 0 0 0.8mm;
+      color: var(--muted);
+      font-size: 8.7pt;
+      line-height: 1.2;
+    }
+
+    .project-copy {
+      margin: 0;
+      font-size: 8.9pt;
+      line-height: 1.25;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 1mm;
+      color: var(--accent-dark);
+      font-size: 8.7pt;
+      font-weight: 700;
+    }
+
     @media print {
       body {
         background: var(--paper);
@@ -252,25 +310,64 @@
           <h3 class="entry-title">System Development</h3>
           <p class="entry-org">Boston City Campus</p>
           <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">2022 - 2024</span></p>
-          <ul>
-            <li>(NQF 6) Focused on Java, databases, web services, Software Development Life Cycle (SDLC) concepts, and application design principles.</li>
-          </ul>
         </article>
 
         <article class="entry">
           <h3 class="entry-title">System Support</h3>
           <p class="entry-org">Department of Higher Education and Training</p>
           <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">01/2017 - 12/2017</span></p>
-          <ul>
-            <li>(NQF 5)</li>
-          </ul>
         </article>
 
         <article class="entry">
-          <h3 class="entry-title">MCTS</h3>
+          <h3 class="entry-title">Microsoft Certified IT Professional</h3>
           <p class="entry-org">Torque IT</p>
           <p class="entry-line"><span class="entry-place">Pretoria</span><span class="entry-date">01/2012 - 12/2012</span></p>
         </article>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <a class="project-image" href="https://integration-tfga.onrender.com/login" aria-label="Open Business Operations Hub"><img src="im1.png" alt="Business Operations Hub app screenshot"></a>
+            <div>
+              <h3 class="project-name">Business Operations Hub</h3>
+              <p class="project-meta">Spring Boot | PostgreSQL | Render</p>
+              <p class="project-copy">Operational dashboard with role-based auth, lead capture, CSV import, invoice tracking, and admin reporting.</p>
+              <a class="project-link" href="https://integration-tfga.onrender.com/login">View live demo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-image" href="https://church-management-system-2-jywe.onrender.com" aria-label="Open Church Management System"><img src="img1.png" alt="Church Management System app screenshot"></a>
+            <div>
+              <h3 class="project-name">Church Management System</h3>
+              <p class="project-meta">Java | Spring | JPA | MySQL</p>
+              <p class="project-copy">Centralized member records, ministries, attendance, and reporting to replace spreadsheet-heavy administration.</p>
+              <a class="project-link" href="https://church-management-system-2-jywe.onrender.com">View live project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-image" href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi" aria-label="Download Desktop Point of Sale installer"><img src="img3.png" alt="Desktop Point of Sale app screenshot"></a>
+            <div>
+              <h3 class="project-name">Desktop Point of Sale</h3>
+              <p class="project-meta">Java | Swing | JDBC</p>
+              <p class="project-copy">Offline POS application covering product management, cart handling, transactions, and packaged desktop delivery.</p>
+              <a class="project-link" href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi">Download installer</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-image" href="https://clinical-reasoning-assistant-blond.vercel.app" aria-label="Open Clinical Reasoning Assistant"><img src="img4.png" alt="Clinical Reasoning Assistant app screenshot"></a>
+            <div>
+              <h3 class="project-name">Clinical Reasoning Assistant</h3>
+              <p class="project-meta">Next.js | Healthcare workflow</p>
+              <p class="project-copy">Clinical reasoning support app for structured consultation notes, differential thinking, and clearer next-step checks.</p>
+              <a class="project-link" href="https://clinical-reasoning-assistant-blond.vercel.app">View app</a>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="section">
