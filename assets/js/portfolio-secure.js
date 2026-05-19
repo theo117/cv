@@ -18,7 +18,15 @@
 
   function setActiveLink(id) {
     navLinks.forEach(function (link) {
-      link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+      var isActive = link.getAttribute("href") === "#" + id;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 
@@ -70,6 +78,13 @@
   if (navToggle && siteNav) {
     navToggle.addEventListener("click", function () {
       setNavOpen(!siteNav.classList.contains("open"));
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && siteNav.classList.contains("open")) {
+        setNavOpen(false);
+        navToggle.focus();
+      }
     });
   }
 

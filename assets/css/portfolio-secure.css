@@ -12,9 +12,9 @@
   --accent-2: #7dd1c7;
   --accent-3: #d97f6b;
   --shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 18px;
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 12px;
   --shell: min(1180px, calc(100vw - 2rem));
   --heading-font: "Baskerville Old Face", "Book Antiqua", Garamond, serif;
   --body-font: "Trebuchet MS", "Lucida Sans Unicode", "Segoe UI", sans-serif;
@@ -53,9 +53,9 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 12% 10%, rgba(244, 201, 116, 0.15), transparent 22%),
-    radial-gradient(circle at 82% 16%, rgba(125, 209, 199, 0.13), transparent 20%),
-    radial-gradient(circle at 72% 72%, rgba(217, 127, 107, 0.13), transparent 24%),
+    radial-gradient(circle at 12% 10%, rgba(244, 201, 116, 0.12), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(125, 209, 199, 0.1), transparent 20%),
+    radial-gradient(circle at 72% 72%, rgba(217, 127, 107, 0.09), transparent 24%),
     linear-gradient(180deg, #0a0f15 0%, var(--bg) 34%, #0f1620 100%);
 }
 
@@ -189,6 +189,10 @@ body.theme-light .site-header {
   text-decoration: none;
 }
 
+.site-nav a {
+  white-space: nowrap;
+}
+
 .site-nav a.active,
 .site-nav a:hover,
 .theme-toggle:hover,
@@ -201,7 +205,7 @@ body.theme-light .site-header {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
   gap: 1.25rem;
   align-items: stretch;
   padding: 3.5rem 0 1.5rem;
@@ -248,7 +252,7 @@ body.theme-light .site-header {
 .portrait-frame {
   border-radius: calc(var(--radius-xl) - 8px);
   overflow: hidden;
-  min-height: 100%;
+  min-height: 28rem;
   background:
     linear-gradient(180deg, rgba(244, 201, 116, 0.2), transparent 22%),
     linear-gradient(145deg, rgba(125, 209, 199, 0.16), rgba(15, 21, 30, 0.4));
@@ -257,8 +261,9 @@ body.theme-light .site-header {
 .portrait-frame img {
   width: 100%;
   height: 100%;
-  min-height: 24rem;
+  min-height: inherit;
   object-fit: cover;
+  object-position: 50% 22%;
 }
 
 .spotlight-card {
@@ -299,8 +304,8 @@ h3 {
 }
 
 h1 {
-  max-width: 11ch;
-  font-size: clamp(3rem, 5.6vw, 5.5rem);
+  max-width: 12.5ch;
+  font-size: clamp(3rem, 5.3vw, 5.2rem);
 }
 
 h2 {
@@ -322,6 +327,10 @@ h3 {
 .education-card p,
 .footer-shell p {
   color: var(--muted);
+}
+
+.hero-text {
+  max-width: 46rem;
 }
 
 .hero-note {
@@ -522,6 +531,17 @@ h3 {
   padding: 1.35rem;
 }
 
+.project-media {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  object-fit: cover;
+  object-position: top left;
+  background: var(--surface-strong);
+}
+
 .featured-project {
   grid-column: span 2;
   background:
@@ -539,6 +559,17 @@ h3 {
 
 .stack {
   color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.project-login {
+  display: inline-flex;
+  margin: 0.4rem 0 1rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(125, 209, 199, 0.08);
+  color: var(--text) !important;
   font-size: 0.92rem;
 }
 
@@ -698,15 +729,20 @@ h3 {
   .education-card,
   .contact-banner {
     padding: 1.1rem;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
   }
 
   .hero-metrics {
     grid-template-columns: 1fr;
   }
 
+  .portrait-frame,
   .portrait-frame img {
     min-height: 20rem;
+  }
+
+  .project-media {
+    aspect-ratio: 16 / 9;
   }
 
   .footer-shell {
