@@ -152,7 +152,11 @@ img {
   width: 2.65rem;
   height: 2.65rem;
   border-radius: var(--radius-md);
-  background: var(--text);
+  background:
+    linear-gradient(135deg, var(--accent) 0 26%, transparent 26%),
+    linear-gradient(315deg, var(--accent-2) 0 29%, transparent 29%),
+    linear-gradient(45deg, var(--accent-3) 0 15%, transparent 15%),
+    var(--text);
   color: var(--bg);
   font-weight: 850;
   letter-spacing: 0;
