@@ -1,10 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="TN favicon">
-  <defs>
-    <linearGradient id="badge" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6dd3b6" />
-      <stop offset="100%" stop-color="#ffc857" />
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="url(#badge)" />
-  <text x="32" y="39" text-anchor="middle" font-family="'Segoe UI', 'Trebuchet MS', Verdana, sans-serif" font-weight="800" font-size="23" letter-spacing="-1" fill="#0c1825">TN</text>
+  <style>
+    .badge { fill: #102033; }
+    .letters { fill: #f7f9fb; }
+    .teal { fill: #0f766e; }
+    .blue { fill: #2563eb; }
+    .warm { fill: #e05f3d; }
+
+    @media (prefers-color-scheme: dark) {
+      .badge { fill: #f8fafc; }
+      .letters { fill: #0e1624; }
+      .teal { fill: #2dd4bf; }
+      .blue { fill: #60a5fa; }
+      .warm { fill: #fb923c; }
+    }
+  </style>
+  <rect class="badge" width="64" height="64" rx="10" fill="#102033" />
+  <path class="teal" d="M0 10A10 10 0 0 1 10 0h22L0 32Z" fill="#0f766e" />
+  <path class="blue" d="M64 54a10 10 0 0 1-10 10H31l33-33Z" fill="#2563eb" />
+  <path class="warm" d="M46 0h8a10 10 0 0 1 10 10v8L46 0Z" fill="#e05f3d" />
+  <text class="letters" x="32" y="39" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="850" font-size="23" letter-spacing="0" fill="#f7f9fb">TN</text>
 </svg>
