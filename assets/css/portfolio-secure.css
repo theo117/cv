@@ -122,6 +122,92 @@ img {
   top: 1rem;
 }
 
+.launch-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 28rem),
+    color-mix(in srgb, var(--bg) 94%, var(--surface));
+  opacity: 1;
+  visibility: visible;
+  animation: launchAutoDismiss 2300ms ease forwards;
+  transition: opacity 420ms ease, visibility 420ms ease;
+}
+
+.launch-screen.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.launch-mark-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 8.5rem;
+  height: 8.5rem;
+  animation: launchFloat 1300ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.launch-mark {
+  position: relative;
+  z-index: 2;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.2rem 3rem rgba(16, 32, 51, 0.22);
+  animation: launchIcon 1500ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.launch-ring {
+  position: absolute;
+  inset: 1.35rem;
+  border: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-top-color: color-mix(in srgb, var(--accent-2) 78%, transparent);
+  border-right-color: color-mix(in srgb, var(--accent-3) 72%, transparent);
+  border-radius: 50%;
+  animation: launchRing 1650ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
+.launch-spark {
+  position: absolute;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  animation: launchSpark 1050ms ease-out both;
+}
+
+.launch-spark-one {
+  top: 1.4rem;
+  right: 1.55rem;
+  background: var(--accent-3);
+  animation-delay: 180ms;
+}
+
+.launch-spark-two {
+  bottom: 1.45rem;
+  right: 2.4rem;
+  background: var(--accent-2);
+  animation-delay: 270ms;
+}
+
+.launch-spark-three {
+  bottom: 2.25rem;
+  left: 1.55rem;
+  animation-delay: 360ms;
+}
+
+body.launch-ready .site-header,
+body.launch-ready main,
+body.launch-ready .site-footer {
+  animation: pageReveal 520ms ease both;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -820,6 +906,113 @@ h3 {
   }
 }
 
+@keyframes launchFloat {
+  0% {
+    transform: translateY(0.7rem) scale(0.88);
+  }
+
+  58% {
+    transform: translateY(-0.22rem) scale(1.02);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes launchIcon {
+  0% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.72);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  76% {
+    transform: rotate(4deg) scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes launchRing {
+  0% {
+    opacity: 0;
+    transform: rotate(0) scale(0.7);
+  }
+
+  36% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(260deg) scale(1.38);
+  }
+}
+
+@keyframes launchSpark {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+
+  32% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--spark-x, 0.4rem), var(--spark-y, -0.6rem), 0) scale(1);
+  }
+}
+
+.launch-spark-one {
+  --spark-x: 0.95rem;
+  --spark-y: -0.95rem;
+}
+
+.launch-spark-two {
+  --spark-x: 1rem;
+  --spark-y: 0.85rem;
+}
+
+.launch-spark-three {
+  --spark-x: -0.95rem;
+  --spark-y: 0.8rem;
+}
+
+@keyframes launchAutoDismiss {
+  0%,
+  72% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -830,5 +1023,9 @@ h3 {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  .launch-screen {
+    display: none;
   }
 }
