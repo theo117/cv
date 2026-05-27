@@ -10,7 +10,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; media-src 'self'; manifest-src 'self'; upgrade-insecure-requests">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#14213d">
+  <meta name="theme-color" content="#f7f9fb">
   <link rel="canonical" href="https://cv.teodordev.co.za/">
   <link rel="icon" href="/favicon-v2.svg" type="image/svg+xml" sizes="any">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -89,7 +89,7 @@
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Light theme</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Dark theme</button>
       </nav>
     </div>
   </header>
@@ -109,9 +109,18 @@
           <span>Based in South Africa.</span>
         </div>
         <div class="hero-actions">
-          <a class="button button-primary" href="Theodore_Nelson_CV_Upgraded.pdf" download>Download CV</a>
-          <a class="button" href="#projects">Explore projects</a>
-          <a class="button button-call" href="https://calendly.com/theodorelnelson/30min" target="_blank" rel="noopener noreferrer">Book a 30-Minute Intro Call</a>
+          <a class="button button-primary" href="Theodore_Nelson_CV_Upgraded.pdf" download>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+            Download CV
+          </a>
+          <a class="button" href="#projects">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            Explore projects
+          </a>
+          <a class="button button-call" href="https://calendly.com/theodorelnelson/30min" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2v4m8-4v4M4 10h16M6 4h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+            Book a 30-Minute Intro Call
+          </a>
         </div>
         <div class="hero-metrics" aria-label="Career highlights">
           <article class="metric-tile">
@@ -130,6 +139,42 @@
       </div>
 
       <aside class="hero-aside" aria-label="Profile summary">
+        <div class="profile-panel">
+          <img src="images/pic05.jpg" alt="Theodore Nelson" width="540" height="720">
+          <div>
+            <p class="profile-name">Theodore Nelson</p>
+            <p class="profile-role">Java Developer | Web Apps | Android Apps</p>
+          </div>
+        </div>
+        <div class="tech-panel" aria-labelledby="tech-stack-title">
+          <p class="spotlight-label" id="tech-stack-title">Core stack</p>
+          <div class="tech-grid">
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 18c2 1 6 1 8 0M9 14c-2-3 5-3 3-7m4 7c-2-2 3-3 1-6M6 20h12a3 3 0 0 0 3-3H3a3 3 0 0 0 3 3Z"/></svg>
+              Java
+            </span>
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4c-7 0-13 4-15 11 4-3 8-4 12-4-4 2-6 5-7 9 6-1 10-6 10-16Z"/></svg>
+              Spring
+            </span>
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6c0-2 16-2 16 0v12c0 2-16 2-16 0V6Zm0 0c0 2 16 2 16 0M4 12c0 2 16 2 16 0"/></svg>
+              SQL
+            </span>
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8Zm0 0c2 2 3 5 3 8s-1 6-3 8m0-16c-2 2-3 5-3 8s1 6 3 8M4 12h16"/></svg>
+              React
+            </span>
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19V5h14v14H5Zm4-4V9l6 6V9"/></svg>
+              Next.js
+            </span>
+            <span class="tech-chip">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 8h10v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V8Zm2-3 2 3m4-3-2 3M6 13h12"/></svg>
+              Android
+            </span>
+          </div>
+        </div>
         <div class="spotlight-card">
           <p class="spotlight-label">What I bring</p>
           <ul class="spotlight-list">

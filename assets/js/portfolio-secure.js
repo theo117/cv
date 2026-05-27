@@ -7,12 +7,12 @@
   var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
 
   function setTheme(mode) {
-    var isLight = mode === "light";
-    document.body.classList.toggle("theme-light", isLight);
+    var isDark = mode === "dark";
+    document.body.classList.toggle("theme-dark", isDark);
 
     if (themeToggle) {
-      themeToggle.textContent = isLight ? "Dark theme" : "Light theme";
-      themeToggle.setAttribute("aria-pressed", String(isLight));
+      themeToggle.textContent = isDark ? "Light theme" : "Dark theme";
+      themeToggle.setAttribute("aria-pressed", String(isDark));
     }
   }
 
@@ -103,16 +103,26 @@
       savedTheme = "";
     }
 
+    setTheme(savedTheme === "dark" ? "dark" : "light");
+
     if (savedTheme === "light") {
-      setTheme("light");
+      try {
+        window.localStorage.removeItem("portfolio-theme");
+      } catch (_err) {
+        savedTheme = "";
+      }
     }
 
     themeToggle.addEventListener("click", function () {
-      var nextTheme = document.body.classList.contains("theme-light") ? "dark" : "light";
+      var nextTheme = document.body.classList.contains("theme-dark") ? "light" : "dark";
       setTheme(nextTheme);
 
       try {
-        window.localStorage.setItem("portfolio-theme", nextTheme);
+        if (nextTheme === "dark") {
+          window.localStorage.setItem("portfolio-theme", nextTheme);
+        } else {
+          window.localStorage.removeItem("portfolio-theme");
+        }
       } catch (_err) {
         return;
       }
