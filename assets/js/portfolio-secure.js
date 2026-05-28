@@ -28,7 +28,7 @@
           launchScreen.parentNode.removeChild(launchScreen);
         }
       }, 520);
-    }, 1950);
+    }, 2450);
   }
 
   function setTheme(mode) {

@@ -133,7 +133,7 @@ img {
     color-mix(in srgb, var(--bg) 94%, var(--surface));
   opacity: 1;
   visibility: visible;
-  animation: launchAutoDismiss 2300ms ease forwards;
+  animation: launchAutoDismiss 2850ms ease forwards;
   transition: opacity 420ms ease, visibility 420ms ease;
 }
 
@@ -147,39 +147,39 @@ img {
   position: relative;
   display: grid;
   place-items: center;
-  width: 8.5rem;
-  height: 8.5rem;
-  animation: launchFloat 1300ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+  width: 9.25rem;
+  height: 9.25rem;
+  animation: launchFloat 1550ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
 }
 
 .launch-mark {
   position: relative;
   z-index: 2;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4.9rem;
+  height: 4.9rem;
   border-radius: var(--radius-lg);
   box-shadow: 0 1.2rem 3rem rgba(16, 32, 51, 0.22);
-  animation: launchIcon 1500ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+  animation: launchIcon 1750ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
 }
 
 .launch-ring {
   position: absolute;
-  inset: 1.35rem;
+  inset: 1.45rem;
   border: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
   border-top-color: color-mix(in srgb, var(--accent-2) 78%, transparent);
   border-right-color: color-mix(in srgb, var(--accent-3) 72%, transparent);
   border-radius: 50%;
-  animation: launchRing 1650ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+  animation: launchRing 1900ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
 }
 
 .launch-spark {
   position: absolute;
-  width: 0.48rem;
-  height: 0.48rem;
+  width: 0.52rem;
+  height: 0.52rem;
   border-radius: 50%;
   background: var(--accent);
   opacity: 0;
-  animation: launchSpark 1050ms ease-out both;
+  animation: launchSpark 1250ms ease-out both;
 }
 
 .launch-spark-one {
