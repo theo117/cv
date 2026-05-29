@@ -576,6 +576,20 @@ h3 {
   contain-intrinsic-size: auto 38rem;
 }
 
+body.tabs-ready .section {
+  content-visibility: visible;
+}
+
+.hero.is-tab-hidden,
+.section.is-tab-hidden {
+  display: none;
+}
+
+.hero.is-tab-active,
+.section.is-tab-active {
+  animation: tabPanelReveal 380ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+}
+
 .section-intro {
   display: grid;
   gap: 0.8rem;
@@ -1005,6 +1019,18 @@ h3 {
   from {
     opacity: 0;
     transform: translateY(0.6rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tabPanelReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.9rem);
   }
 
   to {
