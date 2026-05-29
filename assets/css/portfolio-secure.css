@@ -143,6 +143,24 @@ img {
   pointer-events: none;
 }
 
+.tab-transition-screen {
+  animation: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease, visibility 260ms ease;
+  visibility: hidden;
+}
+
+.tab-transition-screen.is-running {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tab-transition-screen.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .launch-mark-wrap {
   position: relative;
   display: grid;

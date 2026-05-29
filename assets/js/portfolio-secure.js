@@ -4,7 +4,7 @@
   var themeToggle = document.getElementById("theme-toggle");
   var backToTopLink = document.getElementById("back-to-top-link");
   var launchScreen = document.getElementById("launch-screen");
-  var homeLinks = Array.prototype.slice.call(document.querySelectorAll("a[href='#top']"));
+  var homeLinks = Array.prototype.slice.call(document.querySelectorAll("a[href='#top']:not(#back-to-top-link)"));
   var hero = document.querySelector(".hero");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".site-nav a[href^='#']"));
   var tabLinks = Array.prototype.slice.call(document.querySelectorAll("a[href^='#']"));
@@ -15,6 +15,7 @@
     .filter(Boolean);
   var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var transitionTimer = 0;
 
   function finishLaunch(immediate) {
     if (!launchScreen) {
@@ -61,6 +62,73 @@
         link.removeAttribute("aria-current");
       }
     });
+  }
+
+  function createLaunchTransition() {
+    var screen = document.createElement("div");
+    var wrap = document.createElement("div");
+    var mark = document.createElement("img");
+    var ring = document.createElement("span");
+    var sparkOne = document.createElement("span");
+    var sparkTwo = document.createElement("span");
+    var sparkThree = document.createElement("span");
+
+    screen.className = "launch-screen tab-transition-screen";
+    screen.setAttribute("aria-hidden", "true");
+
+    wrap.className = "launch-mark-wrap";
+    mark.className = "launch-mark";
+    mark.src = "favicon-v2.svg";
+    mark.alt = "";
+    mark.width = 64;
+    mark.height = 64;
+
+    ring.className = "launch-ring";
+    sparkOne.className = "launch-spark launch-spark-one";
+    sparkTwo.className = "launch-spark launch-spark-two";
+    sparkThree.className = "launch-spark launch-spark-three";
+
+    wrap.appendChild(mark);
+    wrap.appendChild(ring);
+    wrap.appendChild(sparkOne);
+    wrap.appendChild(sparkTwo);
+    wrap.appendChild(sparkThree);
+    screen.appendChild(wrap);
+
+    return screen;
+  }
+
+  function playLaunchTransition(changeView) {
+    if (reduceMotion) {
+      changeView();
+      return;
+    }
+
+    window.clearTimeout(transitionTimer);
+
+    var existing = document.querySelector(".tab-transition-screen");
+
+    if (existing && existing.parentNode) {
+      existing.parentNode.removeChild(existing);
+    }
+
+    var transitionScreen = createLaunchTransition();
+    document.body.appendChild(transitionScreen);
+
+    window.requestAnimationFrame(function () {
+      transitionScreen.classList.add("is-running");
+    });
+
+    transitionTimer = window.setTimeout(function () {
+      changeView();
+      transitionScreen.classList.add("is-done");
+    }, 1350);
+
+    window.setTimeout(function () {
+      if (transitionScreen.parentNode) {
+        transitionScreen.parentNode.removeChild(transitionScreen);
+      }
+    }, 2050);
   }
 
   function showHeroView(updateHash) {
@@ -224,7 +292,9 @@
 
       if (isTabSection(id)) {
         event.preventDefault();
-        setActiveSection(id, true);
+        playLaunchTransition(function () {
+          setActiveSection(id, true);
+        });
       }
 
       if (navLinks.indexOf(link) !== -1) {
@@ -236,7 +306,9 @@
   homeLinks.forEach(function (link) {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      showHeroView(true);
+      playLaunchTransition(function () {
+        showHeroView(true);
+      });
       setNavOpen(false);
     });
   });
@@ -309,13 +381,15 @@
   if (backToTopLink) {
     backToTopLink.addEventListener("click", function (event) {
       event.preventDefault();
-      showHeroView(false);
+      playLaunchTransition(function () {
+        showHeroView(false);
 
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, "", "#top");
-      } else {
-        window.location.hash = "top";
-      }
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, "", "#top");
+        } else {
+          window.location.hash = "top";
+        }
+      });
     });
   }
 })();
