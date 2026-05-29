@@ -1,6 +1,9 @@
 {
   "name": "Teodor Dev Tech CV",
   "short_name": "TDT CV",
+  "description": "Theodore Nelson Java developer CV and portfolio.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "favicon-v2-16x16.png",
