@@ -724,15 +724,21 @@ body.tabs-ready .section {
 .project-topline {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 0.55rem;
   margin-bottom: 0.8rem;
 }
 
 .stack {
+  display: inline-flex;
+  justify-content: flex-end;
+  max-width: 100%;
   color: var(--muted);
   font-size: 0.88rem;
   font-weight: 700;
+  line-height: 1.35;
+  text-align: right;
 }
 
 .project-list {
