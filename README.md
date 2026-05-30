@@ -13,13 +13,13 @@ This portfolio is now a static site with a reduced attack surface.
 
 This rebuild was intentionally aligned with OWASP-style secure defaults:
 
-- No embedded contact form.
+- No backend-powered contact form.
 - No live chat server.
 - No exposed public API keys in the HTML.
 - No remote script loading.
 - No external font dependencies.
 - Restrictive Content Security Policy in `index.html`.
-- Direct contact links only, which avoids processing visitor-submitted data in the browser.
+- Direct contact links and client-side WhatsApp handoff only, which avoids storing visitor-submitted data or exposing messaging API keys in the browser.
 
 ## Important maintenance rules
 
