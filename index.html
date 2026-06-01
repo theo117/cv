@@ -14,8 +14,12 @@
   <link rel="canonical" href="https://cv.teodordev.co.za/">
   <link rel="icon" href="/favicon-v2.svg" type="image/svg+xml" sizes="any">
   <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-v2-48x48.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="/favicon-v2-32x32.png" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="image" href="/images/pic05.jpg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teodor Dev Tech">
   <meta property="og:locale" content="en_ZA">
@@ -33,7 +37,7 @@
     {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
-      "dateModified": "2026-05-29",
+      "dateModified": "2026-06-01",
       "mainEntity": {
         "@type": "Person",
         "name": "Theodore Nelson",
@@ -117,6 +121,12 @@
           <span>Available for remote, hybrid, and on-site opportunities.</span>
           <span>Based in South Africa.</span>
         </div>
+        <div class="fit-strip" aria-label="Best fit roles">
+          <span>Junior Java Developer</span>
+          <span>Backend Developer</span>
+          <span>Android Developer</span>
+          <span>Workflow Software Builder</span>
+        </div>
         <div class="hero-actions">
           <a class="button button-primary" href="Theodore_Nelson_CV_Upgraded.pdf" download>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
@@ -193,6 +203,21 @@
           </ul>
         </div>
       </aside>
+    </section>
+
+    <section class="proof-strip shell" aria-label="Portfolio strengths">
+      <article>
+        <span>Delivery range</span>
+        <strong>Backend, frontend, Android, SQL, auth, hosting, and support.</strong>
+      </article>
+      <article>
+        <span>Business focus</span>
+        <strong>Admin tools, portals, operational dashboards, records, and reporting.</strong>
+      </article>
+      <article>
+        <span>Review-ready work</span>
+        <strong>Live demos, downloadable builds, certificates, CV, GitHub, and LinkedIn.</strong>
+      </article>
     </section>
 
     <section class="section shell" id="story" aria-labelledby="story-title">
@@ -274,8 +299,15 @@
         </div>
         <p class="section-copy">Each project solves a practical workflow problem, with recurring strength in admin systems, web apps, Android apps, internal tools, SQL-backed processes, and business-facing software delivery.</p>
       </div>
+      <div class="project-filter" aria-label="Filter projects">
+        <button type="button" class="filter-button active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-button" data-filter="java" aria-pressed="false">Java</button>
+        <button type="button" class="filter-button" data-filter="web" aria-pressed="false">Web apps</button>
+        <button type="button" class="filter-button" data-filter="android" aria-pressed="false">Android</button>
+        <button type="button" class="filter-button" data-filter="workflow" aria-pressed="false">Workflow</button>
+      </div>
       <div class="project-grid">
-        <article class="project-card featured-project">
+        <article class="project-card featured-project" data-category="java workflow">
           <div class="project-topline">
             <span class="project-tag">Featured build</span>
             <span class="stack">Java | Spring Boot | JPA | MySQL</span>
@@ -289,7 +321,7 @@
           <a href="https://church-management-system-2-jywe.onrender.com" target="_blank" rel="noopener noreferrer">View live project</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web workflow">
           <div class="project-topline">
             <span class="project-tag">Business workflow</span>
             <span class="stack">Next.js | React | Vercel</span>
@@ -303,7 +335,7 @@
           <a href="https://trade-flow-sa.vercel.app/" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="java workflow web">
           <div class="project-topline">
             <span class="project-tag">Integration project</span>
             <span class="stack">Java | Spring Boot | PostgreSQL | Render</span>
@@ -319,7 +351,7 @@
           <a href="https://integration-tfga.onrender.com/login" target="_blank" rel="noopener noreferrer">View live demo</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web workflow">
           <div class="project-topline">
             <span class="project-tag">SaaS platform</span>
             <span class="stack">Next.js | Supabase | PostgreSQL | Vercel</span>
@@ -333,7 +365,7 @@
           <a href="https://inventory-saas-app-main-us8j.vercel.app/" target="_blank" rel="noopener noreferrer">View platform</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="java web">
           <div class="project-topline">
             <span class="project-tag">Full stack</span>
             <span class="stack">Spring Boot | React | REST API | Render</span>
@@ -347,7 +379,7 @@
           <a href="https://northstar-demo-bank-free.onrender.com" target="_blank" rel="noopener noreferrer">View demo</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="java workflow">
           <div class="project-topline">
             <span class="project-tag">Desktop app</span>
             <span class="stack">Java | Swing | JDBC | MSI</span>
@@ -361,7 +393,7 @@
           <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi" target="_blank" rel="noopener noreferrer">Download installer</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <div class="project-topline">
             <span class="project-tag">Web app</span>
             <span class="stack">HTML | CSS | JavaScript | CRUD</span>
@@ -375,7 +407,7 @@
           <a href="https://userregistrationweb.vercel.app/" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="java android workflow">
           <div class="project-topline">
             <span class="project-tag">Android app</span>
             <span class="stack">Java | Android SDK | APK</span>
@@ -389,7 +421,7 @@
           <a href="https://github.com/theo117/piketberg-gardeners-app/releases/download/v1.0.0/app-debug.apk" target="_blank" rel="noopener noreferrer">Download APK</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="java android workflow">
           <div class="project-topline">
             <span class="project-tag">Education app</span>
             <span class="stack">Java | Android SDK | APK</span>
@@ -403,7 +435,7 @@
           <a href="https://github.com/theo117/arcadia_app/releases/download/arcadia/app-debug.apk" target="_blank" rel="noopener noreferrer">Download APK</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web workflow">
           <div class="project-topline">
             <span class="project-tag">Specialized workflow</span>
             <span class="stack">Next.js | React | Vercel</span>
@@ -417,7 +449,7 @@
           <a href="https://clinical-reasoning-assistant-blond.vercel.app" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="web workflow">
           <div class="project-topline">
             <span class="project-tag">Specialized tool</span>
             <span class="stack">HTML | CSS | JavaScript | Render</span>

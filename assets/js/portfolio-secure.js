@@ -4,28 +4,25 @@
   var themeToggle = document.getElementById("theme-toggle");
   var backToTopLink = document.getElementById("back-to-top-link");
   var launchScreen = document.getElementById("launch-screen");
-  var homeLinks = Array.prototype.slice.call(document.querySelectorAll("a[href='#top']:not(#back-to-top-link)"));
-  var hero = document.querySelector(".hero");
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".site-nav a[href^='#']"));
-  var tabLinks = Array.prototype.slice.call(document.querySelectorAll("a[href^='#']"));
-  var tabSections = navLinks
+  var sections = navLinks
     .map(function (link) {
       return document.querySelector(link.getAttribute("href"));
     })
     .filter(Boolean);
   var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+  var filterButtons = Array.prototype.slice.call(document.querySelectorAll(".filter-button"));
+  var projectCards = Array.prototype.slice.call(document.querySelectorAll(".project-card[data-category]"));
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var transitionTimer = 0;
-  var transitionCleanupTimer = 0;
 
-  function finishLaunch(immediate) {
+  function finishLaunch() {
     if (!launchScreen) {
       return;
     }
 
-    if (immediate) {
-      launchScreen.classList.add("is-done");
+    if (reduceMotion) {
       launchScreen.remove();
+      document.body.classList.add("launch-ready");
       return;
     }
 
@@ -37,8 +34,8 @@
         if (launchScreen && launchScreen.parentNode) {
           launchScreen.parentNode.removeChild(launchScreen);
         }
-      }, 520);
-    }, 2450);
+      }, 420);
+    }, 820);
   }
 
   function setTheme(mode) {
@@ -57,232 +54,6 @@
     }
   }
 
-  function setActiveLink(id) {
-    navLinks.forEach(function (link) {
-      var isActive = link.getAttribute("href") === "#" + id;
-
-      link.classList.toggle("active", isActive);
-
-      if (isActive) {
-        link.setAttribute("aria-current", "true");
-        link.setAttribute("aria-selected", "true");
-      } else {
-        link.removeAttribute("aria-current");
-        link.setAttribute("aria-selected", "false");
-      }
-    });
-  }
-
-  function replaceTopHash() {
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", "#top");
-    } else {
-      window.location.hash = "top";
-    }
-  }
-
-  function setTabMetadata() {
-    navLinks.forEach(function (link) {
-      var id = link.getAttribute("href").slice(1);
-
-      if (!isTabSection(id)) {
-        return;
-      }
-
-      link.setAttribute("aria-controls", id);
-      link.setAttribute("aria-selected", "false");
-    });
-  }
-
-  function getCurrentViewId() {
-    var activeSection = tabSections.find(function (section) {
-      return section.classList.contains("is-tab-active") && !section.hidden;
-    });
-
-    if (activeSection) {
-      return activeSection.id;
-    }
-
-    return hero && !hero.hidden ? "top" : "";
-  }
-
-  function createLaunchTransition() {
-    var screen = document.createElement("div");
-    var wrap = document.createElement("div");
-    var mark = document.createElement("img");
-    var ring = document.createElement("span");
-    var sparkOne = document.createElement("span");
-    var sparkTwo = document.createElement("span");
-    var sparkThree = document.createElement("span");
-
-    screen.className = "launch-screen tab-transition-screen";
-    screen.setAttribute("aria-hidden", "true");
-
-    wrap.className = "launch-mark-wrap";
-    mark.className = "launch-mark";
-    mark.src = "favicon-v2.svg";
-    mark.alt = "";
-    mark.width = 64;
-    mark.height = 64;
-
-    ring.className = "launch-ring";
-    sparkOne.className = "launch-spark launch-spark-one";
-    sparkTwo.className = "launch-spark launch-spark-two";
-    sparkThree.className = "launch-spark launch-spark-three";
-
-    wrap.appendChild(mark);
-    wrap.appendChild(ring);
-    wrap.appendChild(sparkOne);
-    wrap.appendChild(sparkTwo);
-    wrap.appendChild(sparkThree);
-    screen.appendChild(wrap);
-
-    return screen;
-  }
-
-  function playLaunchTransition(changeView) {
-    if (reduceMotion) {
-      changeView();
-      return;
-    }
-
-    window.clearTimeout(transitionTimer);
-    window.clearTimeout(transitionCleanupTimer);
-
-    var existing = document.querySelector(".tab-transition-screen");
-
-    if (existing && existing.parentNode) {
-      existing.parentNode.removeChild(existing);
-    }
-
-    var transitionScreen = createLaunchTransition();
-    document.body.appendChild(transitionScreen);
-
-    window.requestAnimationFrame(function () {
-      transitionScreen.classList.add("is-running");
-    });
-
-    transitionTimer = window.setTimeout(function () {
-      changeView();
-      transitionScreen.classList.add("is-done");
-    }, 1350);
-
-    transitionCleanupTimer = window.setTimeout(function () {
-      if (transitionScreen.parentNode) {
-        transitionScreen.parentNode.removeChild(transitionScreen);
-      }
-    }, 2050);
-  }
-
-  function showHeroView(updateHash) {
-    if (hero) {
-      hero.classList.remove("is-tab-hidden");
-      hero.classList.add("is-tab-active");
-      hero.removeAttribute("hidden");
-      hero.removeAttribute("aria-hidden");
-    }
-
-    tabSections.forEach(function (section) {
-      section.classList.remove("is-tab-active");
-      section.classList.add("is-tab-hidden");
-      section.setAttribute("hidden", "");
-      section.setAttribute("aria-hidden", "true");
-    });
-
-    setActiveLink("");
-
-    if (updateHash && window.history && window.history.pushState) {
-      window.history.pushState(null, "", "#top");
-    }
-  }
-
-  function switchToHero(updateHash, useTransition) {
-    if (getCurrentViewId() === "top") {
-      if (updateHash && window.history && window.history.pushState && window.location.hash !== "#top") {
-        window.history.pushState(null, "", "#top");
-      }
-
-      return;
-    }
-
-    if (useTransition) {
-      playLaunchTransition(function () {
-        showHeroView(updateHash);
-      });
-      return;
-    }
-
-    showHeroView(updateHash);
-  }
-
-  function isTabSection(id) {
-    return tabSections.some(function (section) {
-      return section.id === id;
-    });
-  }
-
-  function setActiveSection(id, updateHash) {
-    var target = document.getElementById(id);
-
-    if (!target || !isTabSection(id)) {
-      return;
-    }
-
-    tabSections.forEach(function (section) {
-      var isActive = section === target;
-
-      section.classList.toggle("is-tab-active", isActive);
-      section.classList.toggle("is-tab-hidden", !isActive);
-      section.toggleAttribute("hidden", !isActive);
-
-      if (isActive) {
-        section.removeAttribute("aria-hidden");
-      } else {
-        section.setAttribute("aria-hidden", "true");
-      }
-    });
-
-    if (hero) {
-      hero.classList.remove("is-tab-active");
-      hero.classList.add("is-tab-hidden");
-      hero.setAttribute("hidden", "");
-      hero.setAttribute("aria-hidden", "true");
-    }
-
-    setActiveLink(id);
-
-    if (updateHash && window.history && window.history.pushState) {
-      window.history.pushState(null, "", "#" + id);
-    }
-  }
-
-  function switchToSection(id, updateHash, useTransition) {
-    if (getCurrentViewId() === id) {
-      if (updateHash && window.history && window.history.pushState && window.location.hash !== "#" + id) {
-        window.history.pushState(null, "", "#" + id);
-      }
-
-      return;
-    }
-
-    if (useTransition) {
-      playLaunchTransition(function () {
-        setActiveSection(id, updateHash);
-      });
-      return;
-    }
-
-    setActiveSection(id, updateHash);
-  }
-
-  function setActiveSectionFromHash() {
-    if (window.location.hash && isTabSection(window.location.hash.slice(1))) {
-      switchToSection(window.location.hash.slice(1), false, false);
-    } else {
-      showHeroView(false);
-    }
-  }
-
   function setNavOpen(isOpen) {
     if (!navToggle || !siteNav) {
       return;
@@ -291,6 +62,19 @@
     siteNav.classList.toggle("open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.textContent = isOpen ? "Close" : "Menu";
+  }
+
+  function setActiveLink(id) {
+    navLinks.forEach(function (link) {
+      var isActive = link.getAttribute("href") === "#" + id;
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
   }
 
   function animateCounter(node) {
@@ -329,27 +113,21 @@
     window.requestAnimationFrame(step);
   }
 
-  if (launchScreen) {
-    var hasSeenLaunch = false;
+  function setProjectFilter(filter) {
+    filterButtons.forEach(function (button) {
+      var isActive = button.getAttribute("data-filter") === filter;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
 
-    try {
-      hasSeenLaunch = window.sessionStorage.getItem("portfolio-launch-seen") === "true";
-    } catch (_err) {
-      hasSeenLaunch = false;
-    }
-
-    if (reduceMotion || hasSeenLaunch) {
-      finishLaunch(true);
-    } else {
-      try {
-        window.sessionStorage.setItem("portfolio-launch-seen", "true");
-      } catch (_err) {
-        hasSeenLaunch = false;
-      }
-
-      finishLaunch(false);
-    }
+    projectCards.forEach(function (card) {
+      var categories = (card.getAttribute("data-category") || "").split(" ");
+      var shouldShow = filter === "all" || categories.indexOf(filter) !== -1;
+      card.classList.toggle("is-filtered", !shouldShow);
+    });
   }
+
+  finishLaunch();
 
   if (navToggle && siteNav) {
     navToggle.addEventListener("click", function () {
@@ -362,35 +140,13 @@
         navToggle.focus();
       }
     });
-  }
 
-  if (tabSections.length > 0) {
-    document.body.classList.add("tabs-ready");
-    setTabMetadata();
-  }
-
-  tabLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      var id = link.getAttribute("href").slice(1);
-
-      if (isTabSection(id)) {
-        event.preventDefault();
-        switchToSection(id, true, true);
-      }
-
-      if (navLinks.indexOf(link) !== -1) {
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
         setNavOpen(false);
-      }
+      });
     });
-  });
-
-  homeLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-      switchToHero(true, true);
-      setNavOpen(false);
-    });
-  });
+  }
 
   if (themeToggle) {
     var savedTheme = "";
@@ -402,14 +158,6 @@
     }
 
     setTheme(savedTheme === "dark" ? "dark" : "light");
-
-    if (savedTheme === "light") {
-      try {
-        window.localStorage.removeItem("portfolio-theme");
-      } catch (_err) {
-        savedTheme = "";
-      }
-    }
 
     themeToggle.addEventListener("click", function () {
       var nextTheme = document.body.classList.contains("theme-dark") ? "light" : "dark";
@@ -428,6 +176,23 @@
   }
 
   if ("IntersectionObserver" in window) {
+    if (sections.length > 0) {
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActiveLink(entry.target.id);
+          }
+        });
+      }, {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0.01
+      });
+
+      sections.forEach(function (section) {
+        sectionObserver.observe(section);
+      });
+    }
+
     if (counters.length > 0) {
       var counterObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
@@ -452,24 +217,20 @@
     });
   }
 
-  setActiveSectionFromHash();
-
-  window.addEventListener("hashchange", setActiveSectionFromHash);
-  window.addEventListener("popstate", setActiveSectionFromHash);
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setProjectFilter(button.getAttribute("data-filter") || "all");
+    });
+  });
 
   if (backToTopLink) {
     backToTopLink.addEventListener("click", function (event) {
       event.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 
-      if (getCurrentViewId() === "top") {
-        replaceTopHash();
-        return;
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", "#top");
       }
-
-      playLaunchTransition(function () {
-        showHeroView(false);
-        replaceTopHash();
-      });
     });
   }
 })();
