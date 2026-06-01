@@ -14,6 +14,7 @@
   var filterButtons = Array.prototype.slice.call(document.querySelectorAll(".filter-button"));
   var projectCards = Array.prototype.slice.call(document.querySelectorAll(".project-card[data-category]"));
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealTimer = 0;
 
   function finishLaunch() {
     if (!launchScreen) {
@@ -127,6 +128,36 @@
     });
   }
 
+  function revealSection(target) {
+    if (!target || reduceMotion) {
+      return;
+    }
+
+    window.clearTimeout(revealTimer);
+    target.classList.remove("section-reveal");
+
+    window.requestAnimationFrame(function () {
+      target.classList.add("section-reveal");
+    });
+
+    revealTimer = window.setTimeout(function () {
+      target.classList.remove("section-reveal");
+    }, 620);
+  }
+
+  function scrollToTarget(target) {
+    var header = document.querySelector(".site-header");
+    var offset = header ? header.getBoundingClientRect().height + 16 : 16;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: Math.max(top, 0),
+      behavior: reduceMotion ? "auto" : "smooth"
+    });
+
+    revealSection(target);
+  }
+
   finishLaunch();
 
   if (navToggle && siteNav) {
@@ -142,7 +173,18 @@
     });
 
     navLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
+      link.addEventListener("click", function (event) {
+        var target = document.querySelector(link.getAttribute("href"));
+
+        if (target) {
+          event.preventDefault();
+          scrollToTarget(target);
+
+          if (window.history && window.history.pushState) {
+            window.history.pushState(null, "", link.getAttribute("href"));
+          }
+        }
+
         setNavOpen(false);
       });
     });
@@ -227,6 +269,7 @@
     backToTopLink.addEventListener("click", function (event) {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      revealSection(document.querySelector(".hero"));
 
       if (window.history && window.history.replaceState) {
         window.history.replaceState(null, "", "#top");
