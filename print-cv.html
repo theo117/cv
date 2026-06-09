@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Theodore Nelson CV Print | Teodor Dev Tech</title>
+  <title>Theodore Nelson CV | Junior Java Developer</title>
   <style>
     @page {
       size: A4;
@@ -60,6 +60,13 @@
       margin-top: 0.7mm;
     }
 
+    .role-title {
+      margin-top: 2mm;
+      font-size: 11.5pt;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
     .section {
       margin-top: 5mm;
       break-inside: avoid;
@@ -83,6 +90,10 @@
 
     .skill-label {
       font-weight: 700;
+    }
+
+    .summary {
+      margin: 0;
     }
 
     .entry {
@@ -133,8 +144,18 @@
       margin-bottom: 1.3mm;
     }
 
+    .project-proof {
+      margin-top: 0.7mm;
+    }
+
     .project-title {
       font-weight: 700;
+    }
+
+    .project-links {
+      display: block;
+      margin-top: 0.3mm;
+      font-size: 9.6pt;
     }
 
     .cert-list {
@@ -170,36 +191,47 @@
           <a href="https://www.linkedin.com/in/theodore-nelson-90b05144/">linkedin.com/in/theodore-nelson-90b05144</a> |
           <a href="https://cv.teodordev.co.za/">cv.teodordev.co.za</a>
         </div>
+        <div class="role-title">Junior Java Developer | Backend Developer | Spring Boot | SQL</div>
       </div>
     </header>
 
     <main>
       <section class="section">
-        <h2 class="section-title">Skills</h2>
-        <p class="skill-line"><span class="skill-label">Languages:</span> Java, JavaScript, SQL, HTML, CSS</p>
-        <p class="skill-line"><span class="skill-label">Frameworks & Libraries:</span> Spring Boot, JPA, JDBC, React, Next.js, Android, Swing</p>
-        <p class="skill-line"><span class="skill-label">Databases & Tools:</span> MySQL, PostgreSQL, Git, GitHub, Render, Vercel, SSL, CSV import, hosting workflows</p>
-        <p class="skill-line"><span class="skill-label">Core Strengths:</span> REST APIs, CRUD flows, authentication, validation, schema design, admin dashboards, reporting, business workflows</p>
+        <h2 class="section-title">Profile</h2>
+        <p class="summary">
+          Junior Java/backend developer based in Pretoria, seeking a team role where I can contribute to Java,
+          Spring Boot, SQL, REST API, CRUD, and debugging work under experienced engineers. I have an NQF 6
+          System Development qualification and several reviewable projects that show backend logic, relational data,
+          authentication, forms, and deployment. I am looking for the right junior opportunity to learn from senior
+          engineers, contribute reliably, and grow in a professional software team.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="skill-line"><span class="skill-label">Primary:</span> Java, Spring Boot, REST APIs, SQL, MySQL, PostgreSQL, Git, GitHub</p>
+        <p class="skill-line"><span class="skill-label">Backend:</span> JPA, JDBC, validation, authentication flows, CRUD modules, relational schema design, business logic</p>
+        <p class="skill-line"><span class="skill-label">Frontend and mobile:</span> HTML, CSS, JavaScript, React, Next.js, Android, Swing</p>
+        <p class="skill-line"><span class="skill-label">Tools and delivery:</span> Render, Vercel, basic hosting, SSL, CSV import, debugging, documentation, deployment support</p>
       </section>
 
       <section class="section">
         <h2 class="section-title">Work Experience</h2>
         <article class="entry">
           <div class="entry-head">
-            <span>Teodor Dev Tech</span>
+            <span>Freelance / Self-Led Software Projects</span>
             <span class="entry-date">Jan 2022 - Present</span>
           </div>
           <div class="entry-subhead">
-            <span>Software Developer</span>
+            <span>Junior Java and Web Developer</span>
             <span class="entry-place">Pretoria, South Africa</span>
           </div>
           <ul>
-            <li>Built and delivered business systems, web apps, Android apps, internal tools, and workflow-specific software for client and self-led projects.</li>
-            <li>Managed delivery from requirements gathering through build, deployment, support, and iteration using Java, Spring Boot, Android, React, Next.js, SQL, and hosting workflows.</li>
-            <li>Translated business needs into secure authentication flows, CRUD modules, reporting screens, data structures, user roles, and practical interfaces for daily operations.</li>
-            <li>Developed systems for administration, record keeping, quoting, lead capture, task tracking, invoice tracking, church management, and operational dashboards.</li>
-            <li>Demonstrated ownership across troubleshooting, prioritization, release readiness, stakeholder communication, and practical handover for business users.</li>
-            <li>Java, Spring Boot, JPA, JDBC, Android, React, Next.js, PostgreSQL, MySQL, Git, GitHub, Render, Vercel, HTML, CSS</li>
+            <li>Built self-led and small-client projects to practise real software delivery beyond coursework, with source code and live demos available for review.</li>
+            <li>Implemented Java/Spring Boot backend features including authentication flows, CRUD modules, validation, reporting screens, and SQL-backed data models.</li>
+            <li>Worked with MySQL and PostgreSQL to design tables, relationships, user roles, and record-management workflows for practical business systems.</li>
+            <li>Built supporting web, Android, and desktop interfaces using React, Next.js, Java Android, Swing, HTML, CSS, and JavaScript.</li>
+            <li>Handled GitHub version control, deployment support, troubleshooting, and iteration while learning to write clearer, more maintainable project code.</li>
           </ul>
         </article>
       </section>
@@ -212,9 +244,12 @@
             <span class="entry-date">2022 - 2024</span>
           </div>
           <div class="entry-subhead">
-            <span>System Development</span>
+            <span>System Development (NQF 6)</span>
             <span class="entry-place">Pretoria, South Africa</span>
           </div>
+          <ul>
+            <li>Covered Java, databases, web services, SDLC concepts, application design, and software development fundamentals.</li>
+          </ul>
         </article>
 
         <article class="entry">
@@ -241,13 +276,27 @@
       </section>
 
       <section class="section">
-        <h2 class="section-title">Project Work</h2>
+        <h2 class="section-title">Selected Project Proof</h2>
         <ul class="project-list">
-          <li><span class="project-title">Business Operations Hub:</span> Built an operational dashboard with role-based authentication, lead capture, CSV import, invoice tracking, admin reporting, and PostgreSQL-backed workflows. Java, Spring Boot, PostgreSQL, Render. <a href="https://integration-tfga.onrender.com/login">integration-tfga.onrender.com/login</a></li>
-          <li><span class="project-title">Church Management System:</span> Developed a centralized administration system for member records, ministries, attendance, reporting, and replacing spreadsheet-heavy church operations. Java, Spring, JPA, MySQL. <a href="https://church-management-system-2-jywe.onrender.com">church-management-system-2-jywe.onrender.com</a></li>
-          <li><span class="project-title">Desktop Point of Sale:</span> Created an offline POS application covering product management, cart handling, transaction flows, JDBC persistence, and packaged Windows desktop delivery. Java, Swing, JDBC. <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi">Download installer</a></li>
-          <li><span class="project-title">Clinical Reasoning Assistant:</span> Built a clinical workflow app for structured consultation notes, differential thinking, and clearer next-step checks before decision-making. Next.js, healthcare workflow design. <a href="https://clinical-reasoning-assistant-blond.vercel.app">clinical-reasoning-assistant-blond.vercel.app</a></li>
-          <li><span class="project-title">Gardeners Task Tracker:</span> Built an Android task tracking app for daily garden work coordination, team visibility, and field operations. Java, Android. <a href="https://github.com/theo117/piketberg-gardeners-app/releases/download/v1.0.0/app-debug.apk">Download APK</a></li>
+          <li>
+            <span class="project-title">Business Operations Hub:</span> Java, Spring Boot, PostgreSQL, Render.
+            Built a backend-focused operations dashboard with login, role-based access, lead capture, CSV import,
+            invoice tracking, admin reporting, and SQL-backed workflows.
+            <span class="project-proof">Reviewer focus: Spring Boot controllers/services, PostgreSQL data model, authentication flow, CRUD/reporting features, deployment.</span>
+            <span class="project-links">Live: <a href="https://integration-tfga.onrender.com/login">integration-tfga.onrender.com/login</a></span>
+          </li>
+          <li>
+            <span class="project-title">Church Management System:</span> Java, Spring, JPA, MySQL.
+            Developed a member and ministry administration system for records, attendance, reporting, and replacing spreadsheet-heavy workflows.
+            <span class="project-proof">Reviewer focus: JPA entities, MySQL relationships, CRUD screens, reporting workflow, practical business rules.</span>
+            <span class="project-links">Live: <a href="https://church-management-system-2-jywe.onrender.com">church-management-system-2-jywe.onrender.com</a></span>
+          </li>
+          <li>
+            <span class="project-title">Desktop Point of Sale:</span> Java, Swing, JDBC, MySQL.
+            Created an offline POS application covering product management, cart handling, transaction flow, persistence, and Windows installer packaging.
+            <span class="project-proof">Reviewer focus: Java UI flow, JDBC persistence, transaction handling, packaging, and end-to-end desktop delivery.</span>
+            <span class="project-links">Installer: <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi">github.com/theo117/POS-App-v1</a></span>
+          </li>
         </ul>
       </section>
 
