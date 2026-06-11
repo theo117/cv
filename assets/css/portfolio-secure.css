@@ -895,6 +895,34 @@ h3 {
   padding: 1.35rem;
 }
 
+.experience-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0.85rem 0 0.65rem;
+}
+
+.experience-heading h3 {
+  margin: 0;
+}
+
+.experience-logo {
+  flex: none;
+  width: clamp(4.5rem, 11vw, 7.5rem);
+  height: 3rem;
+  object-fit: contain;
+  padding: 0.35rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
+.experience-logo-teodor {
+  width: clamp(6.2rem, 15vw, 8.5rem);
+  height: 3.25rem;
+  padding: 0.25rem;
+}
+
 .education-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1028,6 +1056,20 @@ h3 {
   .project-filter {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-heading {
+    align-items: flex-start;
+  }
+
+  .experience-logo {
+    width: 4.25rem;
+    height: 2.85rem;
+  }
+
+  .experience-logo-teodor {
+    width: 5.7rem;
+    height: 3rem;
   }
 
   .footer-shell {

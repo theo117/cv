@@ -69,7 +69,6 @@
 
     .section {
       margin-top: 5mm;
-      break-inside: avoid;
     }
 
     .section:first-of-type {
@@ -116,6 +115,28 @@
     .entry-head {
       margin-bottom: 0.5mm;
       font-weight: 700;
+    }
+
+    .entry-company {
+      display: inline-flex;
+      align-items: center;
+      gap: 2mm;
+      min-width: 0;
+    }
+
+    .entry-logo {
+      width: 15mm;
+      height: 7mm;
+      object-fit: contain;
+      padding: 0.6mm;
+      border: 0.2mm solid #d8d8d8;
+      border-radius: 1mm;
+      background: #fff;
+    }
+
+    .entry-logo-teodor {
+      width: 17mm;
+      padding: 0.3mm;
     }
 
     .entry-subhead {
@@ -219,8 +240,11 @@
         <h2 class="section-title">Work Experience</h2>
         <article class="entry">
           <div class="entry-head">
-            <span>Freelance / Self-Led Software Projects</span>
-            <span class="entry-date">Jan 2022 - Present</span>
+            <span class="entry-company">
+              <img class="entry-logo entry-logo-teodor" src="images/teodor-dev-tech-logo.png" alt="Teodor Dev Tech logo">
+              <span>Teodor Dev Tech / Self-Led Software Projects</span>
+            </span>
+            <span class="entry-date">2022 - Present</span>
           </div>
           <div class="entry-subhead">
             <span>Junior Java and Web Developer</span>
@@ -232,6 +256,63 @@
             <li>Worked with MySQL and PostgreSQL to design tables, relationships, user roles, and record-management workflows for practical business systems.</li>
             <li>Built supporting web, Android, and desktop interfaces using React, Next.js, Java Android, Swing, HTML, CSS, and JavaScript.</li>
             <li>Handled GitHub version control, deployment support, troubleshooting, and iteration while learning to write clearer, more maintainable project code.</li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-head">
+            <span class="entry-company">
+              <img class="entry-logo" src="images/logo-adcock-ingram.svg" alt="Adcock Ingram logo">
+              <span>Adcock Ingram</span>
+            </span>
+            <span class="entry-date">2018 - 2022</span>
+          </div>
+          <div class="entry-subhead">
+            <span>IT Technician</span>
+            <span class="entry-place">South Africa</span>
+          </div>
+          <ul>
+            <li>Provided end-user IT support, troubleshooting hardware, software, network, printer, and access-related issues.</li>
+            <li>Supported workstation setup, maintenance, incident resolution, and reliable day-to-day IT operations.</li>
+            <li>Worked with business users to resolve technical issues clearly, professionally, and within support expectations.</li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-head">
+            <span class="entry-company">
+              <img class="entry-logo" src="images/logo-shoprite-checkers.svg" alt="Shoprite Checkers logo">
+              <span>Shoprite / Checkers</span>
+            </span>
+            <span class="entry-date">2015 - 2018</span>
+          </div>
+          <div class="entry-subhead">
+            <span>IT Technician</span>
+            <span class="entry-place">South Africa</span>
+          </div>
+          <ul>
+            <li>Delivered technical support for retail IT environments, including user devices, peripherals, and operational systems.</li>
+            <li>Assisted with issue diagnosis, equipment readiness, and practical support for business-critical store and office workflows.</li>
+            <li>Built strong troubleshooting habits in a fast-paced environment where uptime and clear communication mattered.</li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-head">
+            <span class="entry-company">
+              <img class="entry-logo" src="images/logo-netsurit.svg" alt="Netsurit logo">
+              <span>Netsurit</span>
+            </span>
+            <span class="entry-date">2012 - 2015</span>
+          </div>
+          <div class="entry-subhead">
+            <span>IT Technician</span>
+            <span class="entry-place">South Africa</span>
+          </div>
+          <ul>
+            <li>Supported managed IT service work across desktop support, user assistance, basic networking, and technical troubleshooting.</li>
+            <li>Helped resolve incidents, maintain equipment, and support clients with practical, service-focused IT assistance.</li>
+            <li>Developed a foundation in support processes, documentation, and professional communication with users and teams.</li>
           </ul>
         </article>
       </section>

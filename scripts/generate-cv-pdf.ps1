@@ -1,6 +1,6 @@
 param(
   [string]$InputPath = "..\print-cv.html",
-  [string]$OutputPath = "..\Theodore_Nelson_CV_Upgraded.pdf"
+  [string]$OutputPath = "..\Theodore_Nelson_CV_Junior_Java.pdf"
 )
 
 $ErrorActionPreference = "Stop"
@@ -34,6 +34,7 @@ $arguments = @(
   '"--disable-gpu"',
   '"--no-first-run"',
   '"--no-default-browser-check"',
+  '"--no-pdf-header-footer"',
   ('"--user-data-dir={0}"' -f $profilePath),
   '"--allow-file-access-from-files"',
   ('"--print-to-pdf={0}"' -f $resolvedOutputPath),
