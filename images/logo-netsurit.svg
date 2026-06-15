@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 120" role="img" aria-labelledby="title desc">
-  <title id="title">Netsurit logo</title>
-  <desc id="desc">A compact Netsurit wordmark treatment for CV experience entries.</desc>
-  <rect width="380" height="120" rx="18" fill="#ffffff"/>
-  <path d="M42 26h52l-52 68V26Zm62 0h22v68H74l30-39V26Z" fill="#f5364d"/>
-  <text x="148" y="75" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" letter-spacing="2">NETSURIT</text>
-</svg>

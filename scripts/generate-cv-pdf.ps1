@@ -1,6 +1,6 @@
 param(
   [string]$InputPath = "..\print-cv.html",
-  [string]$OutputPath = "..\Theodore_Nelson_CV_Junior_Java.pdf"
+  [string]$OutputPath = "..\Theodore_Nelson_CV_Systems_Development.pdf"
 )
 
 $ErrorActionPreference = "Stop"

@@ -376,21 +376,34 @@ body.launch-ready .site-footer {
 }
 
 .profile-panel {
+  display: grid;
+  gap: 1rem;
   overflow: hidden;
+  padding: 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 44%),
+    var(--surface);
 }
 
-.profile-panel img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center 28%;
+.profile-initials {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 20%, var(--surface)), color-mix(in srgb, var(--accent-2) 15%, var(--surface))),
+    var(--surface-muted);
+  color: var(--text);
+  font-size: clamp(3.8rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
-.profile-panel div {
-  padding: 1rem;
+.profile-copy {
+  padding: 0.1rem 0 0;
 }
 
 .profile-name,
@@ -406,6 +419,12 @@ body.launch-ready .site-footer {
 .profile-role {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.profile-summary {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
 }
 
 .spotlight-card,
