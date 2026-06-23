@@ -302,7 +302,7 @@
           <p class="eyebrow">Projects</p>
           <h2 id="projects-title">Reviewable Java, backend, web, and Android projects.</h2>
         </div>
-        <p class="section-copy">These projects are included as proof of implementation practice: backend logic, relational data, authentication, CRUD flows, interfaces, deployment, and problem solving beyond tutorial examples.</p>
+        <p class="section-copy">These projects are included as proof of implementation practice: backend logic, relational data, authentication, CRUD flows, interfaces, deployment, debugging, and lessons learned beyond tutorial examples.</p>
       </div>
       <div class="project-filter" aria-label="Filter projects">
         <button type="button" class="filter-button active" data-filter="all" aria-pressed="true">All</button>
@@ -320,8 +320,8 @@
           <h3>Church Management System</h3>
           <p>Built a centralized Java, Spring, JPA, and MySQL system for member records, ministries, attendance, and reporting to replace spreadsheet-heavy church administration.</p>
           <ul class="project-list">
-            <li>Designed relational workflows for recurring admin, tracking, and reporting tasks.</li>
-            <li>Combined structured data capture with reporting views to turn manual operational work into a usable system.</li>
+            <li>Designed relational workflows for recurring admin, tracking, and reporting tasks instead of treating the app as a simple CRUD exercise.</li>
+            <li>Worked through entity relationships, validation rules, and reporting views, learning how small database decisions affect everyday admin work.</li>
           </ul>
           <a href="https://church-management-system-2-jywe.onrender.com" target="_blank" rel="noopener noreferrer">View live project</a>
         </article>
@@ -334,8 +334,8 @@
           <h3>TradeFlow SA</h3>
           <p>Built a workflow platform for South African service businesses that combines quoting, invoicing, and client management in one place.</p>
           <ul class="project-list">
-            <li>Centered the product around the admin flow small businesses use most often: quote, approve, invoice, and track the client.</li>
-            <li>Framed the app around real back-office workflow instead of a generic demo dashboard.</li>
+            <li>Mapped the product around the admin flow small businesses use most often: quote, approve, invoice, and track the client.</li>
+            <li>Learned to design around workflow continuity, where each screen needs to make the next business action obvious.</li>
           </ul>
           <a href="https://trade-flow-sa.vercel.app/" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
@@ -350,7 +350,7 @@
           <ul class="project-list">
             <li>Designed as an integration layer for businesses using spreadsheets, emails, manual tracking, legacy tools, and newer cloud systems.</li>
             <li>Includes role-based authentication, lead capture and CSV import, invoice tracking, admin reporting, user management, account security flows, and email automation hooks.</li>
-            <li>Deployed with PostgreSQL on Render to demonstrate centralized operational data, better visibility, and team action from one place.</li>
+            <li>Worked through role-specific access, imported data edge cases, hosting configuration, and PostgreSQL-backed state to make the workflow reviewable online.</li>
           </ul>
           <p class="project-login">Demo login: ops / Ops@123</p>
           <a href="https://integration-tfga.onrender.com/login" target="_blank" rel="noopener noreferrer">View live demo</a>
@@ -365,7 +365,7 @@
           <p>Built a multi-user inventory platform with Next.js, Supabase, and PostgreSQL, including authentication, role-based access, client portals, and synchronized business data.</p>
           <ul class="project-list">
             <li>Designed for multi-user access so inventory data and client-facing workflows stay aligned across the platform.</li>
-            <li>Used authentication and role-based access to support a realistic operational system rather than a simple CRUD proof of concept.</li>
+            <li>Practised thinking through auth, shared data, and permission boundaries so the project behaved more like an operational system than a single-user demo.</li>
           </ul>
           <a href="https://inventory-saas-app-main-us8j.vercel.app/" target="_blank" rel="noopener noreferrer">View platform</a>
         </article>
@@ -378,8 +378,8 @@
           <h3>Banking App Demo</h3>
           <p>Built and deployed a hosted banking demo that shows account management and transaction flows across a Spring Boot and React stack.</p>
           <ul class="project-list">
-            <li>Used the project to demonstrate full-stack coordination between backend business logic and a browser-based user interface.</li>
-            <li>Modeled common banking-style flows in a way that is easy for recruiters and teams to review quickly.</li>
+            <li>Used the project to practise full-stack coordination between backend business logic and a browser-based user interface.</li>
+            <li>Debugged the kinds of contract issues junior developers meet often: request payloads, response handling, routing, and deployed API behavior.</li>
           </ul>
           <a href="https://northstar-demo-bank-free.onrender.com" target="_blank" rel="noopener noreferrer">View demo</a>
         </article>
@@ -393,7 +393,7 @@
           <p>Built an offline Java Swing and JDBC POS application covering product management, cart handling, transactions, and packaged desktop delivery.</p>
           <ul class="project-list">
             <li>Focused on a desktop-first workflow where sales can continue without depending on a live internet connection.</li>
-            <li>Packaged the application for installation so it can be tested and used like a real desktop product.</li>
+            <li>Worked through local database access, installer packaging, and delivery details so it could be tested like a real desktop product.</li>
           </ul>
           <a href="https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi" target="_blank" rel="noopener noreferrer">Download installer</a>
         </article>
@@ -401,13 +401,13 @@
         <article class="project-card" data-category="web">
           <div class="project-topline">
             <span class="project-tag">Web app</span>
-            <span class="stack">React| Spring Boot | CRUD</span>
+            <span class="stack">React | Spring Boot | CRUD</span>
           </div>
           <h3>User Registration Web App</h3>
           <p>Built a registration-focused web application demonstrating form handling, account capture, CRUD operations, and a clean browser-based workflow.</p>
           <ul class="project-list">
-            <li>Used the project to show reliable user input handling and a simple registration journey from form entry to account capture.</li>
-            <li>Included CRUD functionality so the workflow goes beyond sign-up and supports ongoing record management.</li>
+            <li>Used the project to practise reliable user input handling and the full path from form entry to stored account records.</li>
+            <li>Worked through basic CRUD behaviour, validation expectations, and browser-to-backend flow in a compact reviewable app.</li>
           </ul>
           <a href="https://userregistrationweb.vercel.app/" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
@@ -421,7 +421,7 @@
           <p>Built an Android task tracking app in Java for garden work management, helping teams organize daily jobs and keep operational tasks visible.</p>
           <ul class="project-list">
             <li>Focused the app on task visibility and day-by-day coordination for teams managing field work.</li>
-            <li>Extended the portfolio beyond web delivery by showing mobile workflow thinking in a practical operations context.</li>
+            <li>Learned how mobile constraints change workflow design, especially when users need quick updates instead of dense screens.</li>
           </ul>
           <a href="https://github.com/theo117/piketberg-gardeners-app/releases/download/v1.0.0/app-debug.apk" target="_blank" rel="noopener noreferrer">Download APK</a>
         </article>
@@ -435,7 +435,7 @@
           <p>Built an Android app for a tourism subject that helps a teacher communicate with students and upload learning content in one accessible mobile workspace.</p>
           <ul class="project-list">
             <li>Focused the app around teacher-to-student communication and content delivery for subject-specific learning.</li>
-            <li>Designed the workflow so tourism resources can be shared from one place instead of being scattered across informal channels.</li>
+            <li>Worked through the product question behind the code: how to keep classroom resources organized without making the mobile flow feel heavy.</li>
           </ul>
           <a href="https://github.com/theo117/arcadia_app/releases/download/arcadia/app-debug.apk" target="_blank" rel="noopener noreferrer">Download APK</a>
         </article>
@@ -449,7 +449,7 @@
           <p>Built a clinical reasoning support app that helps structure consultation notes, track differential thinking, and generate clearer next-step checks before decision-making.</p>
           <ul class="project-list">
             <li>Positioned the workflow as reasoning support rather than diagnosis, making the tool easier to understand as a clinician-facing assistant.</li>
-            <li>Designed the app as a frontend-first healthcare workflow that is ready for backend LLM integration without needing a full product redesign.</li>
+            <li>Learned to separate sensitive product boundaries from implementation, especially around wording, user expectations, and future LLM integration.</li>
           </ul>
           <a href="https://clinical-reasoning-assistant-blond.vercel.app" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
@@ -463,7 +463,7 @@
           <p>Built a website auditing tool that inspects sites, flags issues, and turns technical findings into practical next actions.</p>
           <ul class="project-list">
             <li>Focused the workflow on analysis first, then translated findings into action-oriented recommendations a client or owner can understand.</li>
-            <li>Showed how technical diagnostics can be packaged into a usable product experience instead of a raw report.</li>
+            <li>Practised the support skill of turning raw technical diagnostics into clearer priorities, plain-language notes, and next actions.</li>
           </ul>
           <a href="https://webagent-ka73.onrender.com" target="_blank" rel="noopener noreferrer">View app</a>
         </article>
