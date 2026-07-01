@@ -1,35 +1,41 @@
-@page { size: A4; margin: 11mm 13mm; }
+@page { size: A4; margin: 10mm 12mm; }
 * { box-sizing: border-box; }
-body { margin: 0; background: #eef1f4; color: #17202a; font-family: Arial, Helvetica, sans-serif; font-size: 9.45pt; line-height: 1.3; }
+body { margin: 0; background: #edf0f2; color: #1d2733; font-family: Arial, Helvetica, sans-serif; font-size: 9.35pt; line-height: 1.32; }
 a { color: inherit; text-decoration: none; }
-.sheet { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 11mm 13mm; background: #fff; }
-header { border-bottom: 2.2px solid #173f5f; padding-bottom: 3.2mm; }
-h1 { margin: 0; color: #102a43; font-size: 23pt; line-height: 1; letter-spacing: .2px; }
-.headline { margin: 1.5mm 0 2mm; color: #173f5f; font-size: 11.3pt; font-weight: 700; }
-.contact { display: flex; flex-wrap: wrap; gap: .7mm 3mm; font-size: 8.8pt; }
-.contact span:not(:last-child)::after { content: " |"; margin-left: 3mm; color: #829ab1; }
-section { margin-top: 3.5mm; }
-h2 { margin: 0 0 1.7mm; padding-bottom: .7mm; border-bottom: 1px solid #9fb3c8; color: #173f5f; font-size: 10.6pt; line-height: 1.1; letter-spacing: .7px; text-transform: uppercase; break-after: avoid-page; page-break-after: avoid; }
+.sheet { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 10mm 12mm; background: #fff; }
+header { border-bottom: 2px solid #24445f; padding-bottom: 3.1mm; }
+.eyebrow { margin: 0 0 1mm; color: #5a6b7d; font-size: 8.6pt; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+h1 { margin: 0; color: #111827; font-size: 24pt; line-height: 1; letter-spacing: 0; }
+.headline { margin: 1.4mm 0 2mm; color: #24445f; font-size: 11.2pt; font-weight: 700; }
+.contact { display: flex; flex-wrap: wrap; gap: .75mm 2.6mm; color: #334155; font-size: 8.55pt; }
+.contact span:not(:last-child)::after { content: "|"; margin-left: 2.6mm; color: #9aa7b4; }
+section { margin-top: 3.4mm; }
+h2 { margin: 0 0 1.6mm; padding-bottom: .65mm; border-bottom: 1px solid #b4c0ca; color: #24445f; font-size: 10.2pt; line-height: 1.1; letter-spacing: 0; text-transform: uppercase; break-after: avoid-page; page-break-after: avoid; }
 h2 + .entry,
 h2 + .project { break-before: avoid-page; page-break-before: avoid; }
 p { margin: 0; }
-.summary { font-size: 9.55pt; }
+.summary-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 6mm; align-items: start; }
+.summary { font-size: 9.45pt; }
+.quick-stack { border-left: 2px solid #d5dde4; padding-left: 4mm; }
+.quick-stack p { margin-bottom: .9mm; font-size: 8.95pt; }
 .skills p { margin-bottom: .75mm; }
 .label { font-weight: 700; }
 .entry { margin: 0 0 2.7mm; break-inside: avoid; }
 .entry:last-child { margin-bottom: 0; }
 .entry-head { display: flex; justify-content: space-between; gap: 8mm; font-weight: 700; }
-.entry-head strong { color: #102a43; }
+.entry-head strong { color: #111827; }
 .date { flex: none; white-space: nowrap; }
-.entry-sub { display: flex; justify-content: space-between; gap: 8mm; margin: .2mm 0 .8mm; font-style: italic; }
-ul { margin: .7mm 0 0 4.5mm; padding: 0; }
-li { margin: 0 0 .7mm; padding-left: .5mm; }
-.project { margin-bottom: 2.2mm; break-inside: avoid; }
-.project-title { color: #102a43; font-weight: 700; }
-.stack { font-weight: 700; }
-.links { margin-top: .5mm; color: #173f5f; font-size: 8.65pt; }
+.entry-sub { display: flex; justify-content: space-between; gap: 8mm; margin: .2mm 0 .75mm; color: #475569; font-style: italic; }
+ul { margin: .75mm 0 0 4.2mm; padding: 0; }
+li { margin: 0 0 .65mm; padding-left: .5mm; }
+.project { margin-bottom: 2.15mm; break-inside: avoid; }
+.project.feature { border-left: 2px solid #24445f; padding-left: 3mm; }
+.project-head { display: flex; justify-content: space-between; gap: 6mm; align-items: baseline; }
+.project-title { color: #111827; font-weight: 700; }
+.stack { color: #24445f; flex: none; font-size: 8.8pt; font-weight: 700; white-space: nowrap; }
+.links { margin-top: .45mm; color: #24445f; font-size: 8.55pt; font-weight: 700; }
 .education-row { display: flex; justify-content: space-between; gap: 8mm; margin-bottom: 1.2mm; }
-.education-row strong { color: #102a43; }
+.education-row strong { color: #111827; }
 .note { color: #486581; font-size: 8.6pt; }
 .page-break { break-before: page; page-break-before: always; }
 @media print { body { background: #fff; } .sheet { width: auto; min-height: auto; margin: 0; padding: 0; } }
