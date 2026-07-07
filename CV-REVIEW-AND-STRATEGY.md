@@ -6,7 +6,7 @@
 |---|---:|---|
 | First impression | 6/10 | Clean and credible, but the opening sounds tentative and does not immediately distinguish you from other graduates. |
 | ATS compatibility | 7/10 | Selectable text and standard content, but logos, long links, mixed positioning, and less conventional labels such as "Selected Project Proof" reduce clarity. |
-| Technical credibility | 7/10 | The stack and live projects are strong evidence. Credibility is weakened by repeated words such as "practice" and by missing repository links, tests, architecture notes, and measurable outcomes. |
+| Technical credibility | 7/10 | The stack and project set are strong evidence. Credibility is weakened by repeated words such as "practice" and by missing repository links, tests, architecture notes, and measurable outcomes. |
 | Junior developer attractiveness | 7/10 | You show initiative and broad exposure, but the original CV buries the strongest advantage: mature support experience plus software-building ability. |
 | Interview potential | 6/10 | Good raw material, but too much generic wording and too little prioritisation. A recruiter could miss your strongest projects during a short scan. |
 
@@ -64,7 +64,7 @@ Only add keywords that you can explain in an interview. In particular, add Hiber
 
 - Employment months, office locations, and whether each role was permanent, contract, internship, or learnership.
 - Quantified support scope: approximate users, sites, devices, tickets per week, resolution rate, SLA performance, or major incidents handled.
-- Direct GitHub repository links for the three featured projects, not only live demos or installer downloads.
+- Direct GitHub repository links for the three featured projects, not only installer downloads.
 - Testing evidence: JUnit, integration tests, API tests, Postman collections, or documented manual test cases.
 - Build and engineering tools actually used, such as Maven or Gradle, Docker, GitHub Actions, IDEs, and Linux.
 - Ticketing, remote support, directory, and enterprise tools used in technician roles, such as ServiceNow, Jira, Active Directory, Microsoft 365, SCCM, Intune, or TeamViewer.
