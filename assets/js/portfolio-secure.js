@@ -46,7 +46,7 @@
     document.body.classList.toggle("theme-dark", isDark);
 
     if (themeColor) {
-      themeColor.setAttribute("content", isDark ? "#0e1624" : "#f7f9fb");
+      themeColor.setAttribute("content", isDark ? "#0e1624" : "#f4f1ea");
     }
 
     if (themeToggle) {
