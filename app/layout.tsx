@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Theodore Nelson — Software Developer",
     description: "Professional software built around real business problems.",
-    url: "https://cv.teodordev.co.za/?preview=20260729",
+    url: "https://cv.teodordev.co.za/",
     siteName: "Theodore Nelson",
     images: [
       {
