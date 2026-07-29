@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Theodore Nelson",
     images: [
       {
-        url: "/images/social-preview-20260729.jpg",
+        url: "/images/social-preview-whatsapp-20260729.jpg",
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "Professional software built around real business problems.",
     images: [
       {
-        url: "/images/social-preview-20260729.jpg",
+        url: "/images/social-preview-whatsapp-20260729.jpg",
         alt: "Theodore Nelson — Software Developer",
       },
     ],

@@ -3,7 +3,7 @@ import Portfolio from "@/components/portfolio";
 
 const shareUrl = "https://cv.teodordev.co.za/share-20260729";
 const previewImage =
-  "https://cv.teodordev.co.za/images/social-preview-20260729.jpg";
+  "https://cv.teodordev.co.za/images/social-preview-whatsapp-20260729.jpg";
 
 export const metadata: Metadata = {
   title: "Theodore Nelson — Software Developer",
