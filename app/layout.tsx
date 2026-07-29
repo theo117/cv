@@ -19,7 +19,15 @@ export const metadata: Metadata = {
     description: "Professional software built around real business problems.",
     url: "https://cv.teodordev.co.za",
     siteName: "Theodore Nelson",
-    images: [{ url: "/images/social-preview-20260601.jpg", width: 1200, height: 630 }],
+    images: [
+      {
+        url: "/images/social-preview-20260601.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "Theodore Nelson — Software Developer",
+      },
+    ],
     locale: "en_ZA",
     type: "website",
   },
@@ -27,7 +35,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Theodore Nelson — Software Developer",
     description: "Professional software built around real business problems.",
-    images: ["/images/social-preview-20260601.jpg"],
+    images: [
+      {
+        url: "/images/social-preview-20260601.jpg",
+        alt: "Theodore Nelson — Software Developer",
+      },
+    ],
   },
   alternates: { canonical: "/" },
   icons: { icon: "/favicon-v2.svg", apple: "/apple-touch-icon-v2.png" },
