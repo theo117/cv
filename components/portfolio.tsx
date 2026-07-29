@@ -407,7 +407,7 @@ export default function Portfolio() {
           </div>
           <div className="credential-list">
             <a href="/system-development-nqf6.pdf" download><span>2024</span><div><strong>Systems Development · NQF 6</strong><small>Boston City Campus</small></div><Download size={18} /></a>
-            <a href="/system-support-nqf5.pdf" download><span>2017</span><div><strong>Systems Support · NQF 5</strong><small>DHET</small></div><Download size={18} /></a>
+            <a href="/system-support-nqf5.pdf" download><span>2017</span><div><strong>Systems Support · NQF 5</strong><small>MICT SETA</small></div><Download size={18} /></a>
             <a href="/mcts-certificate.pdf" download><span>2012</span><div><strong>Microsoft Certified IT Professional</strong><small>Torque IT</small></div><Download size={18} /></a>
           </div>
         </section>
