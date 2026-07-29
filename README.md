@@ -1,49 +1,35 @@
-# CV Portfolio
+# Theodore Nelson — Developer Portfolio
 
-This portfolio is now a static site with a reduced attack surface.
+A recruiter-first software developer portfolio designed as a premium product experience.
 
-## Current architecture
+## Stack
 
-- `index.html` is the main page.
-- `assets/css/portfolio-secure.css` contains the active visual design.
-- `assets/js/portfolio-secure.js` contains the small amount of local interaction logic.
-- PDFs, favicons, images, and SEO files are served as static assets.
+- Next.js 16 with the App Router and static export
+- TypeScript
+- Tailwind CSS 4 and custom CSS
+- GSAP with ScrollTrigger
+- Framer Motion
+- Lucide icons
 
-## Security posture
+## Local development
 
-This rebuild was intentionally aligned with OWASP-style secure defaults:
+```bash
+npm install
+npm run dev
+```
 
-- No backend-powered contact form.
-- No live chat server.
-- No exposed public API keys in the HTML.
-- No remote script loading.
-- No external font dependencies.
-- Restrictive Content Security Policy in `index.html`.
-- Direct contact links and client-side WhatsApp handoff only, which avoids storing visitor-submitted data or exposing messaging API keys in the browser.
+Open `http://localhost:3000`.
 
-## Important maintenance rules
+## Production
 
-If you extend this site later, keep these constraints unless you are deliberately redesigning the security model:
+```bash
+npm run build
+```
 
-- Prefer static content over dynamic widgets.
-- Do not add third-party form handlers directly into the page.
-- Do not add inline scripts or inline event handlers.
-- Do not add remote JavaScript sources unless there is a strong reason and the CSP is updated carefully.
-- If a feature collects or processes visitor data, move that logic to a properly secured backend and review validation, authentication, rate limiting, logging, and secret handling.
+The static production site is exported to `out/`.
 
-## Local editing
+## Content
 
-You can open `index.html` directly for basic review, but some browser behavior is best checked through a local static server.
+The primary page is in `components/portfolio.tsx`. Visual styling and responsive behavior are in `app/globals.css`. Recruiter downloads, project captures, and metadata assets live in `public/`.
 
-If you use a local server, point it at the `cv/` directory and verify:
-
-- layout on desktop and mobile
-- theme toggle behavior
-- navigation section highlighting
-- downloads and external links
-
-## Deployment notes
-
-This repository no longer depends on the old `chat-server` service or the previous Render service config.
-
-Deployment should treat `cv/` as a static site root.
+The site intentionally has no form backend, analytics dependency, remote font request, or public API key. Contact actions use direct email, telephone, LinkedIn, and GitHub links.

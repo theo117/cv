@@ -1,3 +1,9 @@
 .browser-print-profile/
 .chrome-print-profile/
 scripts/.browser-profile/
+node_modules/
+.next/
+out/
+.DS_Store
+*.log
+*.tsbuildinfo
