@@ -36,17 +36,18 @@ const links = {
 const projects = [
   {
     number: "01",
-    name: "Business Operations Hub",
-    label: "Featured backend build",
+    name: "TradeFlow SA",
+    label: "Live business platform",
     summary:
-      "A deployed operations platform that turns scattered spreadsheets and manual follow-ups into one controlled business workflow.",
-    problem: "Leads, invoices, users, and reporting lived across disconnected tools.",
-    impact: "One role-aware workspace for capture, tracking, administration, and reporting.",
-    lesson: "Reliable business software begins with clear state, permissions, and edge cases.",
-    stack: ["Java", "Spring Boot", "PostgreSQL", "REST", "Render"],
+      "A live operations platform that helps South African service businesses manage customers, products, quotes, invoices, payments, and communication in one place.",
+    problem: "Customer records, invoices, payments, and follow-ups were fragmented across spreadsheets, documents, and WhatsApp.",
+    impact: "A structured quote-to-payment workflow with PDF invoices and practical business automation.",
+    lesson: "Useful automation keeps each business action simple while making the next step obvious.",
+    stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
     image: "/im1.png",
     accent: "violet",
-    github: links.github,
+    href: "https://trade-flow-sa.vercel.app/",
+    cta: "Open live project",
   },
   {
     number: "02",
@@ -60,7 +61,8 @@ const projects = [
     stack: ["Java", "Spring", "JPA", "MySQL"],
     image: "/img1.png",
     accent: "mint",
-    github: links.github,
+    href: links.github,
+    cta: "View on GitHub",
   },
   {
     number: "03",
@@ -74,7 +76,8 @@ const projects = [
     stack: ["Java", "Swing", "JDBC", "MySQL", "MSI"],
     image: "/img3.png",
     accent: "amber",
-    github: "https://github.com/theo117/POS-App-v1",
+    href: "https://github.com/theo117/POS-App-v1",
+    cta: "View on GitHub",
   },
 ] as const;
 
@@ -324,7 +327,7 @@ export default function Portfolio() {
                   </div>
                   <div className="badges">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
                   <div className="project-links">
-                    <a href={project.github} target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={16} /></a>
+                    <a href={project.href} target="_blank" rel="noreferrer">{project.cta} <ArrowUpRight size={16} /></a>
                     <a href={links.email}>Request a walkthrough <ChevronRight size={16} /></a>
                   </div>
                 </div>
