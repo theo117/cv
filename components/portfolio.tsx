@@ -44,7 +44,7 @@ const projects = [
     impact: "A structured quote-to-payment workflow with PDF invoices and practical business automation.",
     lesson: "Useful automation keeps each business action simple while making the next step obvious.",
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
-    image: "/im1.png",
+    image: "/tradeflow.png",
     accent: "violet",
     href: "https://tradeflow.teodordev.co.za/",
     cta: "Open live project",
