@@ -46,7 +46,7 @@ const projects = [
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
     image: "/im1.png",
     accent: "violet",
-    href: "https://trade-flow-sa.vercel.app/",
+    href: "https://tradeflow.teodordev.co.za/",
     cta: "Open live project",
   },
   {
