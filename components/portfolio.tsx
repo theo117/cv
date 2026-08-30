@@ -84,9 +84,9 @@ const projects = [
 const journey = [
   {
     period: "Jul 2026 — Now",
-    role: "IT Intern",
+    role: "Software Developer Intern",
     company: "Pinnacle ICT",
-    copy: "Supporting day-to-day IT operations, troubleshooting technical issues, and applying systems knowledge in a professional ICT environment.",
+    copy: "Contributing to software development, debugging, testing, and application support while building practical experience with professional engineering workflows.",
     current: true,
   },
   {
