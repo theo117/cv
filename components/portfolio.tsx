@@ -46,8 +46,8 @@ const projects = [
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
     image: "/tradeflow.png",
     accent: "violet",
-    href: "https://tradeflow.teodordev.co.za/",
-    cta: "Open live project",
+    href: "https://github.com/theo117/TradeFlow_SA",
+    cta: "View on GitHub",
   },
   {
     number: "02",
@@ -61,7 +61,7 @@ const projects = [
     stack: ["Java", "Spring", "JPA", "MySQL"],
     image: "/img1.png",
     accent: "mint",
-    href: links.github,
+    href: "https://github.com/theo117/church-management-system",
     cta: "View on GitHub",
   },
   {
