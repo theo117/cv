@@ -47,6 +47,7 @@ const projects = [
     image: "/tradeflow.png",
     accent: "violet",
     href: "https://github.com/theo117/TradeFlow_SA",
+    liveHref: "https://tradeflow.teodordev.co.za",
     cta: "View on GitHub",
   },
   {
@@ -62,6 +63,7 @@ const projects = [
     image: "/img1.png",
     accent: "mint",
     href: "https://github.com/theo117/church-management-system",
+    liveHref: "https://church.teodordev.co.za",
     cta: "View on GitHub",
   },
   {
@@ -328,6 +330,9 @@ export default function Portfolio() {
                   <div className="badges">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
                   <div className="project-links">
                     <a href={project.href} target="_blank" rel="noreferrer">{project.cta} <ArrowUpRight size={16} /></a>
+                    {"liveHref" in project && (
+                      <a href={project.liveHref} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={16} /></a>
+                    )}
                     <a href={links.email}>Request a walkthrough <ChevronRight size={16} /></a>
                   </div>
                 </div>
