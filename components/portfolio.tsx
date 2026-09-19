@@ -1,29 +1,16 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   ArrowDown,
   ArrowUpRight,
-  Check,
-  ChevronRight,
-  Code2,
-  Copy,
   Download,
   Github,
   Linkedin,
   Mail,
   MapPin,
   Menu,
-  Moon,
   Phone,
-  Sparkles,
-  Sun,
-  X,
+  Plus,
 } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const links = {
   github: "https://github.com/theo117",
@@ -40,9 +27,12 @@ const projects = [
     label: "Live business platform",
     summary:
       "A live operations platform that helps South African service businesses manage customers, products, quotes, invoices, payments, and communication in one place.",
-    problem: "Customer records, invoices, payments, and follow-ups were fragmented across spreadsheets, documents, and WhatsApp.",
-    impact: "A structured quote-to-payment workflow with PDF invoices and practical business automation.",
-    lesson: "Useful automation keeps each business action simple while making the next step obvious.",
+    problem:
+      "Customer records, invoices, payments, and follow-ups were fragmented across spreadsheets, documents, and WhatsApp.",
+    impact:
+      "A structured quote-to-payment workflow with PDF invoices and practical business automation.",
+    lesson:
+      "Useful automation keeps each business action simple while making the next step obvious.",
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
     image: "/tradeflow.png",
     accent: "violet",
@@ -56,8 +46,10 @@ const projects = [
     label: "Workflow product",
     summary:
       "A centralized administration system for members, ministries, attendance, donations, events, and operational reporting.",
-    problem: "Recurring church administration was fragmented across spreadsheet-style records.",
-    impact: "A single relational system designed around real weekly admin workflows.",
+    problem:
+      "Recurring church administration was fragmented across spreadsheet-style records.",
+    impact:
+      "A single relational system designed around real weekly admin workflows.",
     lesson: "Small data-model decisions shape the speed of everyday work.",
     stack: ["Java", "Spring", "JPA", "MySQL"],
     image: "/img1.png",
@@ -72,9 +64,11 @@ const projects = [
     label: "Packaged desktop app",
     summary:
       "An offline-capable sales system covering products, cart operations, transactions, local persistence, and Windows delivery.",
-    problem: "Sales workflows need to continue when connectivity is unreliable.",
-    impact: "A reviewable desktop product packaged as an installer—not just source code.",
-    lesson: "Delivery and reliability are part of the product, not an afterthought.",
+    problem:
+      "Sales workflows need to continue when connectivity is unreliable.",
+    impact: "A reviewable desktop product packaged as a Windows installer.",
+    lesson:
+      "Delivery and reliability are part of the product, not an afterthought.",
     stack: ["Java", "Swing", "JDBC", "MySQL", "MSI"],
     image: "/img3.png",
     accent: "amber",
@@ -114,343 +108,400 @@ const journey = [
   },
 ];
 
-const skills = [
-  ["Java", "Primary language"],
-  ["Spring Boot", "Backend systems"],
-  ["REST APIs", "Service design"],
-  ["PostgreSQL", "Relational data"],
-  ["React", "Product interfaces"],
-  ["Next.js", "Full-stack web"],
-  ["JavaScript", "Web fundamentals"],
-  ["Git", "Version control"],
+const capabilities = [
+  {
+    title: "Backend",
+    detail: "Business logic & services",
+    tools: "Java · Spring Boot · REST APIs · JPA · JWT",
+  },
+  {
+    title: "Frontend",
+    detail: "Interfaces people can use",
+    tools: "React · Next.js · JavaScript · Responsive CSS",
+  },
+  {
+    title: "Data & delivery",
+    detail: "From persistence to release",
+    tools: "PostgreSQL · MySQL · JDBC · Git · Vercel · MSI",
+  },
 ];
 
-const principles = [
-  "Start with the workflow, not the framework.",
-  "Make the happy path obvious and the edge cases safe.",
-  "Ship software that someone else can run, review, and maintain.",
-];
-
-function usePortfolioMotion(root: React.RefObject<HTMLDivElement | null>, reduced: boolean | null) {
-  useEffect(() => {
-    if (reduced) return;
-    gsap.registerPlugin(ScrollTrigger);
-    const context = gsap.context(() => {
-      gsap.from("[data-hero]", {
-        y: 28,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
-        gsap.from(element, {
-          y: 48,
-          opacity: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: { trigger: element, start: "top 86%", once: true },
-        });
-      });
-      gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((element) => {
-        gsap.to(element, {
-          yPercent: -7,
-          ease: "none",
-          scrollTrigger: { trigger: element, scrub: 1, start: "top bottom", end: "bottom top" },
-        });
-      });
-      gsap.from(".journey-line", {
-        scaleY: 0,
-        transformOrigin: "top",
-        ease: "none",
-        scrollTrigger: { trigger: ".journey-list", scrub: 0.6, start: "top 75%", end: "bottom 70%" },
-      });
-    }, root);
-    return () => context.revert();
-  }, [reduced, root]);
+function ProjectImage({
+  src,
+  name,
+  priority = false,
+}: {
+  src: string;
+  name: string;
+  priority?: boolean;
+}) {
+  return (
+    <a
+      className="project-image"
+      href={src}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`Open full-size ${name} screenshot in a new tab`}
+    >
+      <Image
+        src={src}
+        alt={`${name} application interface`}
+        width={
+          src === "/tradeflow.png" ? 1241 : src === "/img3.png" ? 1275 : 1307
+        }
+        height={src === "/tradeflow.png" ? 644 : 619}
+        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 65vw, 760px"
+        priority={priority}
+      />
+      <span className="image-expand">
+        <Plus size={16} /> View full size
+      </span>
+    </a>
+  );
 }
 
 export default function Portfolio() {
-  const root = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [light, setLight] = useState(false);
-  const [copied, setCopied] = useState(false);
-  usePortfolioMotion(root, reduced);
-
-  const copyEmail = async () => {
-    await navigator.clipboard.writeText("theodorelnelson@outlook.com");
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  };
-
   return (
-    <div ref={root} className={light ? "site light" : "site"}>
-      <div className="noise" aria-hidden="true" />
-      <header className="topbar">
-        <a className="brand" href="#top" aria-label="Theodore Nelson, home">
-          <span className="brand-mark">
-            <Image src="/favicon-v2.svg" alt="" width={30} height={30} priority />
+    <div className="site" id="top">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <header className="topbar shell">
+        <a className="brand" href="#top">
+          <span className="monogram" aria-hidden="true">
+            tn.
           </span>
-          <span className="brand-name">Theodore Nelson</span>
+          <span>Theodore Nelson</span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#work">Work</a>
-          <a href="#journey">Journey</a>
-          <a href="#stack">Stack</a>
+          <a href="#experience">Experience</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-        <div className="top-actions">
-          <span className="availability"><i /> Available for opportunities</span>
-          <button className="icon-button" onClick={() => setLight((value) => !value)} aria-label="Toggle color theme">
-            {light ? <Moon size={16} /> : <Sun size={16} />}
-          </button>
-          <button className="menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu">
-            <Menu size={19} />
-          </button>
-        </div>
+        <a className="nav-cv" href={links.cv} download>
+          Download CV <Download size={15} />
+        </a>
+        <details className="mobile-nav">
+          <summary aria-label="Navigation menu">
+            <Menu size={21} />
+          </summary>
+          <nav aria-label="Mobile navigation">
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </details>
       </header>
 
-      <AnimatePresence>
-        {menuOpen ? (
-          <motion.div className="mobile-menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <button className="menu-close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></button>
-            {["work", "journey", "stack", "contact"].map((item, index) => (
-              <motion.a
-                href={`#${item}`}
-                key={item}
-                onClick={() => setMenuOpen(false)}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.06 }}
-              >
-                <span>0{index + 1}</span>{item}
-              </motion.a>
-            ))}
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-
-      <main id="top">
-        <section className="hero shell">
-          <div className="hero-glow" aria-hidden="true" />
+      <main id="main">
+        <section className="hero shell" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <div className="eyebrow" data-hero>
-              <span>Java + Full-Stack Developer</span>
-              <span>Pretoria, South Africa</span>
-            </div>
-            <h1 data-hero>
-              I build software that
-              <span className="gradient-text"> makes work flow.</span>
+            <p className="eyebrow">Java & Full-Stack Developer</p>
+            <p className="hero-name">Theodore Nelson</p>
+            <h1 id="hero-title">
+              Practical software for <em>everyday business.</em>
             </h1>
-            <p className="hero-lede" data-hero>
-              From Spring Boot services to polished product interfaces—practical, maintainable software built around real business problems.
+            <p className="hero-lede">
+              I build business applications with Java, Spring Boot, and React.
+              My background in IT support keeps the people using them at the
+              centre of my work.
             </p>
-            <div className="hero-actions" data-hero>
-              <a className="button primary" href="#work">Explore selected work <ArrowDown size={17} /></a>
-              <a className="button secondary" href={links.cv} download>Download résumé <Download size={17} /></a>
+            <div className="hero-actions">
+              <a className="button primary" href="#work">
+                View selected work <ArrowDown size={17} />
+              </a>
+              <a className="text-link" href={links.cv} download>
+                Download CV <Download size={16} />
+              </a>
             </div>
-            <div className="hero-meta" data-hero>
-              <a href={links.github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
-              <a href={links.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
-              <button onClick={copyEmail}>{copied ? <Check size={17} /> : <Copy size={17} />} {copied ? "Copied" : "Copy email"}</button>
+            <div className="hero-meta">
+              <span>
+                <MapPin size={14} /> Pretoria, South Africa
+              </span>
+              <a href={links.github} target="_blank" rel="noreferrer">
+                GitHub <ArrowUpRight size={14} />
+              </a>
+              <a href={links.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn <ArrowUpRight size={14} />
+              </a>
             </div>
           </div>
-
-          <div className="hero-visual" data-hero data-parallax>
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="code-window">
-              <div className="window-bar">
-                <div><i /><i /><i /></div>
-                <span>DeveloperProfile.java</span>
-                <Sparkles size={14} />
-              </div>
-              <pre aria-label="Java code describing Theodore's profile"><code>
-                <span className="purple">public record</span> Developer(<br />
-                {"  "}<span className="blue">String</span> focus,<br />
-                {"  "}<span className="blue">List&lt;String&gt;</span> stack,<br />
-                {"  "}<span className="blue">boolean</span> available<br />
-                {") {}"}<br /><br />
-                <span className="muted">{"// Build for people. Ship with care."}</span><br />
-                <span className="purple">return new</span> Developer(<br />
-                {"  "}<span className="green">&quot;Business software&quot;</span>,<br />
-                {"  "}List.of(<span className="green">&quot;Java&quot;</span>, <span className="green">&quot;React&quot;</span>),<br />
-                {"  "}<span className="amber">true</span><br />
-                {");"}
-              </code></pre>
-              <div className="code-status">
-                <span><Check size={14} /> Build successful</span>
-                <span>42 ms</span>
-              </div>
+          <figure className="hero-feature">
+            <div className="feature-label">
+              <span>From the workbench</span>
+              <span>01 / 03</span>
             </div>
-            <motion.div
-              className="float-card float-card-one"
-              animate={reduced ? undefined : { y: [0, -9, 0] }}
-              transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut" }}
-            >
-              <Code2 size={18} /><div><b>8+ technologies</b><span>Across the stack</span></div>
-            </motion.div>
-            <motion.div
-              className="float-card float-card-two"
-              animate={reduced ? undefined : { y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 5.2, ease: "easeInOut" }}
-            >
-              <span className="mini-avatar">TN</span><div><b>Open to work</b><span>Junior backend / full stack</span></div>
-            </motion.div>
-          </div>
+            <div className="hero-image-wrap">
+              <ProjectImage src="/tradeflow.png" name="TradeFlow SA" priority />
+            </div>
+            <figcaption>
+              <div>
+                <strong>TradeFlow SA</strong>
+                <span>Business operations, brought together.</span>
+              </div>
+              <a href="#project-01" aria-label="Explore TradeFlow SA">
+                <ArrowUpRight size={23} />
+              </a>
+            </figcaption>
+          </figure>
         </section>
 
-        <section className="signal-strip" aria-label="Professional highlights">
-          <div className="shell signal-grid">
-            <div><strong>10+</strong><span>years in technology</span></div>
-            <div><strong>2022</strong><span>building software since</span></div>
-            <div><strong>3</strong><span>product formats shipped</span></div>
-            <div><strong>01</strong><span>mission: useful software</span></div>
-          </div>
-        </section>
+        <div className="intro-strip shell">
+          <span className="availability">
+            <i aria-hidden="true" /> Open to junior backend & full-stack roles
+          </span>
+          <span>IT foundations. Software focus. Practical delivery.</span>
+        </div>
 
-        <section className="work-section shell" id="work">
-          <div className="section-heading" data-reveal>
-            <div><p className="kicker">01 / Proof of work</p><h2>Products, not practice.</h2></div>
-            <p>Selected systems framed by the problem, the engineering decisions, and the value they create.</p>
+        <section className="work-section shell section" id="work">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">01 / Selected work</p>
+              <h2>Built around real needs.</h2>
+            </div>
+            <p>
+              Three applications. Different workflows.
+              <br />
+              The same care for making software useful.
+            </p>
           </div>
           <div className="projects">
-            {projects.map((project) => (
-              <article className={`project-card accent-${project.accent}`} key={project.name} data-reveal>
+            {projects.map((project, index) => (
+              <article
+                className={`project ${index === 0 ? "featured-project" : "compact-project"}`}
+                id={`project-${project.number}`}
+                key={project.name}
+              >
+                <div className="project-visual">
+                  <div className="project-label">
+                    <span>
+                      {project.number} / {project.label}
+                    </span>
+                    <span>{index === 2 ? "Desktop" : "Web application"}</span>
+                  </div>
+                  <ProjectImage src={project.image} name={project.name} />
+                </div>
                 <div className="project-copy">
-                  <div className="project-topline"><span>{project.number}</span><span>{project.label}</span></div>
                   <h3>{project.name}</h3>
                   <p className="project-summary">{project.summary}</p>
-                  <div className="project-facts">
-                    <div><span>Problem</span><p>{project.problem}</p></div>
-                    <div><span>Business impact</span><p>{project.impact}</p></div>
-                    <div><span>Lesson</span><p>{project.lesson}</p></div>
-                  </div>
-                  <div className="badges">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+                  <dl className="project-facts">
+                    <div>
+                      <dt>The problem</dt>
+                      <dd>{project.problem}</dd>
+                    </div>
+                    <div>
+                      <dt>The implementation</dt>
+                      <dd>{project.impact}</dd>
+                    </div>
+                  </dl>
+                  <ul
+                    className="tags"
+                    aria-label={`${project.name} technologies`}
+                  >
+                    {project.stack.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                   <div className="project-links">
-                    <a href={project.href} target="_blank" rel="noreferrer">{project.cta} <ArrowUpRight size={16} /></a>
+                    <a href={project.href} target="_blank" rel="noreferrer">
+                      GitHub <ArrowUpRight size={16} />
+                    </a>
                     {"liveHref" in project && (
-                      <a href={project.liveHref} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={16} /></a>
+                      <a
+                        href={project.liveHref}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Live demo <ArrowUpRight size={16} />
+                      </a>
                     )}
-                    <a href={links.email}>Request a walkthrough <ChevronRight size={16} /></a>
+                    <a href={links.email}>
+                      Request a walkthrough <ArrowUpRight size={16} />
+                    </a>
                   </div>
-                </div>
-                <div className="project-preview" data-parallax>
-                  <div className="preview-toolbar"><i /><i /><i /><span>{project.name.toLowerCase().replaceAll(" ", "-")}.app</span></div>
-                  <Image src={project.image} alt={`${project.name} application interface`} width={1307} height={619} sizes="(max-width: 900px) 100vw, 54vw" />
-                  <div className="preview-shine" />
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="journey-section" id="journey">
-          <div className="shell">
-            <div className="section-heading light-heading" data-reveal>
-              <div><p className="kicker">02 / Career signal</p><h2>Built on real-world troubleshooting.</h2></div>
-              <p>Software engineering backed by years of understanding users, resolving incidents, and keeping technology working.</p>
+        <section className="experience-section" id="experience">
+          <div className="shell section experience-layout">
+            <div className="experience-intro">
+              <p className="eyebrow">02 / Experience</p>
+              <h2>
+                A foundation in support.
+                <br />
+                <em>A focus on software.</em>
+              </h2>
+              <p>
+                Years of resolving incidents and helping users shaped how I
+                approach development: understand the problem, make the solution
+                clear, and think about what happens after release.
+              </p>
+              <a className="text-link" href={links.cv} download>
+                View my full CV <Download size={16} />
+              </a>
             </div>
-            <div className="journey-layout">
-              <div className="journey-sticky" data-reveal>
-                <p className="big-quote">“I don’t just write the feature. I think about the person who has to use it—and the person who has to support it.”</p>
-                <a href={links.cv} download>Full career history <Download size={16} /></a>
-              </div>
-              <div className="journey-list">
-                <div className="journey-line" aria-hidden="true" />
-                {journey.map((item) => (
-                  <article className="journey-item" key={`${item.company}-${item.period}`} data-reveal>
-                    <i className={item.current ? "current" : ""} />
-                    <p className="journey-period">{item.period}</p>
-                    <h3>{item.role}</h3>
-                    <p className="journey-company">{item.company}{item.current ? <span>Current</span> : null}</p>
-                    <p>{item.copy}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="stack-section shell" id="stack">
-          <div className="section-heading" data-reveal>
-            <div><p className="kicker">03 / Engineering system</p><h2>Tools chosen for the job.</h2></div>
-            <p>Backend depth, frontend craft, and the discipline to connect both into useful products.</p>
-          </div>
-          <div className="stack-grid">
-            <div className="stack-panel" data-reveal>
-              <div className="panel-label"><span>Core stack</span><span>08 capabilities</span></div>
-              <div className="skill-list">
-                {skills.map(([skill, use], index) => (
-                  <div className="skill-row" key={skill}>
-                    <span className="skill-index">0{index + 1}</span>
-                    <strong>{skill}</strong>
-                    <span>{use}</span>
-                    <ArrowUpRight size={15} />
+            <div className="timeline">
+              {journey.map((item, index) => (
+                <article className="experience-item" key={item.company}>
+                  <div className="experience-meta">
+                    <span>{item.period}</span>
+                    <span>
+                      {index < 2 ? "Software development" : "IT support"}
+                    </span>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="terminal-panel" data-reveal>
-              <div className="terminal-top"><div><i /><i /><i /></div><span>theodore@dev — philosophy</span></div>
-              <div className="terminal-body">
-                <p><span className="prompt">~ $</span> cat principles.txt</p>
-                {principles.map((principle, index) => <p className="terminal-output" key={principle}><span>{index + 1}.</span> {principle}</p>)}
-                <p><span className="prompt">~ $</span> current-focus --verbose</p>
-                <div className="focus-output">
-                  <span>LEARNING</span>
-                  <strong>Deeper Spring architecture, testing, and production delivery.</strong>
-                </div>
-                <p className="cursor-line"><span className="prompt">~ $</span><i /></p>
-              </div>
+                  <h3>{item.role}</h3>
+                  <p className="company">
+                    {item.company}
+                    {item.current && <span className="current">Current</span>}
+                  </p>
+                  <p>{item.copy}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="credential-section shell" data-reveal>
-          <div className="credential-intro">
-            <p className="kicker">Qualified foundation</p>
-            <h2>Formal learning.<br />Practical delivery.</h2>
+        <section className="about-section shell section" id="about">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">03 / About & capabilities</p>
+              <h2>
+                Curious about how things work.
+                <br />
+                <em>Careful about how they’re used.</em>
+              </h2>
+            </div>
           </div>
-          <div className="credential-list">
-            <a href="/system-development-nqf6.pdf" download><span>2024</span><div><strong>Systems Development · NQF 6</strong><small>Boston City Campus</small></div><Download size={18} /></a>
-            <a href="/system-support-nqf5.pdf" download><span>2017</span><div><strong>Systems Support · NQF 5</strong><small>MICT SETA</small></div><Download size={18} /></a>
-            <a href="/mcts-certificate.pdf" download><span>2012</span><div><strong>Microsoft Certified IT Professional</strong><small>Torque IT</small></div><Download size={18} /></a>
+          <div className="about-layout">
+            <div className="about-copy">
+              <p>
+                I’m Theodore, a developer based in Pretoria. Through Teodor Dev
+                Tech and my internship at Pinnacle ICT, I’m building on my IT
+                background with hands-on software development.
+              </p>
+              <p>
+                I like working through everyday business problems: the records
+                that need organising, the steps that can be simpler, and the
+                small details that make an application easier to support.
+              </p>
+              <p className="learning-note">
+                <span>Currently developing</span>Deeper Spring architecture,
+                testing, and production delivery.
+              </p>
+            </div>
+            <div className="capabilities">
+              {capabilities.map((group, index) => (
+                <div className="capability" key={group.title}>
+                  <span className="capability-number">0{index + 1}</span>
+                  <div>
+                    <h3>{group.title}</h3>
+                    <p>{group.detail}</p>
+                    <p className="capability-tools">{group.tools}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="qualifications">
+            <div>
+              <p className="eyebrow">Education & credentials</p>
+              <p>
+                A formal foundation.
+                <br />
+                Continued learning.
+              </p>
+            </div>
+            <div className="credential-list">
+              <a href="/system-development-nqf6.pdf" download>
+                <span className="credential-year">2024</span>
+                <span>
+                  <strong>Systems Development · NQF 6</strong>
+                  <small>Boston City Campus</small>
+                </span>
+                <Download size={17} />
+              </a>
+              <a href="/system-support-nqf5.pdf" download>
+                <span className="credential-year">2017</span>
+                <span>
+                  <strong>Systems Support · NQF 5</strong>
+                  <small>MICT SETA</small>
+                </span>
+                <Download size={17} />
+              </a>
+              <a href="/mcts-certificate.pdf" download>
+                <span className="credential-year">2012</span>
+                <span>
+                  <strong>Microsoft Certified IT Professional</strong>
+                  <small>Torque IT</small>
+                </span>
+                <Download size={17} />
+              </a>
+            </div>
           </div>
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="contact-orb" aria-hidden="true" />
-          <div className="shell contact-inner" data-reveal>
-            <span className="availability large"><i /> Available for junior backend & full-stack roles</span>
-            <h2>Let’s build something<br /><span>useful.</span></h2>
-            <p>I’m ready to bring practical delivery, calm problem-solving, and a genuine appetite for growth to a strong engineering team.</p>
-            <div className="contact-actions">
-              <a className="button primary light-button" href={links.email}>Start a conversation <ArrowUpRight size={17} /></a>
-              <a className="button contact-secondary" href={links.cv} download>Download résumé <Download size={17} /></a>
+          <div className="shell contact-layout">
+            <div>
+              <p className="eyebrow">04 / Get in touch</p>
+              <h2>
+                Good software starts
+                <br />
+                with a <em>conversation.</em>
+              </h2>
+              <p>
+                I’m looking for a junior backend or full-stack role where I can
+                contribute, learn, and build useful software with a team.
+              </p>
+              <a className="button contact-button" href={links.email}>
+                Let’s talk <ArrowUpRight size={18} />
+              </a>
             </div>
-            <div className="contact-grid">
-              <a href={links.email}><Mail size={16} /><span>Email</span><strong>theodorelnelson@outlook.com</strong></a>
-              <a href={links.phone}><Phone size={16} /><span>Phone</span><strong>+27 60 636 0886</strong></a>
-              <div><MapPin size={16} /><span>Based in</span><strong>Pretoria, South Africa</strong></div>
-              <a href={links.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /><span>Connect</span><strong>LinkedIn profile</strong></a>
+            <div className="contact-details">
+              <span className="availability">
+                <i aria-hidden="true" /> Open to opportunities
+              </span>
+              <a href={links.email}>
+                <Mail size={17} />
+                <span>theodorelnelson@outlook.com</span>
+                <ArrowUpRight size={16} />
+              </a>
+              <a href={links.phone}>
+                <Phone size={17} />
+                <span>+27 60 636 0886</span>
+                <ArrowUpRight size={16} />
+              </a>
+              <p>
+                <MapPin size={17} /> Pretoria, South Africa
+              </p>
+              <div className="contact-socials">
+                <a href={links.github} target="_blank" rel="noreferrer">
+                  <Github size={17} /> GitHub
+                </a>
+                <a href={links.linkedin} target="_blank" rel="noreferrer">
+                  <Linkedin size={17} /> LinkedIn
+                </a>
+                <a href={links.cv} download>
+                  <Download size={17} /> Download CV
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </main>
-
-      <footer>
-        <div className="shell footer-inner">
-          <div>
-            <span className="brand-mark">
-              <Image src="/favicon-v2.svg" alt="" width={30} height={30} />
-            </span>
-            <p>Powered by Teodor Dev Tech.</p>
-          </div>
-          <p>Java · Spring Boot · React · Next.js</p>
-          <a href="#top">Back to top <ArrowUpRight size={14} /></a>
-        </div>
+      <footer className="shell">
+        <a className="footer-name" href="#top">
+          Theodore Nelson<span>Built with care in Pretoria.</span>
+        </a>
+        <p>Teodor Dev Tech</p>
+        <a className="text-link" href="#top">
+          Back to top <ArrowUpRight size={15} />
+        </a>
       </footer>
     </div>
   );

@@ -1,14 +1,13 @@
 # Theodore Nelson — Developer Portfolio
 
-A recruiter-first software developer portfolio designed as a premium product experience.
+A recruiter-first software developer portfolio with an editorial layout, real project screenshots, and direct CV and contact links.
 
 ## Stack
 
 - Next.js 16 with the App Router and static export
 - TypeScript
 - Tailwind CSS 4 and custom CSS
-- GSAP with ScrollTrigger
-- Framer Motion
+- Server-rendered content and native HTML navigation
 - Lucide icons
 
 ## Local development
