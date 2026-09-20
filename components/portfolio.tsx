@@ -16,7 +16,8 @@ const links = {
   linkedin: "https://www.linkedin.com/in/theodore-nelson-90b05144/",
   email: "mailto:theodorelnelson@outlook.com",
   phone: "tel:+27606360886",
-  cv: "/Theodore_Nelson_CV_Junior_Developer.pdf",
+  cv: "https://cv.teodordev.co.za",
+  cvDownload: "/Theodore_Nelson_CV_Junior_Developer.pdf",
 };
 
 const projects = [
@@ -140,7 +141,7 @@ export default function Portfolio() {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="nav-cv" href={links.cv} download>
+        <a className="nav-cv" href={links.cvDownload} download>
           Download CV <Download size={15} />
         </a>
         <details className="mobile-nav">
@@ -173,7 +174,7 @@ export default function Portfolio() {
               <a className="button primary" href="#work">
                 View selected work <ArrowDown size={17} />
               </a>
-              <a className="text-link" href={links.cv} download>
+              <a className="text-link" href={links.cvDownload} download>
                 Download CV <Download size={16} />
               </a>
             </div>
@@ -319,7 +320,7 @@ export default function Portfolio() {
                 approach development: understand the problem, make the solution
                 clear, and think about what happens after release.
               </p>
-              <a className="text-link" href={links.cv} download>
+              <a className="text-link" href={links.cv} target="_blank" rel="noreferrer">
                 View my full CV <Download size={16} />
               </a>
             </div>
@@ -468,7 +469,7 @@ export default function Portfolio() {
                 <a href={links.linkedin} target="_blank" rel="noreferrer">
                   <Linkedin size={17} /> LinkedIn
                 </a>
-                <a href={links.cv} download>
+                <a href={links.cvDownload} download>
                   <Download size={17} /> Download CV
                 </a>
               </div>
