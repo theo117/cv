@@ -86,7 +86,7 @@ const projects = [
     stack: ["Next.js", "React", "TypeScript", "OpenAI", "Clerk", "Vercel"],
     video: "/videos/clinical-reasoning-demo-15s.mp4",
     href: "https://github.com/theo117/clinical-reasoning-assistant",
-    liveHref: "https://clinical-reasoning-assistant-gamma.vercel.app",
+    liveHref: "https://assistant.teodordev.co.za",
   },
 ] as const;
 
