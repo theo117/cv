@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProjectImage from "./project-image";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -9,7 +9,6 @@ import {
   MapPin,
   Menu,
   Phone,
-  Plus,
 } from "lucide-react";
 
 const links = {
@@ -35,10 +34,8 @@ const projects = [
       "Useful automation keeps each business action simple while making the next step obvious.",
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
     image: "/tradeflow.png",
-    accent: "violet",
     href: "https://github.com/theo117/TradeFlow_SA",
     liveHref: "https://tradeflow.teodordev.co.za",
-    cta: "View on GitHub",
   },
   {
     number: "02",
@@ -53,10 +50,8 @@ const projects = [
     lesson: "Small data-model decisions shape the speed of everyday work.",
     stack: ["Java", "Spring", "JPA", "MySQL"],
     image: "/img1.png",
-    accent: "mint",
     href: "https://github.com/theo117/church-management-system",
     liveHref: "https://church.teodordev.co.za",
-    cta: "View on GitHub",
   },
   {
     number: "03",
@@ -71,11 +66,9 @@ const projects = [
       "Delivery and reliability are part of the product, not an afterthought.",
     stack: ["Java", "Swing", "JDBC", "MySQL", "MSI"],
     image: "/img3.png",
-    accent: "amber",
     href: "https://github.com/theo117/POS-App-v1",
     installerHref:
       "https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi",
-    cta: "View on GitHub",
   },
 ] as const;
 
@@ -128,40 +121,6 @@ const capabilities = [
   },
 ];
 
-function ProjectImage({
-  src,
-  name,
-  priority = false,
-}: {
-  src: string;
-  name: string;
-  priority?: boolean;
-}) {
-  return (
-    <a
-      className="project-image"
-      href={src}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Open full-size ${name} screenshot in a new tab`}
-    >
-      <Image
-        src={src}
-        alt={`${name} application interface`}
-        width={
-          src === "/tradeflow.png" ? 1241 : src === "/img3.png" ? 1275 : 1307
-        }
-        height={src === "/tradeflow.png" ? 644 : 619}
-        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 65vw, 760px"
-        priority={priority}
-      />
-      <span className="image-expand">
-        <Plus size={16} /> View full size
-      </span>
-    </a>
-  );
-}
-
 export default function Portfolio() {
   return (
     <div className="site" id="top">
@@ -197,7 +156,7 @@ export default function Portfolio() {
         </details>
       </header>
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section className="hero shell" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="eyebrow">Java & Full-Stack Developer</p>
@@ -233,17 +192,24 @@ export default function Portfolio() {
           <figure className="hero-feature">
             <div className="feature-label">
               <span>From the workbench</span>
-              <span>01 / 03</span>
+              <span>Featured project</span>
             </div>
             <div className="hero-image-wrap">
-              <ProjectImage src="/tradeflow.png" name="TradeFlow SA" priority />
+              <ProjectImage
+                src={projects[0].image}
+                name={projects[0].name}
+                priority
+              />
             </div>
             <figcaption>
               <div>
-                <strong>TradeFlow SA</strong>
+                <strong>{projects[0].name}</strong>
                 <span>Business operations, brought together.</span>
               </div>
-              <a href="#project-01" aria-label="Explore TradeFlow SA">
+              <a
+                href={`#project-${projects[0].number}`}
+                aria-label={`Explore ${projects[0].name}`}
+              >
                 <ArrowUpRight size={23} />
               </a>
             </figcaption>
@@ -297,7 +263,12 @@ export default function Portfolio() {
                       <dt>The implementation</dt>
                       <dd>{project.impact}</dd>
                     </div>
+                    <div className="engineering-note">
+                      <dt>Engineering note</dt>
+                      <dd>{project.lesson}</dd>
+                    </div>
                   </dl>
+                  <p className="stack-label">Stack</p>
                   <ul
                     className="tags"
                     aria-label={`${project.name} technologies`}
@@ -354,7 +325,11 @@ export default function Portfolio() {
             </div>
             <div className="timeline">
               {journey.map((item, index) => (
-                <article className="experience-item" key={item.company}>
+                <article
+                  className="experience-item"
+                  data-current={item.current || undefined}
+                  key={item.company}
+                >
                   <div className="experience-meta">
                     <span>{item.period}</span>
                     <span>
