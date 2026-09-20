@@ -81,7 +81,7 @@ const journey = [
     current: true,
   },
   {
-    period: "2022 — Now",
+    period: "2022 — 2025",
     role: "Software Developer",
     company: "Teodor Dev Tech",
     copy: "Delivering self-led and small-client software across Java, Spring Boot, React, Next.js, databases, deployment, and responsive web experiences.",
