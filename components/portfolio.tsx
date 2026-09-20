@@ -74,7 +74,7 @@ const projects = [
 
 const journey = [
   {
-    period: "Jul 2026 — Now",
+    period: "2026 — Now",
     role: "Software Developer Intern",
     company: "Pinnacle ICT",
     copy: "Contributing to software development, debugging, testing, and application support while building practical experience with professional engineering workflows.",
@@ -85,7 +85,7 @@ const journey = [
     role: "Software Developer",
     company: "Teodor Dev Tech",
     copy: "Delivering self-led and small-client software across Java, Spring Boot, React, Next.js, databases, deployment, and responsive web experiences.",
-    current: true,
+    current: false,
   },
   {
     period: "2018 — 2022",
