@@ -73,6 +73,8 @@ const projects = [
     image: "/img3.png",
     accent: "amber",
     href: "https://github.com/theo117/POS-App-v1",
+    installerHref:
+      "https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi",
     cta: "View on GitHub",
   },
 ] as const;
@@ -315,6 +317,11 @@ export default function Portfolio() {
                         rel="noreferrer"
                       >
                         Live demo <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                    {"installerHref" in project && (
+                      <a href={project.installerHref}>
+                        Download Windows installer <Download size={16} />
                       </a>
                     )}
                     <a href={links.email}>
