@@ -247,44 +247,20 @@ h2 {
 .hero-image-wrap {
   padding-block: 30px;
 }
-.project-image {
-  position: relative;
-  display: block;
-  border: 1px solid #cbd2c8;
-  background: white;
-  overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 0 8px 20px -12px #242e2b55;
-  transition: border-color 180ms ease, box-shadow 180ms ease;
-}
-.project-image img {
+.project-video {
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 240ms ease;
-}
-.project-image:is(:hover, :focus-visible) {
-  border-color: var(--teal);
-  box-shadow: 0 12px 24px -14px #242e2b66;
-}
-@media (hover: hover) {
-  .project-image:hover img {
-    transform: scale(1.015);
-  }
-}
-.image-expand {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 6px 9px;
-  font-size: 11px;
-  border: 1px solid var(--line);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border: 1px solid #cbd2c8;
+  background: #111;
   border-radius: 2px;
+  box-shadow: 0 8px 20px -12px #242e2b55;
+}
+.project-video:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
 }
 .hero-feature figcaption {
   display: flex;

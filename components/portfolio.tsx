@@ -1,4 +1,4 @@
-import ProjectImage from "./project-image";
+import ProjectVideo from "./project-video";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -34,7 +34,7 @@ const projects = [
     lesson:
       "Useful automation keeps each business action simple while making the next step obvious.",
     stack: ["Next.js", "Spring Boot", "REST", "JWT", "Vercel"],
-    image: "/tradeflow.png",
+    video: "/videos/tradeflow-sa-demo-15s.mp4",
     href: "https://github.com/theo117/TradeFlow_SA",
     liveHref: "https://tradeflow.teodordev.co.za",
   },
@@ -50,7 +50,7 @@ const projects = [
       "A single relational system designed around real weekly admin workflows.",
     lesson: "Small data-model decisions shape the speed of everyday work.",
     stack: ["Java", "Spring", "JPA", "MySQL"],
-    image: "/img1.png",
+    video: "/videos/churchflow-demo-15s.mp4",
     href: "https://github.com/theo117/church-management-system",
     liveHref: "https://church.teodordev.co.za",
   },
@@ -66,10 +66,27 @@ const projects = [
     lesson:
       "Delivery and reliability are part of the product, not an afterthought.",
     stack: ["Java", "Swing", "JDBC", "MySQL", "MSI"],
-    image: "/img3.png",
+    video: "/videos/JavaPOS-15-second-demo.mp4",
     href: "https://github.com/theo117/POS-App-v1",
     installerHref:
       "https://github.com/theo117/POS-App-v1/releases/download/pos-app-v1/JavaPOS-1.0.0.msi",
+  },
+  {
+    number: "04",
+    name: "Clinical Reasoning Assistant",
+    label: "AI-assisted clinical workflow",
+    summary:
+      "A clinician-facing application that turns anonymized consultation notes into structured reasoning support and editable clinical documentation for clinician review.",
+    problem:
+      "Consultation notes need to be organised into clear considerations, missing information, and usable documentation.",
+    impact:
+      "An authenticated workflow with ranked differentials, red flags, suggested next checks, and editable clinical notes and referral letters.",
+    lesson:
+      "AI-assisted workflows need clear boundaries, structured outputs, and human review built into the experience.",
+    stack: ["Next.js", "React", "TypeScript", "OpenAI", "Clerk", "Vercel"],
+    video: "/videos/clinical-reasoning-demo-15s.mp4",
+    href: "https://github.com/theo117/clinical-reasoning-assistant",
+    liveHref: "https://clinical-reasoning-assistant-gamma.vercel.app",
   },
 ] as const;
 
@@ -196,10 +213,9 @@ export default function Portfolio() {
               <span>Featured project</span>
             </div>
             <div className="hero-image-wrap">
-              <ProjectImage
-                src={projects[0].image}
+              <ProjectVideo
+                src={projects[0].video}
                 name={projects[0].name}
-                priority
               />
             </div>
             <figcaption>
@@ -231,7 +247,7 @@ export default function Portfolio() {
               <h2>Built around real needs.</h2>
             </div>
             <p>
-              Three applications. Different workflows.
+              Four applications. Different workflows.
               <br />
               The same care for making software useful.
             </p>
@@ -239,7 +255,7 @@ export default function Portfolio() {
           <div className="projects">
             {projects.map((project, index) => (
               <article
-                className={`project ${index === 0 ? "featured-project" : "compact-project"}`}
+                className={`project ${index % 3 === 0 ? "featured-project" : "compact-project"}`}
                 id={`project-${project.number}`}
                 key={project.name}
               >
@@ -248,9 +264,9 @@ export default function Portfolio() {
                     <span>
                       {project.number} / {project.label}
                     </span>
-                    <span>{index === 2 ? "Desktop" : "Web application"}</span>
+                    <span>{"installerHref" in project ? "Desktop" : "Web application"}</span>
                   </div>
-                  <ProjectImage src={project.image} name={project.name} />
+                  <ProjectVideo src={project.video} name={project.name} />
                 </div>
                 <div className="project-copy">
                   <h3>{project.name}</h3>
