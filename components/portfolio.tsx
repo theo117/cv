@@ -216,6 +216,7 @@ export default function Portfolio() {
               <ProjectVideo
                 src={projects[0].video}
                 name={projects[0].name}
+                priority
               />
             </div>
             <figcaption>
@@ -261,8 +262,8 @@ export default function Portfolio() {
               >
                 <div className="project-visual">
                   <div className="project-label">
-                    <span>
-                      {project.number} / {project.label}
+                    <span className="project-identity">
+                      <span className="project-number">{project.number}</span> / {project.label}
                     </span>
                     <span>{"installerHref" in project ? "Desktop" : "Web application"}</span>
                   </div>
