@@ -80,7 +80,6 @@ button, summary { font: inherit; }
   white-space: nowrap;
   margin-left: -.065em;
   margin-bottom: 55px;
-  animation: type-enter 850ms cubic-bezier(.2,.7,.2,1) both;
 }
 h1, h2, h3 { font-weight: 500; letter-spacing: -.065em; line-height: 1.02; }
 h1 { grid-column: 1 / 7; grid-row: 3; font-size: clamp(40px, 4.45vw, 72px); padding-right: 24px; }
@@ -99,7 +98,6 @@ h1 em { color: var(--accent-ink); }
   grid-row: 3 / 7;
   align-self: start;
   margin-top: 8px;
-  animation: media-enter 1s cubic-bezier(.2,.7,.2,1) both;
 }
 .feature-label { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--ink); padding-top: 12px; font-size: 10px; }
 .hero-image-wrap { margin-top: 24px; padding: 28px 0 28px 28px; background: var(--accent); }
