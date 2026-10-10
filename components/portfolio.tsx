@@ -337,7 +337,7 @@ export default function Portfolio() {
                 approach development: understand the problem, make the solution
                 clear, and think about what happens after release.
               </p>
-              <a className="text-link" href={links.cv} target="_blank" rel="noreferrer">
+              <a className="text-link" href={links.cvDownload} download>
                 View my full CV <Download size={16} />
               </a>
             </div>

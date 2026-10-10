@@ -40,3 +40,19 @@ through a custom Next.js image loader, so responsive images work on static hosti
 After replacing a source screenshot, run `node scripts/generate-project-posters.mjs`
 and commit the generated files in `public/images/posters/`. The script uses the
 Sharp package included with Next.js. Videos are requested only after pressing play.
+
+## Downloadable developer CV
+
+The active download is `public/Theodore_Nelson_CV_Junior_Developer.pdf`.
+Edit `cv-junior-developer.html` and `assets/css/cv-developer-v2.css`, then run:
+
+```bash
+node scripts/generate-developer-cv.mjs
+```
+
+Requires local Chrome/Chromium (or `CV_BROWSER` set to its executable). The script
+uses a temporary browser profile and exports real, tagged text with clickable links.
+Run `npm run build` after regeneration to include the PDF in the static export.
+The older `print-cv.html`, shared legacy stylesheet and PowerShell script belong
+to the separate Systems Development CV; they do not generate the active download.
+See `CV-DESIGN-REVIEW.md` for sources, resolved discrepancies and validation.
