@@ -65,7 +65,8 @@ export default function ProjectVideo({
             src={posters[src]}
             alt={name}
             fill
-            sizes={priority ? "(max-width: 760px) 90vw, 46vw" : "(max-width: 760px) 90vw, 80vw"}
+            sizes="(max-width: 767px) 90vw, 44vw"
+            fetchPriority={priority ? "high" : "auto"}
             preload={priority}
           />
           <span className="media-play" aria-hidden="true"><Play size={20} /></span>
