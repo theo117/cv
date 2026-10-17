@@ -178,10 +178,10 @@ export default function Portfolio() {
 
       <PortfolioMotion />
       <main id="main" tabIndex={-1}>
+        <div className="hero-sequence" data-scene="landscape">
         <section className="hero" aria-labelledby="hero-title">
           <IceScene />
           <div className="hero-top shell">
-            <p className="hero-discipline">Independent thinking.<br />Practical engineering.</p>
             <p className="hero-role">Java & Full-Stack Developer<br /><span>Pretoria, South Africa</span></p>
           </div>
           <div className="hero-title-wrap shell">
@@ -192,6 +192,7 @@ export default function Portfolio() {
             <a className="round-link" href="#work">Explore my work <span><ArrowDown size={18} /></span></a>
           </div>
         </section>
+        </div>
 
         <section className="manifesto shell section" aria-label="Introduction">
           <p className="eyebrow">Built for the real world</p>

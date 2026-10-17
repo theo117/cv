@@ -1,0 +1,356 @@
+{
+  "reference": "https://www.igloo.inc/",
+  "capture": "igloo.inc-1792247687360.zip",
+  "files": [
+    {
+      "file": "bitmapworker-046527f8.js",
+      "source": "https://www.igloo.inc/assets/bitmapworker-046527f8.js",
+      "adapted": false,
+      "bytes": 2948,
+      "sha256": "900fd0f9c549420ff08947d54b37e7880dae20e4dfe8a02e574fd19b23836ae2"
+    },
+    {
+      "file": "exrworker-41cbee65.js",
+      "source": "https://www.igloo.inc/assets/exrworker-41cbee65.js",
+      "adapted": false,
+      "bytes": 83463,
+      "sha256": "4842b67bc261ad6c43d99df431919cc7bd39df0eb8af58562cb637c1ba827ffc"
+    },
+    {
+      "file": "fonts/IBMPlexMono-Medium-datatexture.ktx2",
+      "source": "https://www.igloo.inc/assets/fonts/IBMPlexMono-Medium-datatexture.ktx2",
+      "adapted": false,
+      "bytes": 110330,
+      "sha256": "71d8db12ae7ec143d690f74ea7c6d797b31a95622d099c199b70ef925f813369"
+    },
+    {
+      "file": "fonts/IBMPlexMono-Medium.json",
+      "source": "https://www.igloo.inc/assets/fonts/IBMPlexMono-Medium.json",
+      "adapted": false,
+      "bytes": 24308,
+      "sha256": "607b4cc1d061869a047383a945b82dd84cfa4f047426c4e03fd2f15091c70474"
+    },
+    {
+      "file": "geometries/blurrytext.drc",
+      "source": "https://www.igloo.inc/assets/geometries/blurrytext.drc",
+      "adapted": false,
+      "bytes": 1187,
+      "sha256": "db9a2318be49cafa4e4026a88870c0f7a20a3996cc88ca7f7ba8714a1f294277"
+    },
+    {
+      "file": "geometries/cubes/background_shapes.drc",
+      "source": "https://www.igloo.inc/assets/geometries/cubes/background_shapes.drc",
+      "adapted": false,
+      "bytes": 669,
+      "sha256": "490fcb84de97d60a9c977c55dd01177121e0547be2f949601abf1cb1b3dfbb35"
+    },
+    {
+      "file": "geometries/cubes/cube3.drc",
+      "source": "https://www.igloo.inc/assets/geometries/cubes/cube3.drc",
+      "adapted": false,
+      "bytes": 40339,
+      "sha256": "2825919628b94ec31b401b0c0e83cadad0d95343b33b8abf0a76f050516fa816"
+    },
+    {
+      "file": "geometries/ground.drc",
+      "source": "https://www.igloo.inc/assets/geometries/ground.drc",
+      "adapted": false,
+      "bytes": 18861,
+      "sha256": "aac98a1cc006a7ac33b245a963a17d7aa86a0664dc0b73d860fd047a056247f7"
+    },
+    {
+      "file": "geometries/igloo/igloo_cage.drc",
+      "source": "https://www.igloo.inc/assets/geometries/igloo/igloo_cage.drc",
+      "adapted": false,
+      "bytes": 5732,
+      "sha256": "f10a57dd5db7e96f6d9783710e29a2b56cf6e6e77278681693f196aea587901e"
+    },
+    {
+      "file": "geometries/igloo/igloo_outline.drc",
+      "source": "https://www.igloo.inc/assets/geometries/igloo/igloo_outline.drc",
+      "adapted": false,
+      "bytes": 20334,
+      "sha256": "4a94c95d69303ff7e59153f3da0ae1a6a11dfbacd888c66696b992423b942645"
+    },
+    {
+      "file": "geometries/igloo/patch.drc",
+      "source": "https://www.igloo.inc/assets/geometries/igloo/patch.drc",
+      "adapted": false,
+      "bytes": 240,
+      "sha256": "5163022aad65b6d3aead4b837d3cb66feb172a5206221004cc7fb61f64ac53ae"
+    },
+    {
+      "file": "geometries/igloo.drc",
+      "source": "https://www.igloo.inc/assets/geometries/igloo.drc",
+      "adapted": false,
+      "bytes": 222834,
+      "sha256": "ec225346c9abf9f82cbd703892b7f890f6b6f897777c2826c143d4d242a16956"
+    },
+    {
+      "file": "geometries/intro_particles.drc",
+      "source": "https://www.igloo.inc/assets/geometries/intro_particles.drc",
+      "adapted": false,
+      "bytes": 2069,
+      "sha256": "3bbfafee6007980b6bc44153f1c7cbfc37ea9da86878ffc13447157d339557fe"
+    },
+    {
+      "file": "geometries/mountain.drc",
+      "source": "https://www.igloo.inc/assets/geometries/mountain.drc",
+      "adapted": false,
+      "bytes": 11846,
+      "sha256": "cd14edcb22a7453631ed17de5d8ca1b4d82902011201e1989466b1fb766c9c45"
+    },
+    {
+      "file": "igloo-runtime.js",
+      "source": "https://www.igloo.inc/assets/App3D-d68cb154.js",
+      "adapted": true,
+      "bytes": 1489975,
+      "sha256": "1c40285157f4db320402586ec5bcdf6a5656a096ab038431732df47680d93e4d"
+    },
+    {
+      "file": "images/cubes/advect.png",
+      "source": "https://www.igloo.inc/assets/images/cubes/advect.png",
+      "adapted": false,
+      "bytes": 27467,
+      "sha256": "fd7ac81643e649ebd290ffd5397a697cc9cd4964fed1e08d49643722a9d69e32"
+    },
+    {
+      "file": "images/cubes/bg.png",
+      "source": "https://www.igloo.inc/assets/images/cubes/bg.png",
+      "adapted": false,
+      "bytes": 1803,
+      "sha256": "4b26ae2ec283953a5c5c1d1121eb762f08c90cfb8fa9a38141f745bda8a3b4e6"
+    },
+    {
+      "file": "images/cubes/blurrytext_atlas.ktx2",
+      "source": "https://www.igloo.inc/assets/images/cubes/blurrytext_atlas.ktx2",
+      "adapted": false,
+      "bytes": 7781,
+      "sha256": "f7712991528163f5309da0977a7ab9254615eb8078b5a97f72086833748fe795"
+    },
+    {
+      "file": "images/cubes/cube3_normal.ktx2",
+      "source": "https://www.igloo.inc/assets/images/cubes/cube3_normal.ktx2",
+      "adapted": false,
+      "bytes": 1134430,
+      "sha256": "c06a7116db4da8855b843105f889af243996a23d08120d446d320191502dc9cc"
+    },
+    {
+      "file": "images/cubes/cube3_roughness.ktx2",
+      "source": "https://www.igloo.inc/assets/images/cubes/cube3_roughness.ktx2",
+      "adapted": false,
+      "bytes": 240240,
+      "sha256": "93818c20038bf486a355098a83354b36f693fbb358d9956f6815c394026e9142"
+    },
+    {
+      "file": "images/cubes/cube_scene.ktx2",
+      "source": "https://www.igloo.inc/assets/images/cubes/cube_scene.ktx2",
+      "adapted": false,
+      "bytes": 41384,
+      "sha256": "367b8ae0617dab69824d4cf33e63073c270f40ade085edd1ac7c88e1cd931e74"
+    },
+    {
+      "file": "images/cubes/dot_pattern.ktx2",
+      "source": "https://www.igloo.inc/assets/images/cubes/dot_pattern.ktx2",
+      "adapted": false,
+      "bytes": 725,
+      "sha256": "ceefc252c51ac248756ee6d310f4cfc4f9c6d6f9adcd54ffff8ecb4882fd91a2"
+    },
+    {
+      "file": "images/cubes_env.exr",
+      "source": "https://www.igloo.inc/assets/images/cubes_env.exr",
+      "adapted": false,
+      "bytes": 259130,
+      "sha256": "dc09ca4a9e365f44f54a6dcd503a680c6dc0aa3ef39cfaee515a96e6140b5e0e"
+    },
+    {
+      "file": "images/frost-datatexture.ktx2",
+      "source": "https://www.igloo.inc/assets/images/frost-datatexture.ktx2",
+      "adapted": false,
+      "bytes": 134781,
+      "sha256": "eba0d24b548786904d5f5d380720d896b2081a1256ecfa635cc24c5818d303c4"
+    },
+    {
+      "file": "images/igloo/ground_color.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/ground_color.ktx2",
+      "adapted": false,
+      "bytes": 625325,
+      "sha256": "810dcf5e7f2ea194c149efbbeb0e1bce4a55aec2a6bee24e2bf8fc201c391ac1"
+    },
+    {
+      "file": "images/igloo/ground_glow.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/ground_glow.ktx2",
+      "adapted": false,
+      "bytes": 213732,
+      "sha256": "93d142993b56b67346b8c5b2bab25a0c8c06e9805485339a4fb6b60a1eec1d40"
+    },
+    {
+      "file": "images/igloo/ground_sansigloo_color.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/ground_sansigloo_color.ktx2",
+      "adapted": false,
+      "bytes": 628793,
+      "sha256": "56dbac44ec5b55f31842ea913fbb08e8a56753cda7eed4942db76d54b7e4a216"
+    },
+    {
+      "file": "images/igloo/igloo_color.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/igloo_color.ktx2",
+      "adapted": false,
+      "bytes": 533374,
+      "sha256": "fba0f68f753ec64f4412d0c88beec686f2ac9fdee5ca0eb936515faf6eba8307"
+    },
+    {
+      "file": "images/igloo/igloo_exploded_color.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/igloo_exploded_color.ktx2",
+      "adapted": false,
+      "bytes": 842242,
+      "sha256": "dac2bf41c72e98dfb94d421fc8f6a1f378423f7d82ea9762e758c9a4ce2c594e"
+    },
+    {
+      "file": "images/igloo/igloo_scene.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/igloo_scene.ktx2",
+      "adapted": false,
+      "bytes": 14484,
+      "sha256": "69af3267e3a083dc901486561aa7e11a5d39ee756d8c3369a3073b8a9b52665f"
+    },
+    {
+      "file": "images/igloo/mountain_color.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/mountain_color.ktx2",
+      "adapted": false,
+      "bytes": 591988,
+      "sha256": "32f523d29a44e5a32aa75877ed4c172b8e5af283c29bfab2ca713e76450a35d6"
+    },
+    {
+      "file": "images/igloo/numbers.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/numbers.ktx2",
+      "adapted": false,
+      "bytes": 4862,
+      "sha256": "08d72c64ae151c7161dab3d6d3fe7cd51cf97448088ba9ac4211226ec1bdc04c"
+    },
+    {
+      "file": "images/igloo/triangles_tiling.ktx2",
+      "source": "https://www.igloo.inc/assets/images/igloo/triangles_tiling.ktx2",
+      "adapted": false,
+      "bytes": 47616,
+      "sha256": "e1127f77920367f47006ac7d8d5e64f6ab6adc7388ad9907f6c19a19f00bc6e9"
+    },
+    {
+      "file": "images/mosaic.ktx2",
+      "source": "https://www.igloo.inc/assets/images/mosaic.ktx2",
+      "adapted": false,
+      "bytes": 1089,
+      "sha256": "2ca8fb4f570e02ddc55248f9deb1251d9a32088761e68f4c0d471466b4674713"
+    },
+    {
+      "file": "images/noises/blue-8-128-rgb.ktx2",
+      "source": "https://www.igloo.inc/assets/images/noises/blue-8-128-rgb.ktx2",
+      "adapted": false,
+      "bytes": 50420,
+      "sha256": "b014a0eff7e1f8befa2d010fa52d774a49cf4e9f6551bfb5fce29472b0b43f15"
+    },
+    {
+      "file": "images/numbers-datatexture.ktx2",
+      "source": "https://www.igloo.inc/assets/images/numbers-datatexture.ktx2",
+      "adapted": false,
+      "bytes": 13540,
+      "sha256": "cb7167c59d8ff8a4464ce08b04db19238dee2433b7adf3e4e8a9d88aab6b03f1"
+    },
+    {
+      "file": "images/perlin-datatexture.ktx2",
+      "source": "https://www.igloo.inc/assets/images/perlin-datatexture.ktx2",
+      "adapted": false,
+      "bytes": 3789,
+      "sha256": "f5e16cff7ecb17f301ac772e480214d5b43e17138bce78ff6d813a84a13fb826"
+    },
+    {
+      "file": "images/perlin-datatexture.png",
+      "source": "https://www.igloo.inc/assets/images/perlin-datatexture.png",
+      "adapted": false,
+      "bytes": 3500,
+      "sha256": "28f6b031a85d8992d9cf0f00616010b95680f8947e56e7de223995e210fefd80"
+    },
+    {
+      "file": "images/scroll-datatexture.ktx2",
+      "source": "https://www.igloo.inc/assets/images/scroll-datatexture.ktx2",
+      "adapted": false,
+      "bytes": 1286436,
+      "sha256": "1a1cc444f963ea92549626c1e44bb84eaf4c6d7e94e14e2697f543938f913db5"
+    },
+    {
+      "file": "images/shapes_blurred.ktx2",
+      "source": "https://www.igloo.inc/assets/images/shapes_blurred.ktx2",
+      "adapted": false,
+      "bytes": 38936,
+      "sha256": "e023c87d57a2391480b4773cd9a7326ac54bab0b63572bc127e2ceb43a80eeb6"
+    },
+    {
+      "file": "images/uv/uvchecker-srgb.ktx2",
+      "source": "https://www.igloo.inc/assets/images/uv/uvchecker-srgb.ktx2",
+      "adapted": false,
+      "bytes": 298298,
+      "sha256": "a81fe1f0cf18ad16c22cccbf5283036f896a43d7b3f3ac31ea3fd83442e56349"
+    },
+    {
+      "file": "images/uv/uvchecker-srgb.png",
+      "source": "https://www.igloo.inc/assets/images/uv/uvchecker-srgb.png",
+      "adapted": false,
+      "bytes": 434117,
+      "sha256": "f6dca784b48c0c406543ae55ef5e9215aa8e2c86359fd89b5a767dbdcd88af8f"
+    },
+    {
+      "file": "images/wind_noise.ktx2",
+      "source": "https://www.igloo.inc/assets/images/wind_noise.ktx2",
+      "adapted": false,
+      "bytes": 18158,
+      "sha256": "c4c6d024e3d7a15661ebabc188b7a92e69433bdf7cf029aaef7039e035e93d92"
+    },
+    {
+      "file": "index-2e130bc1.js",
+      "source": "https://www.igloo.inc/assets/index-2e130bc1.js",
+      "adapted": true,
+      "bytes": 15639,
+      "sha256": "7f0e9b762e73a6c7ffc7bc29a0b7302b09444040f391843475be21980d9e7006"
+    },
+    {
+      "file": "libs/basis/basis_transcoder.js",
+      "source": "https://www.igloo.inc/assets/libs/basis/basis_transcoder.js",
+      "adapted": false,
+      "bytes": 67059,
+      "sha256": "a7bb97ecab372f4ad63db3ae74fcfe5e436f0cce02646ec1d3c4feb8b898face"
+    },
+    {
+      "file": "libs/basis/basis_transcoder.wasm",
+      "source": "https://www.igloo.inc/assets/libs/basis/basis_transcoder.wasm",
+      "adapted": false,
+      "bytes": 472914,
+      "sha256": "57edc886080bbcda30a399c9d56efed5813335c8ac968a6f9bb080826c1d099c"
+    },
+    {
+      "file": "libs/draco/draco_decoder.js",
+      "source": "https://www.igloo.inc/assets/libs/draco/draco_decoder.js",
+      "adapted": false,
+      "bytes": 720148,
+      "sha256": "5656ccaf1f50300e3c318e15c3313430483f3866cd9c25f22fbf9d6f229e6728"
+    },
+    {
+      "file": "libs/draco/draco_decoder.wasm",
+      "source": "https://www.igloo.inc/assets/libs/draco/draco_decoder.wasm",
+      "adapted": false,
+      "bytes": 285948,
+      "sha256": "2516a4e43526d71787bf2f678f951329f7f858f8f15f42d4bc9e370b31a0da3a"
+    },
+    {
+      "file": "libs/draco/draco_wasm_wrapper.js",
+      "source": "https://www.igloo.inc/assets/libs/draco/draco_wasm_wrapper.js",
+      "adapted": false,
+      "bytes": 58763,
+      "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8"
+    },
+    {
+      "file": "msdfworker-ac346fa7.js",
+      "source": "https://www.igloo.inc/assets/msdfworker-ac346fa7.js",
+      "adapted": false,
+      "bytes": 3175,
+      "sha256": "5b43e8239ef5bf35a8452f5c1d4384e58cd357d6aa57a6a6d421394b22004ad5"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+Reference scene: Igloo Inc., https://www.igloo.inc/
+Original production: Abeto / Bureaux; original runtime attribution is retained.
+The bootstrap was supplied in igloo.inc-1792247687360.zip by the requesting user.
+The referenced public App3D module and scene dependencies were recovered on
+2026-10-17 because those runtime assets were omitted by the archive capture.
+
+The isolated CV adapter removes the original app bootstrap, branded interface,
+audio, project router, detail scenes and footer; substitutes an original TN
+monogram; and exposes scroll/visibility control to the portfolio. The original
+scene geometry, compressed textures, material shaders and compositing code are
+retained for this requested reference-based reconstruction.
+
+Dependency notices, including Three.js and GSAP, remain in igloo-runtime.js and
+its decoder/worker files. The preparation patches are maintained in
+scripts/prepare-igloo-runtime.py in the portfolio source.

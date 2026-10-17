@@ -202,7 +202,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,video:focus-visible {
   display: none
 }
 
-/* Hero: live procedural ice, oversized identity, quiet functional framing. */
+/* Hero: a frozen landscape and ice sculpture frame the oversized identity. */
 .hero {
   position: relative;
   min-height: 780px;
@@ -218,18 +218,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,video:focus-visible {
   z-index: -1
 }
 
-.ice-scene canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  opacity: 0;
-  transition: opacity 1s
-}
-
-.ice-scene canvas[data-ready] {
-  opacity: 1
-}
-
 .ice-fallback {
   position: absolute;
   inset: 0;
@@ -239,15 +227,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,video:focus-visible {
   background: radial-gradient(ellipse at 50% 40%,#25333a 0,transparent 58%)
 }
 
-.ice-fallback-core {
-  width: clamp(190px,26vw,370px);
-  aspect-ratio: 1;
-  transform: translateY(-10%) rotate(-18deg);
-  border: 1px solid #adcfdf77;
-  border-radius: 24px;
-  background: linear-gradient(130deg,#bdd5de88,#24343d 27%,#95aab26b 52%,#243139 80%,#93b8c5aa);
-  box-shadow: inset 20px 20px 70px #c8edf141,inset -30px -10px 50px #061015,0 40px 90px #a2d5e51a
-}
 
 .hero-top {
   position: absolute;
@@ -1358,6 +1337,96 @@ footer .text-link {
   }
 }
 
-.ice-scene canvas[data-ready] ~ .motion-toggle {
-  visibility: visible;
+/* Two chapters in one native scroll sequence; no wheel or touch interception. */
+.hero-sequence {
+  --scene-progress: 0;
+  height: auto;
+  position: relative;
 }
+.hero-sequence[data-animated="true"] {
+  height: 260svh;
+}
+.hero-sequence .hero {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 0;
+  max-height: none;
+}
+.hero-sequence .hero-title-wrap {
+  opacity: calc(1 - var(--scene-progress) * .55);
+  transform: translateY(calc(var(--scene-progress) * 30px));
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-sequence, .hero-sequence[data-animated="true"] { height: auto; }
+  .hero-sequence .hero { position: relative; }
+  .hero-sequence .hero-title-wrap { opacity: 1; transform: none; }
+}
+@media print {
+  .hero-sequence { display: none; }
+}
+
+/* Captured production scene: its own isolated viewport and restrained type. */
+.igloo-renderer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+.ice-scene[data-status="ready"] .igloo-renderer { opacity: 1; }
+.ice-scene[data-status="ready"] .motion-toggle { visibility: visible; }
+.hero-sequence .hero { background: #a0a5b1; }
+.hero-sequence .hero::after {
+  content: "";
+  position: absolute;
+  inset: 60% 0 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(transparent, #111923a6);
+}
+.hero-sequence .hero-title-wrap {
+  top: 130px;
+  bottom: auto;
+  pointer-events: none;
+}
+.hero-sequence .hero h1 {
+  text-align: left;
+  text-transform: none;
+  font-size: clamp(40px, 4.8vw, 74px);
+  letter-spacing: -.065em;
+  line-height: .95;
+  color: #273441;
+}
+.hero-sequence .hero h1 > span + span { margin-top: 2px; }
+.hero-sequence .hero h1 .name-period { color: #273441; }
+.hero-sequence .hero-role {
+  margin-left: auto;
+  color: #273441;
+  font-weight: 550;
+}
+.hero-sequence .hero-role span { color: #3c4a58; }
+.topbar { color: #273441; border-bottom-color: #27344140; }
+.nav-cv { border-color: #27344170; }
+.desktop-nav a:after { background: #273441; }
+.hero-bottom { color: #fff; }
+.hero-bottom p { color: #fff; }
+.hero-bottom .round-link > span { border-color: #ffffffa0; }
+@media (max-width: 767px) {
+  .hero-sequence .hero-title-wrap { top: 110px; }
+  .hero-sequence .hero h1 { font-size: 42px; }
+  .hero-sequence .hero-top { top: 110px; }
+  .hero-role { max-width: 17ch; font-size: 9px; }
+  .mobile-nav nav { color: var(--ink); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .igloo-renderer { transition: none; }
+}
+
+.ice-fallback { background: #a0a5b1 url('/igloo/poster.webp') center / cover no-repeat; }
+
+/* Keep the identity readable against the reference's bright ice environment. */
+.hero-sequence .hero-title-wrap { opacity: 1; }
