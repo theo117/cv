@@ -1,4 +1,6 @@
 import ProjectVideo from "./project-video";
+import IceScene from "./ice-scene";
+import PortfolioMotion from "./portfolio-motion";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -92,28 +94,28 @@ const projects = [
 
 const journey = [
   {
-    period: "2026 — Now",
+    period: "2026 – Now",
     role: "Software Developer Intern",
     company: "Pinnacle ICT",
     copy: "Contributing to software development, debugging, testing, and application support while building practical experience with professional engineering workflows.",
     current: true,
   },
   {
-    period: "2022 — 2025",
+    period: "2022 – 2025",
     role: "Software Developer",
     company: "Teodor Dev Tech",
     copy: "Delivering self-led and small-client software across Java, Spring Boot, React, Next.js, databases, deployment, and responsive web experiences.",
     current: false,
   },
   {
-    period: "2018 — 2022",
+    period: "2018 – 2022",
     role: "IT Technician",
     company: "Adcock Ingram",
-    copy: "Owned end-user support across workstations, software, networks, printers, and access—building production-minded troubleshooting habits.",
+    copy: "Owned end-user support across workstations, software, networks, printers, and access, building production-minded troubleshooting habits.",
     current: false,
   },
   {
-    period: "2012 — 2015",
+    period: "2012 – 2015",
     role: "IT Technician",
     company: "Netsurit",
     copy: "Built a foundation in managed IT services, incident resolution, documentation, and clear communication with users and teams.",
@@ -174,81 +176,40 @@ export default function Portfolio() {
         </details>
       </header>
 
+      <PortfolioMotion />
       <main id="main" tabIndex={-1}>
-        <section className="hero shell" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">Java & Full-Stack Developer</p>
-            <p className="hero-name">Theodore Nelson</p>
-            <h1 id="hero-title">
-              Practical software for <em>everyday business.</em>
-            </h1>
-            <p className="hero-lede">
-              I build business applications with Java, Spring Boot, and React.
-              My background in IT support keeps the people using them at the
-              centre of my work.
-            </p>
-            <div className="hero-actions">
-              <a className="button primary" href="#work">
-                View selected work <ArrowDown size={17} />
-              </a>
-              <a className="text-link" href={links.cvDownload} download>
-                Download CV <Download size={16} />
-              </a>
-            </div>
-            <div className="hero-meta">
-              <span>
-                <MapPin size={14} /> Pretoria, South Africa
-              </span>
-              <a href={links.github} target="_blank" rel="noreferrer">
-                GitHub <ArrowUpRight size={14} />
-              </a>
-              <a href={links.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn <ArrowUpRight size={14} />
-              </a>
-            </div>
+        <section className="hero" aria-labelledby="hero-title">
+          <IceScene />
+          <div className="hero-top shell">
+            <p className="hero-discipline">Independent thinking.<br />Practical engineering.</p>
+            <p className="hero-role">Java & Full-Stack Developer<br /><span>Pretoria, South Africa</span></p>
           </div>
-          <figure className="hero-feature">
-            <div className="feature-label">
-              <span>From the workbench</span>
-              <span>Featured project</span>
-            </div>
-            <div className="hero-image-wrap">
-              <ProjectVideo
-                src={projects[0].video}
-                name={projects[0].name}
-                priority
-              />
-            </div>
-            <figcaption>
-              <div>
-                <strong>{projects[0].name}</strong>
-                <span>Business operations, brought together.</span>
-              </div>
-              <a
-                href={`#project-${projects[0].number}`}
-                aria-label={`Explore ${projects[0].name}`}
-              >
-                <ArrowUpRight size={23} />
-              </a>
-            </figcaption>
-          </figure>
+          <div className="hero-title-wrap shell">
+            <h1 id="hero-title"><span>Theodore</span><span>Nelson<span className="name-period">.</span></span></h1>
+          </div>
+          <div className="hero-bottom shell">
+            <p>I turn everyday business problems<br />into software that works.</p>
+            <a className="round-link" href="#work">Explore my work <span><ArrowDown size={18} /></span></a>
+          </div>
         </section>
 
-        <div className="intro-strip shell">
-          <span className="availability">
-            <i aria-hidden="true" /> Open to junior backend & full-stack roles
-          </span>
-          <span>IT foundations. Software focus. Practical delivery.</span>
-        </div>
+        <section className="manifesto shell section" aria-label="Introduction">
+          <p className="eyebrow">Built for the real world</p>
+          <h2 data-reveal>Good software makes<br />the complex feel <em>simple.</em></h2>
+          <div className="manifesto-detail" data-reveal>
+            <p>I build business applications with Java, Spring Boot, and React. My background in IT support keeps the people using them at the centre of my work.</p>
+            <a className="text-link" href={links.cvDownload} download>Download my CV <Download size={16} /></a>
+          </div>
+        </section>
 
         <section className="work-section shell section" id="work">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
-              <p className="eyebrow">01 / Selected work</p>
+              <p className="eyebrow">Selected work</p>
               <h2>Built around real needs.</h2>
             </div>
             <p>
-              Four applications. Different workflows.
+              Four applications. Real problems solved.
               <br />
               The same care for making software useful.
             </p>
@@ -256,7 +217,8 @@ export default function Portfolio() {
           <div className="projects">
             {projects.map((project, index) => (
               <article
-                className={`project ${index % 3 === 0 ? "featured-project" : "compact-project"}`}
+                className={`project ${index % 2 === 0 ? "featured-project" : "compact-project"}`}
+                data-reveal
                 id={`project-${project.number}`}
                 key={project.name}
               >
@@ -325,8 +287,8 @@ export default function Portfolio() {
 
         <section className="experience-section" id="experience">
           <div className="shell section experience-layout">
-            <div className="experience-intro">
-              <p className="eyebrow">02 / Experience</p>
+            <div className="experience-intro" data-reveal>
+              <p className="eyebrow">Experience</p>
               <h2>
                 A foundation in support.
                 <br />
@@ -344,7 +306,7 @@ export default function Portfolio() {
             <div className="timeline">
               {journey.map((item, index) => (
                 <article
-                  className="experience-item"
+                  className="experience-item" data-reveal
                   data-current={item.current || undefined}
                   key={item.company}
                 >
@@ -367,9 +329,9 @@ export default function Portfolio() {
         </section>
 
         <section className="about-section shell section" id="about">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
-              <p className="eyebrow">03 / About & capabilities</p>
+              <p className="eyebrow">About & capabilities</p>
               <h2>
                 Curious about how things work.
                 <br />
@@ -377,7 +339,7 @@ export default function Portfolio() {
               </h2>
             </div>
           </div>
-          <div className="about-layout">
+          <div className="about-layout" data-reveal>
             <div className="about-copy">
               <p>
                 I’m Theodore, a developer based in Pretoria. Through Teodor Dev
@@ -407,7 +369,7 @@ export default function Portfolio() {
               ))}
             </div>
           </div>
-          <div className="qualifications">
+          <div className="qualifications" data-reveal>
             <div>
               <p className="eyebrow">Education & credentials</p>
               <p>
@@ -446,9 +408,9 @@ export default function Portfolio() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="shell contact-layout">
+          <div className="shell contact-layout" data-reveal>
             <div>
-              <p className="eyebrow">04 / Get in touch</p>
+              <p className="eyebrow">Get in touch</p>
               <h2>
                 Good software starts
                 <br />

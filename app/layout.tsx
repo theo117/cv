@@ -50,10 +50,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#111e24" },
+    { media: "(prefers-color-scheme: light)", color: "#080c0f" },
+    { media: "(prefers-color-scheme: dark)", color: "#080c0f" },
   ],
-  colorScheme: "light dark",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
