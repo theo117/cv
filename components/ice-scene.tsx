@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Inline the tiny frame document so host-specific .html routing cannot hide the
+// live scene behind its poster. Module/asset URLs still load from this site.
+const sceneDocument = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Portfolio landscape</title><link rel="icon" href="data:,"><style>html,body,#scene{margin:0;width:100%;height:100%;overflow:hidden;background:#a0a5b1}canvas{display:block}body{pointer-events:none}</style></head>
+<body><div id="scene"></div><script type="module" src="/igloo/scene.js"></script></body></html>`;
+
 /** Isolate the supplied production renderer; React owns content and page navigation. */
 export default function IceScene() {
   const frame = useRef<HTMLIFrameElement>(null);
@@ -124,7 +130,7 @@ export default function IceScene() {
       <iframe
         ref={frame}
         className="igloo-renderer"
-        src="/igloo/scene.html"
+        srcDoc={sceneDocument}
         title="Decorative frozen landscape and ice sculpture"
         aria-hidden="true"
         tabIndex={-1}

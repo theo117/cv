@@ -104,8 +104,8 @@
       "file": "igloo-runtime.js",
       "source": "https://www.igloo.inc/assets/App3D-d68cb154.js",
       "adapted": true,
-      "bytes": 1489975,
-      "sha256": "1c40285157f4db320402586ec5bcdf6a5656a096ab038431732df47680d93e4d"
+      "bytes": 1489957,
+      "sha256": "5cadde4d255b519355687f8ad0ae5c16e645168c5e3b9a544021d817b8157d57"
     },
     {
       "file": "images/cubes/advect.png",

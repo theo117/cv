@@ -23,6 +23,10 @@ TN monogram instead of the reference's branded inner object.
 
 The renderer runs in its own iframe to isolate its Svelte/Three.js runtime and
 styles. React owns all visible text, links, navigation, videos, and CV content.
+The small frame document is embedded with `srcDoc`, avoiding differences in
+how development servers and static hosts route `.html` files. Its script and
+asset URLs remain absolute local paths; the message bridge uses the inherited
+`window.origin` because `location.origin` is null inside `about:srcdoc`.
 The validated postMessage bridge accepts only the expected source window and
 same origin. All scene assets load locally; there is no dependency on the live
 reference website, analytics integration, or audio playback.

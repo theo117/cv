@@ -1,4 +1,6 @@
-const origin = location.origin;
+// srcdoc inherits the parent's origin, while location.origin is "null" for
+// about:srcdoc. window.origin preserves the actual same-origin message target.
+const origin = window.origin;
 let phase = 'loading';
 let phasePayload = {};
 const send = (type, payload = {}) => {

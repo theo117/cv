@@ -39,6 +39,11 @@ replace_once('zt.load(`${this.options.innerobject}.drc`)', 'Promise.resolve(port
 replace_once('new or({map:le.load(`cubes/${this.options.innerobject}_color.ktx2`)})', 'new or({color:0xdde7ed})')
 # Workers use absolute URLs in the original build; namespace them with the asset base.
 runtime = runtime.replace('new Worker("/assets/', 'new Worker("/igloo/assets/')
+# srcdoc inherits a real window.origin, but its location.origin is "null".
+# Both asset-base assignments must use that inherited origin.
+if runtime.count('window.location.origin') != 2:
+    raise ValueError('Expected two runtime asset origin assignments')
+runtime = runtime.replace('window.location.origin', 'window.origin')
 # Give the host an explicit frame budget; static modes render exactly once.
 replace_once('aA=function(i,e){var t,s;this.active&&(',
              'aA=function(i,e){var t,s;this.active&&portfolioRenderBudget!==0&&(portfolioRenderBudget>0&&portfolioRenderBudget--,')
