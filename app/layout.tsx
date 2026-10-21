@@ -63,6 +63,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Discover the renderer before the iframe's module loader requests it. */}
+        <link rel="modulepreload" href="/igloo/scene.js" />
+        <link rel="modulepreload" href="/igloo/assets/igloo-runtime.js" />
       </head>
       <body>{children}</body>
     </html>

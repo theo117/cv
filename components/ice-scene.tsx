@@ -31,6 +31,7 @@ export default function IceScene() {
     let ready = false;
     let progress = 0;
     let previous = 0;
+    let lastUpdate = 0;
     let lastSent = "";
 
     const sendState = (force = false) => {
@@ -72,6 +73,11 @@ export default function IceScene() {
 
     const render = (now: number) => {
       animation = requestAnimationFrame(render);
+      // Match the renderer's 30 fps budget, including on high-refresh displays.
+      const elapsed = now - lastUpdate;
+      const interval = 1000 / 30;
+      if (elapsed < interval) return;
+      lastUpdate = now - (elapsed % interval);
       const delta = Math.min((now - previous) / 1000, .08);
       previous = now;
       if (ready && visible && !document.hidden) {
@@ -85,7 +91,7 @@ export default function IceScene() {
         sequence.style.setProperty("--scene-progress", current.toFixed(4));
         sequence.dataset.scene = current < .3 ? "landscape" : current > .77 ? "ice" : "transition";
       }
-      sendState();
+      if (ready && visible && !document.hidden) sendState();
     };
 
     const observer = new IntersectionObserver(([entry]) => {
