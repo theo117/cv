@@ -408,6 +408,32 @@ export default function Portfolio() {
           </div>
         </section>
 
+        <section className="shell section" id="references" aria-labelledby="references-heading">
+          <div className="qualifications" data-reveal>
+            <div>
+              <p className="eyebrow" id="references-heading">References</p>
+            </div>
+            <div className="credential-list">
+              <a href="tel:+27657312079">
+                <Phone size={17} />
+                <span>
+                  <strong>Kateka Ngobeni</strong>
+                  <small>Colleague · 0657312079</small>
+                </span>
+                <ArrowUpRight size={17} />
+              </a>
+              <a href="tel:+27712558303">
+                <Phone size={17} />
+                <span>
+                  <strong>Phumlani Mthembu</strong>
+                  <small>Team leader · 0712558303</small>
+                </span>
+                <ArrowUpRight size={17} />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="contact-section" id="contact">
           <div className="shell contact-layout" data-reveal>
             <div>
